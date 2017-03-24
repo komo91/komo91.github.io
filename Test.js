@@ -1,6 +1,6 @@
 
 funtion LocationTest() {
-  mavigator.geolocation.getCurrentPosition(succesFunc,errorFunc,optionObj);
+  mavigator.geolocation.getCurrentPosition(succesFunc(position),errorFunc(error),optionObj);
   
 }
 
