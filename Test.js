@@ -52,5 +52,3 @@ else
   
   document.getElementById('result').innerHTML = errorMessage;
 }
-}
-}
