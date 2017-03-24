@@ -1,5 +1,5 @@
 
-funtion LocationTest() {
+windows onload = funtion LocationTest() {
   mavigator.geolocation.getCurrentPosition(succesFunc(position),errorFunc(error),optionObj);
   
 }
