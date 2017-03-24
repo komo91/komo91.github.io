@@ -5,11 +5,11 @@ funtion LocationTest() {
 }
 
 function successFunc(position) {
-  alert(position.coords.latitude); //緯度
+  var data = position.coords;
   
-  alret(position.coords.longitude); //経度
+  alert("緯度:" + data.latitude + "経度:" + data.longitude); //緯度,経度
   
-  //document.getElementById('result').innerHTML = <>
+  document.getElementById('result').innerHTML = '<dl><dt>緯度</dt></dd>' + data.latitude + '</dd><dt>経度</dd></dl>';
   
 }
 
