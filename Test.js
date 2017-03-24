@@ -8,7 +8,7 @@ function a() {
 }
 
 funtion LocationTest() {
-  navigator.geolocation.getCurrentPosition(succesFunc(position),errorFunc(error),optionObj);
+  navigator.geolocation.getCurrentPosition(succesFunc,errorFunc,optionObj);
   
 }
 
