@@ -29,7 +29,7 @@ if(navigator.geolocation) {
       
       var errorNo = error.code;
       
-      var errorMessage = "[エラー番号:" + errorNo + "]¥n" + errorInfo[errorNo];
+      var errorMessage = "[エラー番号:" + errorNo + "]_n" + errorInfo[errorNo];
       
       alert(errorMessage);
       
