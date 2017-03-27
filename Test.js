@@ -12,7 +12,7 @@ if(navigator.geolocation) {
       var accAlt = data.altitudeAccuracy;
       var heading = data.heading;
       var speed = data.speed;
-      console.log("test2");
+      console.log(lat);
       
       alert("現在位置は¥n[" + lat + "," + lng + "]¥nです");
       
