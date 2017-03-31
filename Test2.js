@@ -16,9 +16,9 @@ var syncerWatchPosition = {
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   console.log("test1");
-  navigator.geolocation.watchpositon(
+  navigator.geolocation.watchpositon(successFuns,errorFunc,optionObj)
     //現在地測定成功の場合
-    function( position )
+    function successFunc( position )
     {
       var data = position.coords;
 
@@ -68,7 +68,7 @@ if(navigator.geolocation) {
     },
 
     //現在地測定失敗の場合
-    function(error)
+    function errorFunc(error)
     {
       var errorInfo = [
         "原因不明のエラー", //0
@@ -94,7 +94,6 @@ if(navigator.geolocation) {
       "timeout": 8000,
       "maximumAge": 2000,
     }
-  );
 }
 else
 {
