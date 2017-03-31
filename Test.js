@@ -49,7 +49,7 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
-      var marker = new google.maps.Marker( {
+      new google.maps.Marker( {
         map: map,
         postion: myPosition,
       });
