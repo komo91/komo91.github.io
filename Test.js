@@ -41,17 +41,17 @@ if(navigator.geolocation) {
 
       decision();
       
-      var latlng = new google.maps.LatLng(lat,lng);
+      var myPosition = new google.maps.LatLng(lat,lng);
       
       //GoogleMaps 書き出し
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
-        center: latlng,
+        center: myPosition,
       });
       
-      new google.maps.Marker( {
+      var marker = new google.maps.Marker( {
         map: map,
-        postion: latlng,
+        postion: myPosition,
       });
       
       
