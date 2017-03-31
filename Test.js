@@ -6,6 +6,13 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
+var syncerWatchPosition = {
+  cont: 0,
+  lastTime: 0,
+  map: null,
+  marker: null,
+};
+
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -23,7 +30,7 @@ if(navigator.geolocation) {
       accAlt = data.altitudeAccuracy;
       heading = data.heading;
       speed = data.speed;
-      console.log(lat);
+      //console.log(lat);
 
       //alert("現在位置は¥n[" + lat + "," + lng + "]\nです");
       //現在地表示
@@ -47,7 +54,7 @@ if(navigator.geolocation) {
         postion: latlng,
       });
       
-      console.log("test3");
+      
 
     },
 
