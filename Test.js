@@ -54,14 +54,9 @@ if(navigator.geolocation) {
       
       //マーカー出力
       var mark = new google.maps.Marker({
-        map: map,
         postion: myPosition,
+        map: map,
       });
-      
-      var marker = new google.maps.Marker();
-      
-      
-
     },
 
     //現在地測定失敗の場合
