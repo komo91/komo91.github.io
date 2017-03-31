@@ -45,7 +45,7 @@ if(navigator.geolocation) {
       
       //GoogleMaps 書き出し
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
+        zoom: 30,
         center: myPosition,
       });
       
