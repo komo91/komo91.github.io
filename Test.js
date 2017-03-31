@@ -45,10 +45,11 @@ if(navigator.geolocation) {
       
       //GoogleMaps 書き出し
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 30,
+        zoom: 20,
         center: myPosition,
       });
       
+      //マーカー出力
       new google.maps.Marker( {
         map: map,
         postion: myPosition,
