@@ -55,7 +55,7 @@ if(navigator.geolocation) {
       //マーカー出力
       var mark = new google.maps.Marker({
         postion: myPosition,
-        map: map,
+        map: map
       });
     },
 
