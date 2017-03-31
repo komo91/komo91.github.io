@@ -46,6 +46,8 @@ if(navigator.geolocation) {
         map: map,
         postion: latlng,
       });
+      
+      console.log("test3");
 
     },
 
