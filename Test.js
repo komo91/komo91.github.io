@@ -47,10 +47,13 @@ if(navigator.geolocation) {
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 20,
         center: myPosition,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        navigationControl: false,
       });
       
       //マーカー出力
-      new google.maps.Marker( {
+      var mark = new google.maps.Marker({
         map: map,
         postion: myPosition,
       });
