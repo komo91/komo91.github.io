@@ -5,8 +5,7 @@ var accLatlng //緯度・経度の精度
 var accAlt  //高度の精度
 var heading //方角
 var speed //速度
-var latlng  //位置情報
-var map //マップ情報
+
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -35,10 +34,10 @@ if(navigator.geolocation) {
 
       decision();
       
-      latlng = new google.maps.LatLng(lat,lng);
+      var latlng = new google.maps.LatLng(lat,lng);
       
       //GoogleMaps 書き出し
-      map = new google.maps.Map(document.getElementById('map-canvas'), {
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: latlng,
       });
