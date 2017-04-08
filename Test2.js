@@ -83,11 +83,11 @@ if(navigator.geolocation) {
   }
 
   //オプション
-  {
+  var optionObj = {
     "enableHighAccuracy": false,
     "timeout": 8000,
     "maximumAge": 2000,
-  }
+  };
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
 
