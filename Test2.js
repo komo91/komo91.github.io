@@ -59,7 +59,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.marker.setPositon(myPosition);
     }  
     decision();
-  },
+  }
 
   //現在地測定失敗の場合
   function errorFunc(error)
@@ -80,7 +80,7 @@ if(navigator.geolocation) {
 
     document.getElementById("result").innerHTML = errorMessage;
 
-  },
+  }
 
   //オプション
   {
