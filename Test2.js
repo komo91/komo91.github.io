@@ -104,5 +104,19 @@ function decision() {
   if(lat==35.6382236&&lng==139.3020877) {
     alert("この場所は地点Aです");
     navigator.gelocation.clearWatch(watchId);
+  } else if(lat==35.6387688&&lng==139.3030753) {  //神社近く
+    alert("この地点は神社近くです");
+    navigator.gelocation.clearWatch(watchId);
+  } else if(lat==35.63836704&&lng==139.30648098) {  //ドンキ
+    alert("この地点はドンキ前です");
+    navigator.gelocation.clearWatch(watchId);
+  } else if(lat==35.63781429&&lng==139.30421229) {  //元セブン
+    alert("この地点は元セブン前です");
+    navigator.gelocation.clearWatch(watchId);
+  } else if(lat==35.63805769&&lng==139.30061043) {  //アルプス
+    alert("この地点はアルプス前です");
+    navigator.gelocation.clearWatch(watchId);
   }
+  
+  
 }
