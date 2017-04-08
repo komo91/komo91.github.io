@@ -96,7 +96,7 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
   
-navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 
 function decision() {
