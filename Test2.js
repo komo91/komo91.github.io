@@ -56,7 +56,7 @@ if(navigator.geolocation) {
       });
     } else {
       syncerWatchPosition.map.setCenter(myPosition);
-      syncerWatchPosition.marker.setPositon(myPosition);
+      syncerWatchPosition.marker.setPosition(myPosition);
     }  
     decision();
   }
@@ -100,10 +100,9 @@ navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 
 function decision() {
-  //仮で自宅座標を取る
+  //仮地点A座標を取る
   if(lat==35.6382236&&lng==139.3020877) {
-    alert("この場所は自宅です");
+    alert("この場所は地点Aです");
+    navigator.gelocation.clearWatch(watchId);
   }
-  
-  navigator.gelocation.clearWatch(watchId);
 }
