@@ -6,6 +6,7 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
+
 var syncerWatchPosition = {
   count: 0,
   lastTime: 0,
