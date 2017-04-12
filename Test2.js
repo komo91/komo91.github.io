@@ -6,12 +6,25 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
-
+//動的情報取得データ
 var syncerWatchPosition = {
   count: 0,
   lastTime: 0,
   map: null,
   marker: null,
+};
+
+//地点情報
+var point = {
+  lat: 35.6382236,
+  lng: 139.3020877,
+};
+
+//周囲判定円
+var CirclePoint = {
+  center: new google.maps.LatLng(point.lat,point.lng),
+  map: syncerWatchPosition.map,
+  radius: 10,
 };
 
 
@@ -58,7 +71,9 @@ if(navigator.geolocation) {
     } else {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
-    }  
+    } 
+    var Cir = new google.maps.Circle(CirclePoint);
+    
     decision();
   }
 
@@ -102,7 +117,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 function decision() {
   //仮地点A座標を取る
-  if(lat==35.6382236&&lng==139.3020877) {
+  if(lat==point.lat&&lng==point.lng) {
     alert("この場所は地点Aです");
     navigator.gelocation.clearWatch(watchId);
   } else if(lat==35.6387688&&lng==139.3030753) {  //神社近く
