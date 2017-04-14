@@ -132,9 +132,8 @@ function decision() {
     alert("この地点はアルプス前です");
   } else if(lat <= point.lat && lng <= point.lng) { //テスト
     alert("円の中");
+    navigator.geolcation.clearWatch(watchId);
   }
-  
-  navigator.geolcation.clearWatch(watchId);
   
 }
 
