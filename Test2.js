@@ -142,5 +142,5 @@ function test1() {
   
   syncerWatchPosition.map.fitBounds(Cir.getBounds());
   
-  console.log("test1実行");
+  console.log(point.lat + "," + point.lng);
 }
