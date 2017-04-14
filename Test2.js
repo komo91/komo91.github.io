@@ -16,8 +16,8 @@ var syncerWatchPosition = {
 
 //地点情報
 var point = {
-  lat: 35.6259739,
-  lng: 139.2785983,
+  lat: 35.625958600000004,
+  lng: 139.2786387,
 };
 
 //周囲判定円
