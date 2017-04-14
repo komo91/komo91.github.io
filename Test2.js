@@ -138,6 +138,12 @@ function decision() {
 }
 
 function test1() {
+  CirclePoint = {
+    center: new google.maps.LatLng(point.lat,point.lng),
+    map: syncerWatchPosition.map,
+    radius: 10,
+  };
+  
   var Cir = new google.maps.Circle(CirclePoint);
   
   syncerWatchPosition.map.fitBounds(Cir.getBounds());
