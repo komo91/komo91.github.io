@@ -23,11 +23,7 @@ var point = {
 };
 
 //周囲判定円
-var CirclePoint = {
-  center: new google.maps.LatLng(point.lat,point.lng),
-  map: syncerWatchPosition.map,
-  radius: 10,
-};
+var CirclePoint;
 
 
 //GeoLocationAPI対応
