@@ -6,6 +6,8 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
+var myPosition
+
 //動的情報取得データ
 var syncerWatchPosition = {
   count: 0,
@@ -18,6 +20,13 @@ var syncerWatchPosition = {
 var point = {
   lat: 35.625958600000004,
   lng: 139.2786387,
+};
+
+//周囲判定円
+var CirclePoint = {
+  center: new google.maps.LatLng(point.lat,point.lng),
+  map: syncerWatchPosition.map,
+  radius: 10,
 };
 
 
@@ -49,7 +58,7 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
-    var myPosition = new google.maps.LatLng(lat,lng);
+    myPosition = new google.maps.LatLng(lat,lng);
       
     if(syncerWatchPosition.map == null) {
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -65,13 +74,6 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
     }
-    
-    //周囲判定円
-    var CirclePoint = {
-      center: new google.maps.LatLng(point.lat,point.lng),
-      map: syncerWatchPosition.map,
-      radius: 10,
-    };
     
     test1();
     
@@ -138,6 +140,8 @@ function decision() {
 
 function test1() {
   var Cir = new google.maps.Circle(CirclePoint);
+  
+  myPosition.fitBounds(Cir.getBounds());
   
   console.log("test1実行");
 }
