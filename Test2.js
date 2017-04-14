@@ -71,8 +71,9 @@ if(navigator.geolocation) {
     } else {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
-    } 
-    var Cir = new google.maps.Circle(CirclePoint);
+    }
+    
+    test1();
     
     decision();
   }
@@ -136,6 +137,10 @@ function decision() {
     alert("円の中");
     navigator.geolcation.clearWatch(watchId);
   }
+}
+
+function test1() {
+  var Cir = new google.maps.Circle(CirclePoint);
   
-  
+  console.log("test1実行");
 }
