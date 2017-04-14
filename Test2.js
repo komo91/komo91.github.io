@@ -141,7 +141,7 @@ function decision() {
 function test1() {
   var Cir = new google.maps.Circle(CirclePoint);
   
-  myPosition.fitBounds(Cir.getBounds());
+  syncerWatchPosition.map.fitBounds(Cir.getBounds());
   
   console.log("test1実行");
 }
