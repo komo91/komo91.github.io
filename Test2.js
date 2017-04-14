@@ -20,13 +20,6 @@ var point = {
   lng: 139.2786387,
 };
 
-//周囲判定円
-var CirclePoint = {
-  center: new google.maps.LatLng(35.625958600000004,139.2786387),
-  map: syncerWatchPosition.map,
-  radius: 10,
-};
-
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -72,6 +65,13 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
     }
+    
+    //周囲判定円
+    var CirclePoint = {
+      center: new google.maps.LatLng(35.625958600000004,139.2786387),
+      map: syncerWatchPosition.map,
+      radius: 10,
+    };
     
     test1();
     
