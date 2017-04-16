@@ -16,7 +16,37 @@ var syncerWatchPosition = {
   marker: null,
 };
 
-//施設地点情報
+//仮地点
+var pointA = {
+  lat: 35.6382236,
+  lng: 139.3020877,
+};
+
+//神社近く
+var pointB = {
+  lat: 35.6387688,
+  lng: 139.3030753,
+};
+
+//ドンキ
+var pointC = {
+  lat: 35.63836704,
+  lng: 139.30648098,
+};
+
+//元セブン
+var pointD = {
+  lat: 35.63781429,
+  lng: 139.30421229,
+};
+
+//アルプス
+var pointE = {
+  lat: 35.63805769,
+  lng: 139.30061043,
+};
+
+//大学
 var point = {
   lat: 35.625958600000004,
   lng: 139.2786387,
@@ -58,7 +88,7 @@ if(navigator.geolocation) {
       
     if(syncerWatchPosition.map == null) {
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 20,
+        zoom: 22,
         center: myPosition,
       });
         
@@ -115,16 +145,15 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 
 function decision() {
-  //仮地点A座標を取る
-  if(lat==35.6382236&&lng==139.3020877) {
+  if(pointA.lat) {
     alert("この場所は地点Aです");
-  } else if(lat==35.6387688&&lng==139.3030753) {  //神社近く
+  } else if(pointB.lat) {  
     alert("この地点は神社近くです");
-  } else if(lat==35.63836704&&lng==139.30648098) {  //ドンキ
+  } else if(pointC.lat) { 
     alert("この地点はドンキ前です");
-  } else if(lat==35.63781429&&lng==139.30421229) {  //元セブン
+  } else if(pointD.lat) {  
     alert("この地点は元セブン前です");
-  } else if(lat==35.63805769&&lng==139.30061043) {  //アルプス
+  } else if(pointE.lat) {  
     alert("この地点はアルプス前です");
   } else if(lat <= point.lat && lng <= point.lng) { //テスト
     alert("円の中");
