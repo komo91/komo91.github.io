@@ -7,6 +7,8 @@ var heading //方角
 var speed //速度
 
 var myPosition
+var marker = [];
+var CirclePoint = [];
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -16,41 +18,33 @@ var syncerWatchPosition = {
   marker: null,
 };
 
-//仮地点
-var pointA = {
-  lat: 35.6382236,
-  lng: 139.3020877,
-};
-
-//神社近く
-var pointB = {
-  lat: 35.6387688,
-  lng: 139.3030753,
-};
-
-//ドンキ
-var pointC = {
-  lat: 35.63836704,
-  lng: 139.30648098,
-};
-
-//元セブン
-var pointD = {
-  lat: 35.63781429,
-  lng: 139.30421229,
-};
-
-//アルプス
-var pointE = {
-  lat: 35.63805769,
-  lng: 139.30061043,
-};
-
-//大学
-var point = {
-  lat: 35.625958600000004,
-  lng: 139.2786387,
-};
+var CheckData = [ //位置情報配列
+  {
+    name: '仮地点',
+    lat: 35.6382236,
+    lng: 139.3020877
+  }, {
+    name: '神社近く',
+    lat: 35.6387688,
+    lng: 139.3030753
+  }, {
+    name: 'ドンキ',
+    lat: 35.63836704,
+    lng: 139.30648098
+  }, {
+    name: '元セブン',
+    lat: 35.63781429,
+    lng: 139.30421229
+  }, {
+    name: 'アルプス',
+    lat: 35.63805769,
+    lng: 139.30061043
+  }, {
+    name: '大学',
+    lat: 35.625958600000004,
+    lng: 139.2786387
+  }
+];
 
 //周囲判定円
 var CirclePoint;
@@ -88,14 +82,12 @@ if(navigator.geolocation) {
       
     if(syncerWatchPosition.map == null) {
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 22,
+        zoom: 18,
         center: myPosition,
       });
-        
-      syncerWatchPosition.marker = new google.maps.Marker( {
-        map: syncerWatchPosition.map,
-        position: myPosition,
-      });
+      
+      inputMarker();
+      
     } else {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
@@ -145,7 +137,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 
 function decision() {
-  if(pointA.lat) {
+  if(CheckData[0] == myPosition) {
     alert("この場所は地点Aです");
   } else if(pointB.lat) {  
     alert("この地点は神社近くです");
@@ -162,16 +154,26 @@ function decision() {
   
 }
 
-function test1() {
-  CirclePoint = {
-    center: new google.maps.LatLng(point.lat,point.lng),
-    map: syncerWatchPosition.map,
-    radius: 10,
-  };
-  
-  var Cir = new google.maps.Circle(CirclePoint);
-  
-  syncerWatchPosition.map.fitBounds(Cir.getBounds());
-  
-  console.log(point.lat + "," + point.lng);
+function inputMarker() {
+  for(var i = 0; i < CheckData.length; i++) {
+    var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
+      {
+        lat: CheckData[i]['lat'],
+        lng: CheckData[i]['lng']
+      });
+    marker[i] = new google.maps.Marker( //マーカー追加
+      {
+        position: MarkerLatLng,
+        map: syncerWatchPosition.map
+      });
+    CirclePoint[i] = {
+      center: new google.maps.LatLng(CheckData[i]['lat'],CheckData[i]['lng']),
+      map: syncerWatchPosition.map,
+      radius: 10
+    };
+    
+    var Cir = new google.maps.Circle(CirclePoint[i]);
+    syncerWatchPosition.map.fitBounds(Cir.getBounds());
+    console.log(CheckData[i]['lat'],CheckData[i]['lng']);
+  }
 }
