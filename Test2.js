@@ -91,10 +91,7 @@ if(navigator.geolocation) {
     } else {
       syncerWatchPosition.map.setCenter(myPosition);
       syncerWatchPosition.marker.setPosition(myPosition);
-    }
-    
-    test1();
-    
+    } 
     decision();
   }
 
@@ -139,16 +136,17 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 function decision() {
   if(CheckData[0] == myPosition) {
     alert("この場所は地点Aです");
-  } else if(pointB.lat) {  
+  } else if(CheckData[1] == myPosition) {  
     alert("この地点は神社近くです");
-  } else if(pointC.lat) { 
+  } else if(CheckData[2] == myPosition) { 
     alert("この地点はドンキ前です");
-  } else if(pointD.lat) {  
+  } else if(CheckData[3] == myPosition) {  
     alert("この地点は元セブン前です");
-  } else if(pointE.lat) {  
+  } else if(CheckData[4] == myPosition) {  
     alert("この地点はアルプス前です");
-  } else if(lat <= point.lat && lng <= point.lng) { //テスト
+  } else if(CheckData[5] == myPosition) { //テスト
     alert("円の中");
+    test(5);
     navigator.geolcation.clearWatch(watchId);
   }
   
@@ -176,4 +174,9 @@ function inputMarker() {
     syncerWatchPosition.map.fitBounds(Cir.getBounds());
     console.log(CheckData[i]['lat'],CheckData[i]['lng']);
   }
+}
+
+function test() {
+  var distance = Math.hypot(CheckData[i]['lat'] - lat,CheckData[i]['lng'] - lng);
+  console.log(distance);
 }
