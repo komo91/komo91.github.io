@@ -21,8 +21,8 @@ var syncerWatchPosition = {
 var CheckData = [ //位置情報配列
   {
     name: '現在地',
-    lat: lat,
-    lng: lng
+    lat: myPosition.lat,
+    lng: myPosition.lng
     
   } ,{
     name: '仮地点',
