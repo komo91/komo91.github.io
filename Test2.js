@@ -121,7 +121,7 @@ if(navigator.geolocation) {
 
     var errorMessage = "[エラー番号:" + errorNo + "]\n" + errorInfo[errorNo];
 
-    alert(errorMessage);
+    //alert(errorMessage);
 
     document.getElementById("result").innerHTML = errorMessage;
 
@@ -160,7 +160,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
         lat: CheckData[i]['lat'],
         lng: CheckData[i]['lng']
       });
-    marker[i] = new google.maps.Marker( //マーカー追加
+    marker[i] = google.maps.Marker( //マーカー追加
       {
         position: MarkerLatLng,
         map: syncerWatchPosition.map
