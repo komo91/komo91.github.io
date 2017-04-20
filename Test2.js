@@ -6,9 +6,9 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
-var myPosition
-var marker = [];
-var CirclePoint = [];
+var myPosition  //現在地地点
+var marker = [];  //登録位置情報
+var CirclePoint = []; //位置範囲設定
 var i;
 
 //動的情報取得データ
@@ -63,8 +63,8 @@ if(navigator.geolocation) {
   function successFunc( position ) {
     var data = position.coords;
     
-    lat =  35.6259947 //data.latitude;
-    lng =  139.2785662 //data.longitude;
+    lat = data.latitude;
+    lng = data.longitude;
     alt = data.altitude;
     accLatlng = data.accuracy;
     accAlt = data.altitudeAccuracy;
@@ -87,17 +87,17 @@ if(navigator.geolocation) {
 
     myPosition = new google.maps.LatLng(lat,lng);
       
-    if(syncerWatchPosition.map == null) {
+    if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 18,
+        zoom: 15,
         center: myPosition,
       });
       
       inputMarker();
       
     } else {
-      syncerWatchPosition.map.setCenter(myPosition);
-      syncerWatchPosition.marker.setPosition(myPosition);
+      syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
+      syncerWatchPosition.marker.setPosition(myPosition); //現在地マーカー変更
     } 
     decision();
   }
@@ -117,7 +117,6 @@ if(navigator.geolocation) {
     var errorMessage = "[エラー番号:" + errorNo + "]\n" + errorInfo[errorNo];
 
     alert(errorMessage);
-    console.log("test3");
 
     document.getElementById("result").innerHTML = errorMessage;
 
@@ -126,8 +125,8 @@ if(navigator.geolocation) {
   //オプション
   var optionObj = {
     "enableHighAccuracy": false,
-    "timeout": 8000,
-    "maximumAge": 2000,
+    "timeout": 10000,
+    "maximumAge": 0,
   };
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
@@ -137,7 +136,7 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
   
-var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj ); //追跡中止
 
 
 function decision() { //目的地判定
@@ -149,7 +148,7 @@ function decision() { //目的地判定
   }
 }
 
-function inputMarker() {  //マーカー・目的地範囲設定
+function inputMarker() {  //マーカー・目的地範囲設定・作成
   for(var i = 0; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
