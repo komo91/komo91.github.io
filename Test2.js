@@ -22,7 +22,7 @@ var CheckData = [ //位置情報配列
   {
     name: '現在地',
     lat: myPosition.lat,
-    lng: myPosition.lng,
+    lng: myPosition.lng
     
   } ,{
     name: '仮地点',
