@@ -9,7 +9,6 @@ var speed //速度
 var myPosition  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
-var i;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -53,10 +52,6 @@ var CheckData = [ //位置情報配列
   }
 ];
 
-//周囲判定円
-var CirclePoint;
-
-
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -93,10 +88,7 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
-      syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
-        map: syncerwatchPosition.map,
-        position: myPosition
-      });
+      
       
       inputMarker();
       
@@ -160,7 +152,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
         lat: CheckData[i]['lat'],
         lng: CheckData[i]['lng']
       });
-    marker[i] = google.maps.Marker( //マーカー追加
+    marker[i] = new google.maps.Marker( //マーカー追加
       {
         position: MarkerLatLng,
         map: syncerWatchPosition.map
