@@ -20,6 +20,11 @@ var syncerWatchPosition = {
 
 var CheckData = [ //位置情報配列
   {
+    name: '現在地',
+    lat: myPosition.lat,
+    lng: myPosition.lng,
+    
+  } ,{
     name: '仮地点',
     lat: 35.6382236,
     lng: 139.3020877,
