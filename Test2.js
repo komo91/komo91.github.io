@@ -93,6 +93,11 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
+      syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
+        map: syncerwatchPosition.map,
+        position: myPosition
+      });
+      
       inputMarker();
       
     } else {
