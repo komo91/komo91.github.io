@@ -20,11 +20,6 @@ var syncerWatchPosition = {
 
 var CheckData = [ //位置情報配列
   {
-    name: '現在地',
-    lat: myPosition.lat,
-    lng: myPosition.lng
-    
-  } ,{
     name: '仮地点',
     lat: 35.6382236,
     lng: 139.3020877,
@@ -93,7 +88,10 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
-      
+      syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
+        map: syncerwatchPosition.map,
+        position: myPosition
+      });
       
       inputMarker();
       
@@ -172,8 +170,4 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
   }
-  
-  marker[0].setOptions({
-    
-  });
 }
