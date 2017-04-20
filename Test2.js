@@ -23,27 +23,33 @@ var CheckData = [ //位置情報配列
   {
     name: '仮地点',
     lat: 35.6382236,
-    lng: 139.3020877
+    lng: 139.3020877,
+    message: "この場所は地点Aです"
   }, {
     name: '神社近く',
     lat: 35.6387688,
-    lng: 139.3030753
+    lng: 139.3030753,
+    message: "この地点は神社近くです"
   }, {
     name: 'ドンキ',
     lat: 35.63836704,
-    lng: 139.30648098
+    lng: 139.30648098,
+    message: "この地点はドンキ前です"
   }, {
     name: '元セブン',
     lat: 35.63781429,
-    lng: 139.30421229
+    lng: 139.30421229,
+    message: "この地点は元セブン前です"
   }, {
     name: 'アルプス',
     lat: 35.63805769,
-    lng: 139.30061043
+    lng: 139.30061043,
+    message: "この地点はアルプス前です"
   }, {
     name: '大学',
     lat: 35.6259947,
-    lng: 139.2785662
+    lng: 139.2785662,
+    message: "研究室前"
   }
 ];
 
@@ -134,26 +140,16 @@ if(navigator.geolocation) {
 var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 
-function decision() {
-  if(CheckData[0] == myPosition) {
-    alert("この場所は地点Aです");
-  } else if(CheckData[1] == myPosition) {  
-    alert("この地点は神社近くです");
-  } else if(CheckData[2] == myPosition) { 
-    alert("この地点はドンキ前です");
-  } else if(CheckData[3] == myPosition) {  
-    alert("この地点は元セブン前です");
-  } else if(CheckData[4] == myPosition) {  
-    alert("この地点はアルプス前です");
-  } else if(CheckData[5] == myPosition) { //テスト
-    alert("円の中");
-    test(5);
-    navigator.geolcation.clearWatch(watchId);
+function decision() { //目的地判定
+  for(var j = 0; j < CheckData.length; j++) {
+    var distance = Math.hypot(CheckData[j]['lat'] - lat,CheckData[j]['lng'] - lng);
+    if(distance < CirclePoint[j]) {
+      alert(CheckData[j]['message']);
+    }
   }
-  
 }
 
-function inputMarker() {
+function inputMarker() {  //マーカー・目的地範囲設定
   for(var i = 0; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
@@ -165,19 +161,14 @@ function inputMarker() {
         position: MarkerLatLng,
         map: syncerWatchPosition.map
       });
-    CirclePoint[i] = {
+    CirclePoint[i] = {  //目的地範囲円設定
       center: new google.maps.LatLng(CheckData[i]['lat'],CheckData[i]['lng']),
       map: syncerWatchPosition.map,
       radius: 10
     };
     
-    var Cir = new google.maps.Circle(CirclePoint[i]);
-    syncerWatchPosition.map.fitBounds(Cir.getBounds());
-    console.log(CheckData[i]['lat'],CheckData[i]['lng']);
+    var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
+    syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
+    //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
   }
-}
-
-function test(i) {
-  var distance = Math.hypot(CheckData[i]['lat'] - lat,CheckData[i]['lng'] - lng);
-  console.log(distance);
 }
