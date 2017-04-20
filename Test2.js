@@ -56,8 +56,8 @@ if(navigator.geolocation) {
   function successFunc( position ) {
     var data = position.coords;
     
-    lat = data.latitude;
-    lng = data.longitude;
+    lat =  35.6259947 //data.latitude;
+    lng =  139.2785662 //data.longitude;
     alt = data.altitude;
     accLatlng = data.accuracy;
     accAlt = data.altitudeAccuracy;
