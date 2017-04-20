@@ -21,8 +21,8 @@ var syncerWatchPosition = {
 var CheckData = [ //位置情報配列
   {
     name: '現在地',
-    lat: myPosition.lat,
-    lng: myPosition.lng
+    lat: lat,
+    lng: lng
     
   } ,{
     name: '仮地点',
@@ -172,4 +172,8 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
   }
+  
+  marker[0].setOptions({
+    
+  });
 }
