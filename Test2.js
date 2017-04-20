@@ -177,7 +177,7 @@ function inputMarker() {
   }
 }
 
-function test() {
+function test(i) {
   var distance = Math.hypot(CheckData[i]['lat'] - lat,CheckData[i]['lng'] - lng);
   console.log(distance);
 }
