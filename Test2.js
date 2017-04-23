@@ -18,7 +18,43 @@ var syncerWatchPosition = {
   marker: null,
 };
 
-
+var CheckData = [ //位置情報配列
+  {
+    name: '現在地',
+    lat: myPosition.lat,
+    lng: myPosition.lng
+  }, {
+    name: '仮地点',
+    lat: 35.6382236,
+    lng: 139.3020877,
+    message: "この場所は地点Aです"
+  }, {
+    name: '神社近く',
+    lat: 35.6387688,
+    lng: 139.3030753,
+    message: "この地点は神社近くです"
+  }, {
+    name: 'ドンキ',
+    lat: 35.63836704,
+    lng: 139.30648098,
+    message: "この地点はドンキ前です"
+  }, {
+    name: '元セブン',
+    lat: 35.63781429,
+    lng: 139.30421229,
+    message: "この地点は元セブン前です"
+  }, {
+    name: 'アルプス',
+    lat: 35.63805769,
+    lng: 139.30061043,
+    message: "この地点はアルプス前です"
+  }, {
+    name: '大学',
+    lat: 35.6259947,
+    lng: 139.2785662,
+    message: "研究室前"
+  }
+];
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -48,10 +84,8 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
-    myPosition = {
-      lat: lat,
-      lng: lng
-    }      
+    myPosition = new google.maps.latlng(checkData[0]['lat'],checkData[0]['lng']);
+    
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
@@ -59,7 +93,7 @@ if(navigator.geolocation) {
       });
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
-        map: syncerwatchPosition.map,
+        map: syncerWatchPosition.map,
         position: myPosition
       });
       
@@ -142,40 +176,4 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
   }
 }
 
-var CheckData = [ //位置情報配列
-  {
-    name: '現在地',
-    lat: myPosition.lat,
-    lng: myPosition.lng
-  }, {
-    name: '仮地点',
-    lat: 35.6382236,
-    lng: 139.3020877,
-    message: "この場所は地点Aです"
-  }, {
-    name: '神社近く',
-    lat: 35.6387688,
-    lng: 139.3030753,
-    message: "この地点は神社近くです"
-  }, {
-    name: 'ドンキ',
-    lat: 35.63836704,
-    lng: 139.30648098,
-    message: "この地点はドンキ前です"
-  }, {
-    name: '元セブン',
-    lat: 35.63781429,
-    lng: 139.30421229,
-    message: "この地点は元セブン前です"
-  }, {
-    name: 'アルプス',
-    lat: 35.63805769,
-    lng: 139.30061043,
-    message: "この地点はアルプス前です"
-  }, {
-    name: '大学',
-    lat: 35.6259947,
-    lng: 139.2785662,
-    message: "研究室前"
-  }
-];
+
