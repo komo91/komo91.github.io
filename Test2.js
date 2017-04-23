@@ -97,7 +97,7 @@ if(navigator.geolocation) {
         position: myPosition
       });
       
-      //inputMarker();
+      inputMarker();
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
