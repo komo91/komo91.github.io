@@ -84,7 +84,7 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
-    var myPosition = new google.maps.latlng(position);
+    var myPosition = new google.maps.latlng(lat,lng);
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -97,7 +97,7 @@ if(navigator.geolocation) {
         position: myPosition
       });
       
-      inputMarker();
+      //inputMarker();
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -145,12 +145,13 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 function decision() { //目的地判定
   for(var j = 0; j < CheckData.length; j++) {
-    var distance = Math.hypot(CheckData[j]['lat'] - lat,CheckData[j]['lng'] - lng);
-    if(distance < CirclePoint[j].radius) {
-      alert(CheckData[j]['message']);
+    var distance = Math.hypot(CheckData[6]['lat'] - lat,CheckData[6]['lng'] - lng);
+    if(distance < CirclePoint[6].radius) {
+      alert(CheckData[6]['message']);
     }
   }
 }
+
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
   for(var i = 1; i < CheckData.length; i++) {
