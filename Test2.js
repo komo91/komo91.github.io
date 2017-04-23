@@ -21,8 +21,8 @@ var syncerWatchPosition = {
 var CheckData = [ //位置情報配列
   {
     name: '現在地',
-    lat: myPosition.lat,
-    lng: myPosition.lng
+    lat: lat,
+    lng: lng
   }, {
     name: '仮地点',
     lat: 35.6382236,
@@ -153,7 +153,7 @@ function decision() { //目的地判定
 }
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 0; i < CheckData.length; i++) {
+  for(var i = 1; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
@@ -173,6 +173,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
+    
   }
 }
 
