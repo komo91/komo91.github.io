@@ -145,9 +145,9 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 function decision() { //目的地判定
   for(var j = 0; j < CheckData.length; j++) {
-    var distance = Math.hypot(CheckData[6]['lat'] - lat,CheckData[6]['lng'] - lng);
-    if(distance < CirclePoint[6].radius) {
-      alert(CheckData[6]['message']);
+    var distance = Math.hypot(CheckData[j]['lat'] - lat,CheckData[j]['lng'] - lng);
+    if(distance < CirclePoint[j].radius) {
+      alert(CheckData[j]['message']);
     }
   }
 }
