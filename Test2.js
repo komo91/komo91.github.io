@@ -6,7 +6,7 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
-var myPosition = new google.maps.latlng(0,0); //現在地地点
+var myPosition = (0,0); //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
 
