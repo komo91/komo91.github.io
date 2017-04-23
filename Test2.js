@@ -18,43 +18,7 @@ var syncerWatchPosition = {
   marker: null,
 };
 
-var CheckData = [ //位置情報配列
-  {
-    name: '現在地',
-    lat: myPosition.lat,
-    lng: myPosition.lng
-  }, {
-    name: '仮地点',
-    lat: 35.6382236,
-    lng: 139.3020877,
-    message: "この場所は地点Aです"
-  }, {
-    name: '神社近く',
-    lat: 35.6387688,
-    lng: 139.3030753,
-    message: "この地点は神社近くです"
-  }, {
-    name: 'ドンキ',
-    lat: 35.63836704,
-    lng: 139.30648098,
-    message: "この地点はドンキ前です"
-  }, {
-    name: '元セブン',
-    lat: 35.63781429,
-    lng: 139.30421229,
-    message: "この地点は元セブン前です"
-  }, {
-    name: 'アルプス',
-    lat: 35.63805769,
-    lng: 139.30061043,
-    message: "この地点はアルプス前です"
-  }, {
-    name: '大学',
-    lat: 35.6259947,
-    lng: 139.2785662,
-    message: "研究室前"
-  }
-];
+
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -177,3 +141,41 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
   }
 }
+
+var CheckData = [ //位置情報配列
+  {
+    name: '現在地',
+    lat: myPosition.lat,
+    lng: myPosition.lng
+  }, {
+    name: '仮地点',
+    lat: 35.6382236,
+    lng: 139.3020877,
+    message: "この場所は地点Aです"
+  }, {
+    name: '神社近く',
+    lat: 35.6387688,
+    lng: 139.3030753,
+    message: "この地点は神社近くです"
+  }, {
+    name: 'ドンキ',
+    lat: 35.63836704,
+    lng: 139.30648098,
+    message: "この地点はドンキ前です"
+  }, {
+    name: '元セブン',
+    lat: 35.63781429,
+    lng: 139.30421229,
+    message: "この地点は元セブン前です"
+  }, {
+    name: 'アルプス',
+    lat: 35.63805769,
+    lng: 139.30061043,
+    message: "この地点はアルプス前です"
+  }, {
+    name: '大学',
+    lat: 35.6259947,
+    lng: 139.2785662,
+    message: "研究室前"
+  }
+];
