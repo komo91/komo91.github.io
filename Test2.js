@@ -143,7 +143,7 @@ if(navigator.geolocation) {
 var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj ); //追跡中止
 
 
-function decision(value) { //目的地判定
+function decision(myPosition) { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDisranceBetween(marker[j].position,myPosition);
     if(CirclePoint[j].radius　<　distance) {
