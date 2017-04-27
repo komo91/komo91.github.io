@@ -9,6 +9,7 @@ var speed //速度
 //var myPosition  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
+var myPosition;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -84,7 +85,7 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
-    var myPosition = new google.maps.LatLng(lat,lng);
+    myPosition = new google.maps.LatLng(lat,lng);
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
