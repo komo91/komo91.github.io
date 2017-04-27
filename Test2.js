@@ -146,8 +146,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
-    //var distance = Math.hypot(CheckData[j]['lat'] - lat,CheckData[j]['lng'] - lng);
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(marker[j].position,myPosition);
+    var distance = google.maps.geometry.spherical.computeDisranceBetween(marker[j].position,myPosition);
     if(CirclePoint[j].radius　<　distance) {
       alert(CheckData[j]['message']);
     }
