@@ -53,6 +53,71 @@ var CheckData = [ //位置情報配列
     lat: 35.6259947,
     lng: 139.2785662,
     message: "研究室前"
+  }, {
+    name: '高尾山口駅',
+    lat: 35.632489,
+    lng: 139.269910,
+    message: "高尾山口駅ですよ"
+  }, {
+    name: '清滝駅',
+    lat: 35.631079,
+    lng: 139.266788,
+    message: "ロープウェイ清滝駅ですよ"
+  }, {
+    name: '山上駅',
+    lat: 35.632475,
+    lng: 139.257566,
+    message: "ロープウェイ山上駅ですよ"
+  }, {
+    name: 'ケーブルカー高尾山駅',
+    lat: 35.631092,
+    lng: 139.256041,
+    message: "ケーブルカー高尾山駅ですよ"
+  }, {
+    name: '十一丁目茶屋',
+    lat: 35.630254,
+    lng: 139.255414,
+    messsage: "十一丁目茶屋ですよ"
+  }, {
+    name: 'タコ杉',
+    lat: 35.630161,
+    lng: 139.254445,
+    message: "タコ杉ですよ"
+  }, {
+    name: '男坂女坂',
+    lat: 35.629086,
+    lng: 139.251889,
+    message: "男坂女坂ですよ"
+  }, {
+    name: '権現茶屋',
+    lat: 35.627431,
+    lng: 139.250309,
+    message: "権現茶屋ですよ"
+  }, {
+    name: '高尾山薬王院',
+    lat: 35.625866,
+    lng: 139.250263,
+    message: "薬王院ですよ"
+  }, {
+    name: '山頂前トイレ',
+    lat: 35.625722,
+    lng: 139.244564,
+    message: "山頂前トイレですよ"
+  }, {
+    name: '高尾山山頂',
+    lat: 35.625123,
+    lng: 139.243657,
+    message: "高尾山山頂ですよ"
+  }, {
+    name: '曙亭',
+    lat: 35.624817,
+    lng: 139.243261,
+    message: "曙亭(蕎麦屋)ですよ"
+  }, {
+    name: '高尾ビジターセンター',
+    lat: 35.624817,
+    lng: 139.243261,
+    message: "高尾ビジターセンターですよ"
   }
 ];
 
@@ -153,8 +218,8 @@ function decision() { //目的地判定
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
     }
-    console.log(distance);
-    console.log("[" + [j] + "]" + CirclePoint[j].radius);
+    //console.log(distance);
+    //console.log("[" + [j] + "]" + CirclePoint[j].radius);
   }
 }
 
