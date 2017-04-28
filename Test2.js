@@ -154,7 +154,7 @@ function decision() { //目的地判定
       alert(CheckData[j]['message']);
     }
     console.log(distance);
-    console.log(CirclePoint[j].radius);
+    console.log("[" + [j] + "]" + CirclePoint[j].radius);
   }
 }
 
