@@ -6,7 +6,7 @@ var accAlt  //高度の精度
 var heading //方角
 var speed //速度
 
-//var myPosition  //現在地地点
+var myPosition  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
 
@@ -84,7 +84,11 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
-    var myPosition = new google.maps.LatLng(lat,lng);
+    myPosition = new google.maps.LatLng(
+      {
+        lat: lat,
+        lng: lng
+      });
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -103,7 +107,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       syncerWatchPosition.marker.setPosition(myPosition); //現在地マーカー変更
     } 
-    decision(myPosition);
+    decision();
   }
 
   //現在地測定失敗の場合
@@ -143,9 +147,9 @@ if(navigator.geolocation) {
 var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj ); //追跡中止
 
 
-function decision(myPosition) { //目的地判定
+function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
-    var distance = google.maps.geometry.spherical.computeDisranceBetween(marker[j].position,this.myPosition);
+    var distance = google.maps.geometry.spherical.computeDisranceBetween(marker[j].position,myPosition);
     if(CirclePoint[j].radius　<　distance) {
       alert(CheckData[j]['message']);
     }
