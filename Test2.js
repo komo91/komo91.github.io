@@ -239,7 +239,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     CirclePoint[i] = {  //目的地範囲円設定
       center: new google.maps.LatLng(CheckData[i]['lat'],CheckData[i]['lng']),
       map: syncerWatchPosition.map,
-      radius: 10
+      radius: 20
     };
     
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
