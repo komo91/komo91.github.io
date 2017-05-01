@@ -161,12 +161,12 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
+      inputMarker();
+      
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
-      
-      inputMarker();
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
