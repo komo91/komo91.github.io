@@ -9,6 +9,7 @@ var speed //速度
 var myPosition  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
+var a = false;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -215,9 +216,13 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius　>　distance) {
-      alert(CheckData[j]['message']);
-    }
+    if(a){
+      if(CirclePoint[j].radius　>　distance) {
+        alert(CheckData[j]['message']);
+        a = true;
+      } else {
+        a = false;
+  }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
   }
