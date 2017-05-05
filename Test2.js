@@ -158,7 +158,7 @@ if(navigator.geolocation) {
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 10,
+        zoom: 13,
         center: myPosition,
       });
       
