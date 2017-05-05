@@ -158,7 +158,7 @@ if(navigator.geolocation) {
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
+        zoom: 10,
         center: myPosition,
       });
       
@@ -168,6 +168,8 @@ if(navigator.geolocation) {
         map: syncerWatchPosition.map,
         position: myPosition
       });
+      
+      syncerWatchPosition.map.setCenter(myPosition);
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
