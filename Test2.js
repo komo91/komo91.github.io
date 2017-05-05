@@ -233,7 +233,7 @@ function decision() { //目的地判定
 
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i < CheckData.length; i++) {
+  for(var i = 1; i <= CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
