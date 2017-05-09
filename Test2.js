@@ -216,7 +216,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 
 function decision() { //目的地判定
-  for(var j = 1; j < CheckData.length; j++) {
+  for(var j = 1; j <= CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       a = true;
