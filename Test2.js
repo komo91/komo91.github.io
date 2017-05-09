@@ -219,13 +219,8 @@ function decision() { //目的地判定
   for(var j = 1; j <= CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
-      a = true;
-      if(a) {
-        alert(CheckData[j]['message']);
-      }
-    } else {
-      a = false;
-  }
+      alert(CheckData[j]['message']);
+    }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
   }
