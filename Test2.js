@@ -23,32 +23,7 @@ var CheckData = [ //位置情報配列
     name: '現在地',
     lat: lat,
     lng: lng
-  }, {
-    name: '仮地点',
-    lat: 35.6382236,
-    lng: 139.3020877,
-    message: "この場所は地点Aです"
-  }, {
-    name: '神社近く',
-    lat: 35.6387688,
-    lng: 139.3030753,
-    message: "この地点は神社近くです"
-  }, {
-    name: 'ドンキ',
-    lat: 35.63836704,
-    lng: 139.30648098,
-    message: "この地点はドンキ前です"
-  }, {
-    name: '元セブン',
-    lat: 35.63781429,
-    lng: 139.30421229,
-    message: "この地点は元セブン前です"
-  }, {
-    name: 'アルプス',
-    lat: 35.63805769,
-    lng: 139.30061043,
-    message: "この地点はアルプス前です"
-  }, {
+  },{
     name: '大学',
     lat: 35.6259947,
     lng: 139.2785662,
@@ -83,17 +58,7 @@ var CheckData = [ //位置情報配列
     lat: 35.630161,
     lng: 139.254445,
     message: "タコ杉ですよ"
-  }, {
-    name: '男坂女坂',
-    lat: 35.629086,
-    lng: 139.251889,
-    message: "男坂女坂ですよ"
-  }, {
-    name: '権現茶屋',
-    lat: 35.627431,
-    lng: 139.250309,
-    message: "権現茶屋ですよ"
-  }, {
+  },{
     name: '高尾山薬王院',
     lat: 35.625866,
     lng: 139.250263,
@@ -118,6 +83,16 @@ var CheckData = [ //位置情報配列
     lat: 35.624817,
     lng: 139.243261,
     message: "高尾ビジターセンターですよ"
+  },{
+    name: 'やまびこ茶屋',
+    lat: 35.625507,
+    lng: 139.243756,
+    message: "やまびこ茶屋ですよ"
+  }, {
+    name: '高尾599ミュージアム',
+    lat: 35.630442,
+    lng: 139.268698,
+    message: "高尾599ミュージアムですよ"
   }
 ];
 
@@ -213,7 +188,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 
 function decision() { //目的地判定
-  for(var j = 1; j < CheckData.length; j++) {
+  for(var j = 1; j <= CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
@@ -225,7 +200,7 @@ function decision() { //目的地判定
 
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i < CheckData.length; i++) {
+  for(var i = 1; i <= CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
