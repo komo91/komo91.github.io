@@ -9,7 +9,6 @@ var speed //速度
 var myPosition  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
-var a = false;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -158,18 +157,16 @@ if(navigator.geolocation) {
     
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 13,
+        zoom: 15,
         center: myPosition,
       });
-      
-      inputMarker();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
       
-      syncerWatchPosition.map.setCenter(myPosition);
+      inputMarker();
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -216,7 +213,7 @@ var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optio
 
 
 function decision() { //目的地判定
-  for(var j = 1; j <= CheckData.length; j++) {
+  for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
@@ -228,7 +225,7 @@ function decision() { //目的地判定
 
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i <= CheckData.length; i++) {
+  for(var i = 1; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
@@ -251,5 +248,6 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     
   }
 }
+
 
 
