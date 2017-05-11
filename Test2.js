@@ -93,11 +93,6 @@ var CheckData = [ //位置情報配列
     lat: 35.630442,
     lng: 139.268698,
     message: "高尾599ミュージアムですよ"
-  },{
-    name: 'hoge',
-    lat: 0,
-    lng: 0,
-    message: "hoge"
   }
 ];
 
@@ -197,7 +192,6 @@ function decision() { //目的地判定
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
-      clearWatch();
     }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
@@ -228,10 +222,5 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     
   }
 }
-
-function clearWatch() {
-  navigator.geolocation.clearWatch(watchId);//追跡中止
-}
-
 
 
