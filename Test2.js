@@ -110,9 +110,11 @@ if(navigator.geolocation) {
     heading = data.heading;
     speed = data.speed;
     
+    //時間カウント
     ++syncerWatchPosition.count;
     var nowTime = ~~(new Date() / 1000);
-      
+    
+    //3秒後に表示変更
     if((syncerWatchPosition.lastTime + 3) > nowTime) {
       return false;
     }
@@ -124,6 +126,7 @@ if(navigator.geolocation) {
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>';
 
+    //現在地宣言
     myPosition = new google.maps.LatLng(
       {
         lat: lat,
@@ -136,7 +139,7 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
-      inputMarker();
+      inputMarker();  //マーカー作成
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -147,7 +150,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       syncerWatchPosition.marker.setPosition(myPosition); //現在地マーカー変更
     } 
-    decision();
+    decision(); //目的地判定
   }
 
   //現在地測定失敗の場合
