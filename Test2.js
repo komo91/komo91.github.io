@@ -93,6 +93,11 @@ var CheckData = [ //位置情報配列
     lat: 35.630442,
     lng: 139.268698,
     message: "高尾599ミュージアムですよ"
+  },{
+    name: 'hoge',
+    lat: 0,
+    lng: 0,
+    message: "hoge"
   }
 ];
 
@@ -136,12 +141,12 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
+      inputMarker();
+      
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
-      
-      inputMarker();
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -188,7 +193,7 @@ if(navigator.geolocation) {
 var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
-  for(var j = 1; j <= CheckData.length; j++) {
+  for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
@@ -200,7 +205,7 @@ function decision() { //目的地判定
 }
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i <= CheckData.length; i++) {
+  for(var i = 1; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
