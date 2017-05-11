@@ -185,6 +185,8 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
 
+var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+
 function decision() { //目的地判定
   for(var j = 1; j <= CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
@@ -223,7 +225,6 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 }
 
 function clearWatch() {
-  var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
   navigator.geolocation.clearWatch(watchId);//追跡中止
 }
 
