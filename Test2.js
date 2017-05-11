@@ -188,7 +188,7 @@ if(navigator.geolocation) {
 var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
-  for(var j = 1; j <= CheckData.length; j++) {
+  for(var j = 1; j <= CheckData.length+1; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
@@ -200,7 +200,7 @@ function decision() { //目的地判定
 }
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i <= CheckData.length; i++) {
+  for(var i = 1; i <= CheckData.length+1; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
