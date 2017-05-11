@@ -171,9 +171,6 @@ if(navigator.geolocation) {
     "timeout": 10000,
     "maximumAge": 0,
   };
-} else {
-  var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-
   alert(errorMessage);
 
   document.getElementById('result').innerHTML = errorMessage;
