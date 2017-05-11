@@ -54,6 +54,11 @@ var CheckData = [ //位置情報配列
     lng: 139.255414,
     messsage: "十一丁目茶屋ですよ"
   },{
+    name: '権現茶屋',
+    lat: 35.625515,
+    lng: 139.243748,
+    message: "権現茶屋ですよ"
+  },{
     name: '高尾山薬王院',
     lat: 35.625866,
     lng: 139.250263,
@@ -63,7 +68,7 @@ var CheckData = [ //位置情報配列
     lat: 35.625722,
     lng: 139.244564,
     message: "山頂前トイレですよ"
-  }, {
+  },{
     name: '高尾山山頂',
     lat: 35.625123,
     lng: 139.243657,
@@ -121,8 +126,8 @@ if(navigator.geolocation) {
 
     myPosition = new google.maps.LatLng(
       {
-        lat: lat,
-        lng: lng
+        lat: CheckData[0]['lat'],
+        lng: CheckData[0]['lng']
       });
     
     if(syncerWatchPosition.map == null) { //新規Map作成
@@ -179,24 +184,21 @@ if(navigator.geolocation) {
 
   document.getElementById('result').innerHTML = errorMessage;
 }
-  
-var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj ); //追跡中止
-
 
 function decision() { //目的地判定
-  for(var j = 1; j < CheckData.length; j++) {
+  for(var j = 1; j <= CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
+      clearWatch();
     }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
   }
 }
 
-
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 1; i < CheckData.length; i++) {
+  for(var i = 1; i <= CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
@@ -218,6 +220,11 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
     
   }
+}
+
+function clearWatch() {
+  var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+  navigator.geolocation.clearWatch(watchId);//追跡中止
 }
 
 
