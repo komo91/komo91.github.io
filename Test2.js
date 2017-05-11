@@ -126,8 +126,8 @@ if(navigator.geolocation) {
 
     myPosition = new google.maps.LatLng(
       {
-        lat: CheckData[0]['lat'],
-        lng: CheckData[0]['lng']
+        lat: lat,
+        lng: lng
       });
     
     if(syncerWatchPosition.map == null) { //新規Map作成
