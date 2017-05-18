@@ -33,7 +33,7 @@ var CheckData = [ //位置情報配列
     name: '高尾山口駅',
     lat: 35.632489,
     lng: 139.269910,
-    radius: 25,
+    radius: 30,
     message: "高尾山口駅ですよ"
   }, {
     name: '清滝駅',
@@ -61,8 +61,8 @@ var CheckData = [ //位置情報配列
     messsage: "十一丁目茶屋ですよ"
   },{
     name: '権現茶屋',
-    lat: 35.625515,
-    lng: 139.243748,
+    lat: 35.627434,
+    lng: 139.250309,
     radius: 20,
     message: "権現茶屋ですよ"
   },{
@@ -87,13 +87,13 @@ var CheckData = [ //位置情報配列
     name: '曙亭',
     lat: 35.624817,
     lng: 139.243261,
-    radius: 15,
+    radius: 10,
     message: "曙亭(蕎麦屋)ですよ"
   }, {
     name: '高尾ビジターセンター',
     lat: 35.624817,
     lng: 139.243261,
-    radius: 15,
+    radius: 10,
     message: "高尾ビジターセンターですよ"
   },{
     name: 'やまびこ茶屋',
