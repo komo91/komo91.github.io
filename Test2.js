@@ -154,7 +154,6 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
-      syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
