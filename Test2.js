@@ -163,7 +163,6 @@ if(navigator.geolocation) {
       
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      syncerWatchPosition.marker.setPosition(myPosition); //現在地マーカー変更
     } 
     decision(); //目的地判定
   }
