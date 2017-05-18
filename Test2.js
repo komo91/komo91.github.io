@@ -66,6 +66,11 @@ var CheckData = [ //位置情報配列
     radius: 20,
     message: "権現茶屋ですよ"
   },{
+    name: 'もみじや',
+    lat: 35.626204,
+    lng: 139.250899,
+    message: "もみじやですよ"
+  },{
     name: '高尾山薬王院',
     lat: 35.625866,
     lng: 139.250263,
@@ -165,6 +170,7 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
+      inputMarker2();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
