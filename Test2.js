@@ -91,8 +91,8 @@ var CheckData = [ //位置情報配列
     message: "曙亭(蕎麦屋)ですよ"
   }, {
     name: '高尾ビジターセンター',
-    lat: 35.624817,
-    lng: 139.243261,
+    lat: 35.625003,
+    lng: 139.243245,
     radius: 10,
     message: "高尾ビジターセンターですよ"
   },{
@@ -154,6 +154,7 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
+      syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
