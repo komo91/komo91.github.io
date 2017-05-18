@@ -16,18 +16,20 @@ div {
 
 }
 
-#center {
-  text-align: center;
+#map-wrapper {
+  max-width: 80%;
+  min-width: 40%;
+  margin: 20px auto;
+  padding: 4px;
+  border: 1px solid #CCC;
 }
 
 
 #map-canvas {
-  height: 100%;
-  width: 80%;
   position: relative;
-  top: 0;
-	left: 0;
-	overflow: hidden;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 }
 
 
