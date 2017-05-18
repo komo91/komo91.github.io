@@ -252,7 +252,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 }
 
 function inputMarker2() {
-  for(var i = 0; i < CheckData2.length; i++) {
+  for(var i = 0; i <= CheckData2.length; i++) {
     var NE = new google.maps.LatLng(
       {
         lat: CheckData2[i]['NElat'],
