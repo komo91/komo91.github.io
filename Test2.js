@@ -66,10 +66,16 @@ var CheckData = [ //位置情報配列
     radius: 20,
     message: "権現茶屋ですよ"
   },{
-    name: '高尾山薬王院',
-    lat: 35.625866,
-    lng: 139.250263,
+    name: 'もみじや',
+    lat: 35.626204,
+    lng: 139.250899,
     radius: 20,
+    message: "もみじやですよ"
+  },{
+    name: '高尾山薬王院',
+    lat: 35.625807,
+    lng: 139.249408,
+    radius: 40,
     message: "薬王院ですよ"
   }, {
     name: '山頂前トイレ',
