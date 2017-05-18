@@ -126,6 +126,7 @@ var CheckData2 = [
   }
 ];
 
+
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -170,7 +171,7 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
-      inputMarker2();
+      //inputMarker2();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
