@@ -27,71 +27,85 @@ var CheckData = [ //位置情報配列
     name: '大学',
     lat: 35.6259947,
     lng: 139.2785662,
+    radius: 20,
     message: "研究室前"
   }, {
     name: '高尾山口駅',
     lat: 35.632489,
     lng: 139.269910,
+    radius: 25,
     message: "高尾山口駅ですよ"
   }, {
     name: '清滝駅',
     lat: 35.631079,
     lng: 139.266788,
+    radius: 20,
     message: "ロープウェイ清滝駅ですよ"
   }, {
     name: '山上駅',
     lat: 35.632475,
     lng: 139.257566,
+    radius: 20,
     message: "ロープウェイ山上駅ですよ"
   }, {
     name: 'ケーブルカー高尾山駅',
     lat: 35.631092,
     lng: 139.256041,
+    radius: 25,
     message: "ケーブルカー高尾山駅ですよ"
   }, {
     name: '十一丁目茶屋',
     lat: 35.630254,
     lng: 139.255414,
+    radius: 20,
     messsage: "十一丁目茶屋ですよ"
   },{
     name: '権現茶屋',
     lat: 35.625515,
     lng: 139.243748,
+    radius: 20,
     message: "権現茶屋ですよ"
   },{
     name: '高尾山薬王院',
     lat: 35.625866,
     lng: 139.250263,
+    radius: 20,
     message: "薬王院ですよ"
   }, {
     name: '山頂前トイレ',
     lat: 35.625722,
     lng: 139.244564,
+    radius: 20,
     message: "山頂前トイレですよ"
   },{
     name: '高尾山山頂',
     lat: 35.625123,
     lng: 139.243657,
+    radius: 15,
     message: "高尾山山頂ですよ"
   }, {
     name: '曙亭',
     lat: 35.624817,
     lng: 139.243261,
+    radius: 15,
     message: "曙亭(蕎麦屋)ですよ"
   }, {
     name: '高尾ビジターセンター',
     lat: 35.624817,
     lng: 139.243261,
+    radius: 15,
     message: "高尾ビジターセンターですよ"
   },{
     name: 'やまびこ茶屋',
     lat: 35.625507,
     lng: 139.243756,
+    radius: 15,
     message: "やまびこ茶屋ですよ"
   }, {
     name: '高尾599ミュージアム',
     lat: 35.630442,
     lng: 139.268698,
+    radius: 20,
     message: "高尾599ミュージアムですよ"
   }
 ];
@@ -216,7 +230,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     CirclePoint[i] = {  //目的地範囲円設定
       center: new google.maps.LatLng(CheckData[i]['lat'],CheckData[i]['lng']),
       map: syncerWatchPosition.map,
-      radius: 20
+      radius: CheckData[i]['radius']
     };
     
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
