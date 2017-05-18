@@ -115,18 +115,6 @@ var CheckData = [ //位置情報配列
   }
 ];
 
-var CheckData2 = [
-  {
-    name: '高尾山薬王院',
-    NElat: 35.626348,
-    NElng: 139.250636,
-    SWlat: 35.625223,
-    SWlng: 139.248651,
-    message: "高尾山薬王院ナノデス",
-  }
-];
-
-
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -171,7 +159,6 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
-      //inputMarker2();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -257,28 +244,3 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     
   }
 }
-
-function inputMarker2() {
-  for(var i = 0; i <= CheckData2.length; i++) {
-    var NE = new google.maps.LatLng(
-      {
-        lat: CheckData2[i]['NElat'],
-        lng: CheckData2[i]['NElng']
-      });
-    var SW = new google.maps.LatLng(
-      {
-        lat: CheckData2[i]['SWlat'],
-        lng: CheckData2[i]['SWlng']
-      });
-    RectanglePoint[i] = {
-      map: syncerWatchPosition.map,
-      bounds: new google.maps.LatLngBounds(NE,SW)
-    }
-    
-    var Rec = new google.maps.Rectangle(RectanglePoint[i]);
-    syncerWatchPosition.map.fitBounds(bounds);
-  }
-
-}
-
-
