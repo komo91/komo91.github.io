@@ -33,7 +33,7 @@ var CheckData = [ //位置情報配列
     name: '高尾山口駅',
     lat: 35.632489,
     lng: 139.269910,
-    radius: 30,
+    radius: 35,
     message: "高尾山口駅ですよ"
   }, {
     name: '清滝駅',
@@ -111,7 +111,7 @@ var CheckData = [ //位置情報配列
     name: '高尾599ミュージアム',
     lat: 35.630442,
     lng: 139.268698,
-    radius: 20,
+    radius: 25,
     message: "高尾599ミュージアムですよ"
   }
 ];
