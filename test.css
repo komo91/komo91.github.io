@@ -16,6 +16,15 @@ div {
 
 }
 
+dl {
+
+}
+
+dt,
+dd {
+  font-size: 18pt;
+}
+
 #map-wrapper {
   max-width: 80%;
   min-width: 40%;
