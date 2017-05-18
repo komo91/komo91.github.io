@@ -19,8 +19,8 @@ div {
 #map-wrapper {
   max-width: 80%;
   min-width: 40%;
-  margin: 20px auto;
-  padding: 4px;
+  margin: 5px auto;
+  padding: 2px;
   border: 1px solid #CCC;
 }
 
