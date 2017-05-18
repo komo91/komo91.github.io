@@ -16,6 +16,11 @@ div {
 
 }
 
+#center {
+  text-align: center;
+}
+
+
 #map-canvas {
   height: 100%;
   width: 80%;
