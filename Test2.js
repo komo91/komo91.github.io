@@ -1,14 +1,15 @@
-var lat //緯度
-var lng //経度
-var alt //高度
-var accLatlng //緯度・経度の精度
-var accAlt  //高度の精度
-var heading //方角
-var speed //速度
+var lat; //緯度
+var lng; //経度
+var alt; //高度
+var accLatlng; //緯度・経度の精度
+var accAlt;  //高度の精度
+var heading; //方角
+var speed; //速度
 
-var myPosition  //現在地地点
+var myPosition;  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
+var watchId;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -207,13 +208,14 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
 
-var watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
+      navigator.geolocation.clearWatch(watchId);
     }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
