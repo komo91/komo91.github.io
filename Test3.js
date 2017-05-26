@@ -1,3 +1,3 @@
-windows onload= funciton() {
+windows.onload= funciton() {
 
 }
