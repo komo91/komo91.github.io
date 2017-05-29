@@ -1,3 +1,4 @@
+/*
 $(function() {
 	$.ajax({
 	url: 'http://api.openweathermap.org/data/2.5/weather?q=Tokyo,jp&appid=3a156601bcf00db6fb13850feabc0b53',
@@ -34,3 +35,9 @@ $(function() {
       document.getElementById('currenttime').innerHTML = time;
     },1000)
 	});
+*/
+
+var result = document.evaluate('/html/attribute::lang',document,null,XPathResult.ANY_UNORDERED_NODE_TYPE,null);
+
+var kekka = result.singleNodeValue;
+console.log(kekka);
