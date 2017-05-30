@@ -37,7 +37,31 @@ $(function() {
 	});
 */
 
+/*
 var result = document.evaluate('/html/attribute::lang',document,null,XPathResult.ANY_UNORDERED_NODE_TYPE,null);
 
 var kekka = result.singleNodeValue;
 console.log(kekka);
+
+*/
+
+$(function() {
+	$.ajax('external.html', {
+		timeout: 1000,
+		datatype: 'html'
+	}).then(function(data) {
+		var out_html = $($.parseHTML(data));
+		$('#page').empty().append(out_html.filter('#sub')[0].innerHTML);
+		$('#page2').empty().append(out_html.filter('sub2')[0].innerHTML);
+		
+	},function(jqXHR,textStatus) {
+		if(textStatus !== "success") {
+			var txt = "<p>textStatus:" + textStatus + "</p>" + "<p>responseText:</p><div>" + jqXHR.responseText + "</div>";
+			$('page').html(txt);
+			$('page2').html(txt);
+		}
+	});
+});
+
+
+
