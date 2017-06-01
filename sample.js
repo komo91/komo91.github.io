@@ -1,10 +1,14 @@
 var p = document.getElementById('sample');
 
+$x('/html/body/div[0]/');
 
+
+
+/*
 $(function() {
 	$('#page').load('LocationTest2.html');
 });
-
+*/
 
 
 /*
