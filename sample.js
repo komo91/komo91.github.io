@@ -1,11 +1,31 @@
 var p = document.getElementById('sample');
 
+
+$(function() {
+	$.ajax({
+		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html';
+		type: 'GET',
+		success: function(data) {
+			$('sample').html(data.responseText);
+			$table = $('table', $(#container));
+			$('#header').html($table.parent().prev().html());
+			$('#stock').html($table.parent().html());
+		}
+	});
+});
+
+
+
+
+
+/*
 var result = document.evaluate('/descendant::p', document, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
 
 var node;
 while(node=result.iterateNext()) {
 	console.log(node.id);
 }
+*/
 
 
 /*
