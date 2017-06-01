@@ -7,7 +7,7 @@ $(function() {
 		type: 'GET',
 		success: function(data) {
 			$('sample').html(data.responseText);
-			$table = $('table', $(#container));
+			table = $('table', $('#container'));
 			$('#header').html($table.parent().prev().html());
 			$('#stock').html($table.parent().html());
 		}
