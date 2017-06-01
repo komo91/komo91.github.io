@@ -1,6 +1,6 @@
 var p = document.getElementById('sample');
 
-var result = document.evaluate('/html',document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+var result = document.evaluate('https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html,document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
 console.log(result);
 
 
