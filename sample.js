@@ -2,19 +2,12 @@ var p = document.getElementById('sample');
 
 $x('/html/body/div[0]/');
 
+var result = document.evaluate('/html,document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
 
-
-/*
-$(function() {
-	$('#page').load('LocationTest2.html');
-});
-*/
-
-
-/*
-var result = document.evaluate('//html,document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
-console.log(result);
-*/
+var node;
+while(node=result.iterateNext()) {
+	console.log(node.id);
+}
 
 
 /*
