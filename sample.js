@@ -2,7 +2,7 @@ var p = document.getElementById('sample');
 
 
 $(function() {
-	$('#page').load('location2.html');
+	$('#page').load('locationTest2.html');
 });
 
 
