@@ -3,7 +3,7 @@ var p = document.getElementById('sample');
 
 $(function() {
 	$.ajax({
-		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html';
+		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		success: function(data) {
 			$('sample').html(data.responseText);
