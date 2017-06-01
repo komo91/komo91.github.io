@@ -1,6 +1,6 @@
 var p = document.getElementById('sample');
 
-var result = document.evaluate('/descendant::p',document,null,XPathResult.FIRS_ORDERED_NODE_TYPE,null);
+var result = document.evaluate('/descendant::p',document,null,XPathResult.ORDERED_NODE_ITERATOR_TYPE,null);
 
 var node;
 while(node=result.iterateNext()) {
