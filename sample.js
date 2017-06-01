@@ -2,7 +2,7 @@ var p = document.getElementById('sample');
 
 
 $(function() {
-	$('#page').load('https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html');
+	$('#page').load('location2.html');
 });
 
 
