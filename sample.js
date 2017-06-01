@@ -1,7 +1,5 @@
 var p = document.getElementById('sample');
 
-$x('/html/body/div[0]/');
-
 var result = document.evaluate('/html',document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
 
 var node;
