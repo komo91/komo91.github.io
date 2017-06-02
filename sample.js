@@ -30,6 +30,8 @@ $(function() {
 		type: 'GET',
 		success: function(data) {
 			$('#hugu').html(data.responseText);
+			$table = $('table',$('#hugu'));
+			$('#sample1').html($table.parent().prev().html());
 		}
 	});
 });
