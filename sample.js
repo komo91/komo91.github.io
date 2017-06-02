@@ -7,7 +7,7 @@ $(function() {
 		datatype:'html'
 	}).then(function(data){
 		var out_html = $($.parseHTML(data));
-		$('#sample').empty().append(out_html.filter('#sub')[0].innerHTML);
+		$('#sample').empty().append(out_html.filter('#result')[0].innerHTML);
 	},function(jqXHR, textStatus) {
 		if(textStatus!=="success") {
 			var txt = "<p>textStatus:"+ textStatus + "</p>" +
