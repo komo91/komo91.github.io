@@ -1,6 +1,28 @@
 var p = document.getElementById('sample');
 
 
+$(funciton() {
+	$.ajax('LocationTest2.html', {
+		timeout: 1000,
+		datatype: 'html'
+	}).then(function(data) {
+		var out_html = $($.parseHTML(data));
+		$('#result').empty().apeend(out_html.filter('#sample')[0].innerHTML);
+	},function(jqXHR,textStatus) {
+		if(textStatus!=="success") {
+			var txt = "<p>textStatus:" + textStatus + "</p>" +
+				"<p>status:" + jqXHR.status + "</p>" +
+				"<p>responseText: </p><div>" + jqXHR.responseText +
+				"</div>";
+			$("#result").html(txt);
+		}
+	});
+});
+
+
+
+
+/*
 $(function() {
 	$.ajax({
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
@@ -14,7 +36,7 @@ $(function() {
 	});
 });
 
-
+*/
 
 
 
