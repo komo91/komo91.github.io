@@ -1,6 +1,6 @@
 var p = document.getElementById('sample');
 
-
+/*
 $(function() {
 	$.ajax('LocationTest.html', {
 		timeout : 1000,
@@ -20,24 +20,19 @@ $(function() {
 		}
 	});
 });
+*/
 
 
 
-/*
 $(function() {
 	$.ajax({
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		success: function(data) {
-			$('sample').html(data.responseText);
-			table = $('table', $('#container'));
-			$('#header').html($table.parent().prev().html());
-			$('#stock').html($table.parent().html());
+			$('#hugu').html(data.responseText);
 		}
 	});
 });
-
-*/
 
 
 
