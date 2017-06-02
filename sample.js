@@ -7,7 +7,8 @@ $(function() {
 		datatype:'html'
 	}).then(function(data){
 		var out_html = $($.parseHTML(data));
-		$('#sample').empty().append(out_html.filter('#result')[0].innerHTML);
+		$('#sample').empty().append(out_html.filter('#hoge1')[0].innerHTML);
+		$('#sample2').empty().append(out_html.fillter('#hoge2')[0].innerHTML);
 	},function(jqXHR, textStatus) {
 		if(textStatus!=="success") {
 			var txt = "<p>textStatus:"+ textStatus + "</p>" +
@@ -15,6 +16,7 @@ $(function() {
 				"<p>responseText : </p><div>" + jqXHR.responseText +
 				"</div>";
 			$('#sample').html(txt);
+			$('#sample2').html(txt);
 		}
 	});
 });
