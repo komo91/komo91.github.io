@@ -154,13 +154,15 @@ if(navigator.geolocation) {
         lng: lng
       });
     
+    inputMarker();  //マーカー作成
+    
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 18,
         center: myPosition,
       });
       
-      //inputMarker();  //マーカー作成
+      
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
