@@ -29,7 +29,7 @@ window.addEventListener("devicemotion",function(e){
    function print3(id1,value1,id2,value2,id3,value3) {
       print1(id1,value1);
       print1(id2,value2);
-      print3(id3,value3);
+      print1(id3,value3);
    }
    function print1(id,value) {
       var id_obj = document.getElementById(id);
