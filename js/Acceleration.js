@@ -15,7 +15,7 @@ window.addEventListener("devicemotion",function(e){
    var rota_r = e.rotationRate;
    var r_a = obj2NumberFix(rota_r.alpha,5);
    var r_b = obj2NumberFix(rota_r.beta,5);
-   var r_c = obj2NumnerFix(rota_r.gamma,5);
+   var r_c = obj2NumberFix(rota_r.gamma,5);
    
    function obj2NumberFix(obj,fix_deg) {
       return Number(obj).toFixed(fix_deg);
