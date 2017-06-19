@@ -162,6 +162,11 @@ if(navigator.geolocation) {
       
       inputMarker();  //マーカー作成
       
+      var ssu = new SpeechSynthesisUtterance();
+      ssu.text = 'クリスマスにはサンタさん来てくれるかな？';
+      ssu.lang = 'ja-JP';
+      speechSynthesis.speak(ssu);
+      
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
