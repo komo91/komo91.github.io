@@ -21,6 +21,10 @@ window.addEventListener("devicemotion",function(e){
       return Number(obj).toFixed(fix_deg);
    }
    
+   if(x>=5) {
+      alert("歩きスマホダメゼッタイ!");
+   }
+   
    //表示
    print3('acc-x',x,'acc-y',y,'acc-z',z);
    print3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
