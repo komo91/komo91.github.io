@@ -1,21 +1,21 @@
 window.addEventListener("devicemotion",function(e){
    //加速度
    var acc = e.acceleration;
-   var x = obj2NumberFix(acc.x,5);
-   var y = obj2NumberFix(acc.y,5);
-   var z = obj2NumberFix(acc.z,5);
+   var x = obj2NumberFix(acc.x,2);
+   var y = obj2NumberFix(acc.y,2);
+   var z = obj2NumberFix(acc.z,2);
    
    //傾き(重力加速度)
    var acc_g = e.accelerationIncludingGravity;
-   var gx = obj2NumberFix(acc_g.x,5);
-   var gy = obj2NumberFix(acc_g.y,5);
-   var gz = obj2NumberFix(acc_g.z,5);
+   var gx = obj2NumberFix(acc_g.x,2);
+   var gy = obj2NumberFix(acc_g.y,2);
+   var gz = obj2NumberFix(acc_g.z,2);
    
    //回転値
    var rota_r = e.rotationRate;
-   var r_a = obj2NumberFix(rota_r.alpha,5);
-   var r_b = obj2NumberFix(rota_r.beta,5);
-   var r_c = obj2NumberFix(rota_r.gamma,5);
+   var r_a = obj2NumberFix(rota_r.alpha,2);
+   var r_b = obj2NumberFix(rota_r.beta,2);
+   var r_c = obj2NumberFix(rota_r.gamma,2);
    
    function obj2NumberFix(obj,fix_deg) {
       return Number(obj).toFixed(fix_deg);
