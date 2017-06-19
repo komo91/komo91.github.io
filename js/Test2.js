@@ -21,6 +21,10 @@ var syncerWatchPosition = {
 
 var CheckData = [ //位置情報配列
   {
+    name: '現在地',
+    lat: lat,
+    lng: lng
+  },{
     name: '大学',
     lat: 35.6259947,
     lng: 139.2785662,
@@ -110,10 +114,6 @@ var CheckData = [ //位置情報配列
     lng: 139.268698,
     radius: 25,
     message: "高尾599ミュージアムですよ"
-  },{
-    name: '現在地',
-    lat: lat,
-    lng: lng
   }
 ];
 
@@ -213,7 +213,7 @@ if(navigator.geolocation) {
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
-  for(var j = 0; j <= CheckData.length-1; j++) {
+  for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       alert(CheckData[j]['message']);
@@ -225,7 +225,7 @@ function decision() { //目的地判定
 }
 
 function inputMarker() {  //マーカー・目的地範囲設定・作成
-  for(var i = 0; i <= CheckData.length-1; i++) {
+  for(var i = 1; i < CheckData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: CheckData[i]['lat'],
