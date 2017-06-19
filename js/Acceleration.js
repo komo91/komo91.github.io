@@ -17,6 +17,10 @@ window.addEventListener("devicemotion",function(e){
    var r_b = obj2NumberFix(rota_r.beta,5);
    var r_c = obj2NumnerFix(rota_r.gamma,5);
    
+   function obj2NumberFix(obj,fix_deg) {
+      return Number(obj).toFixed(fix_deg);
+   }
+   
    //表示
    print3('acc-x',x,'acc-y',y,'acc-z',z);
    print3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
