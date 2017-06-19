@@ -167,8 +167,6 @@ if(navigator.geolocation) {
         position: myPosition
       });
       
-      syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
     } 
