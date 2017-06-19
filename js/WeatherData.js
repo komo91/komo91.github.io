@@ -46,7 +46,7 @@ console.log(kekka);
 */
 
 $(function() {
-	$.ajax('external.html', {
+	$.ajax('http://takaovc599.ec-net.jp/', {
 		timeout: 1000,
 		datatype: 'html'
 	}).then(function(data) {
