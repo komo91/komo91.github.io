@@ -214,13 +214,10 @@ function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
+      Speech(j);
+      
       alert(CheckData[j]['message']);
       navigator.geolocation.clearWatch(watchId);
-      
-      var ssu = new SpeechSynthesisUtterance();
-      ssu.text = CheckData[j]['message'];
-      ssu.lang = 'ja-JP';
-      speechSynthesis.speak(ssu);
     }
     //console.log(distance);
     //console.log("[" + [j] + "]" + CirclePoint[j].radius);
@@ -250,4 +247,11 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
     
   }
+}
+
+function Speech(num) {
+  var ssu = new SpeechSynthesisUtterance();
+  ssu.text = CheckData[num]['message'];
+  ssu.lang = 'ja-JP';
+  speechSynthesis.speak(ssu);
 }
