@@ -23,6 +23,7 @@ window.addEventListener("devicemotion",function(e){
    
    if(x>=5) {
       alert("歩きスマホダメゼッタイ!");
+      console.log(x);
    }
    
    //表示
