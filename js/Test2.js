@@ -160,7 +160,7 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       
-      inputMarker();  //マーカー作成
+      //inputMarker();  //マーカー作成
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
