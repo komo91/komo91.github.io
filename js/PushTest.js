@@ -214,7 +214,7 @@ function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
-	  PushTest();
+	  PushTest(j);
       alert(CheckData[j]['message']);
       navigator.geolocation.clearWatch(watchId);
     }
@@ -248,9 +248,9 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
   }
 }
 
-function PushTest() {
-	Push.create("Hello wolrd!",{
-		body: "How's it hangin'?",
+function PushTest(num) {
+	Push.create(CheckData[num]['message'],{
+		body: "詳しくはコチラ!",
 		icon: 'img/mountain_icon.png',
 		timeout: 10000,
 		vibrate: [100,100],
