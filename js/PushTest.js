@@ -252,7 +252,7 @@ function Push() {
 	Push.Permission.request();
 	Push.create('こんにちは',{
 	body:'更新お知らせ',
-	timeout:,
+	timeout:10000,
 	vibrate:[100,100,100],
 	onClick:function(){
 		console.log(this);
