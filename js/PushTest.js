@@ -1,4 +1,1 @@
-function PushTest() {
-	Push.create('Hello World!');
-	
-}
+Push.create('Hello World!');
