@@ -249,6 +249,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 }
 
 function PushTest(num) {
+	Push.Permission.request();
 	Push.create(CheckData[num]['message'],{
 		body: "詳しくはコチラ!",
 		icon: 'img/mountain_icon.png',
