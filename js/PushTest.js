@@ -251,16 +251,15 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 function PushTest(num) {
 	Push.Permission.request();	//通知許可
 	Push.create(CheckData[num]['message'],{	//通知情報
-		body: "詳しくはコチラ!",	//通知の内容
-		icon: 'img/mountain_icon.png',	//アイコン
-		timeout: 10000,	//消える秒数
-		vibrate: [100,100],	//バイブレーションの振動パターン
-		link: "https://komo91.github.io/PushTest.html",	//通知クリック時のリンク先
+		body: "詳しくはコチラ!",
+		icon: 'img/mountain_icon.png',
+		timeout: 10000,
+		vibrate: [200,100,200,100,200,100,200],
+		link: "https://komo91.github.io/PushTest.html",
 		onClick: function (){	//クリック時
 			console.log("Fired!");
-			window.focus();	//フォーカス設定
-			this.close();	//通知閉じる
+			window.focus();
+			this.close();
 		},
-		vibrate: [200,100,200,100,200,100,200]
 	});
 }
