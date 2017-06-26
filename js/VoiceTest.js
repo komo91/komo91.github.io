@@ -249,9 +249,9 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
   }
 }
 
-function Speech(num) {
-  var ssu = new SpeechSynthesisUtterance();
-  ssu.text = CheckData[num]['message'];
+function Speech(num) {  //目的地音声案内
+  var ssu = new SpeechSynthesisUtterance(); //
+  ssu.text = CheckData[num]['message'];  //現在地の名称
   ssu.lang = 'ja-JP';
-  speechSynthesis.speak(ssu);
+  speechSynthesis.speak(ssu); //
 }
