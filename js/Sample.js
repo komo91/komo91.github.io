@@ -41,7 +41,6 @@ $(function() {
 
 /*
 var result = document.evaluate('/descendant::p', document, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-
 var node;
 while(node=result.iterateNext()) {
 	console.log(node.id);
