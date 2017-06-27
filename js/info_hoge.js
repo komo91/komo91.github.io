@@ -26,7 +26,7 @@ $(document).ready(function() {
 			dataType: 'html',
 			success: function(html) {
 				console.log(html);
-				$('#hoge').html(data.responseText);
+				$('#hoge').html(html.responseText);
 				$table = $('table',$('#hoge'));
 				$('#Sample1').html($table.parent().prev().html());
 				$('#Sample2').html($table.parent().html());
