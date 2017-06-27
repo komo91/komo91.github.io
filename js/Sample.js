@@ -31,8 +31,8 @@ $(function() {
 		success: function(data) {
 			$('#hugu').html(data.responseText);
 			$table = $('table',$('#hugu'));
-			$('#sample1').html($table.parent().prev().html());
-			$('#sample2').html($table.parent().html());
+			//$('#sample1').html($table.parent().prev().html());
+			//$('#sample2').html($table.parent().html());
 		}
 	});
 });
