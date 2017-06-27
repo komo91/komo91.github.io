@@ -1,4 +1,4 @@
-var url ="https://www.yahoo.co.jp/"
+var hoge ="https://www.yahoo.co.jp/"
 
 function readHtml(url) {
 	$.ajax({
@@ -12,3 +12,5 @@ function readHtml(url) {
 		}
 	});
 }
+
+readHtml(hoge);
