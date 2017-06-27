@@ -1,3 +1,4 @@
+/*
 var hoge ="https://www.yahoo.co.jp/"
 
 function readHtml(url) {
@@ -14,3 +15,17 @@ function readHtml(url) {
 }
 
 readHtml(hoge);
+*/
+
+$(function() {
+	$.ajax({
+		url: 'https://www.yahoo.co.jp/',
+		type: 'GET',
+		success: function(data) {
+			$('#hoge').html(data.responseText);
+			$table = $('table',$('#hoge'));
+			$('#Sample1').html($table.parent().prev().html());
+			$('#Sample2').html($table.parent().html());
+		}
+	});
+});
