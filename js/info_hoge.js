@@ -19,7 +19,7 @@ readHtml(hoge);
 
 $(function() {
 	$.ajax({
-		url: 'https://www.yahoo.co.jp/',
+		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		success: function(data) {
 			$('#hoge').html(data.responseText);
