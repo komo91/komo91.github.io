@@ -21,8 +21,9 @@ $(document).ready(function() {
 	$(function() {
 		console.log("hoge");
 		$.ajax({
-			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 			type: 'GET',
+			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
+			dataType: 'html'
 			success: function(data) {
 				console.log(data);
 				$('#hoge').html(data.responseText);
