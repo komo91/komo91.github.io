@@ -16,17 +16,18 @@ function readHtml(url) {
 
 readHtml(hoge);
 */
-
-$(function() {
-	console.log("hoge");
-	$.ajax({
-		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
-		type: 'GET',
-		success: function(data) {
-			$('#hoge').html(data.responseText);
-			$table = $('table',$('#hoge'));
-			$('#Sample1').html($table.parent().prev().html());
-			$('#Sample2').html($table.parent().html());
-		}
+$(document).ready(function() {
+	$(function() {
+		console.log("hoge");
+		$.ajax({
+			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
+			type: 'GET',
+			success: function(data) {
+				$('#hoge').html(data.responseText);
+				$table = $('table',$('#hoge'));
+				$('#Sample1').html($table.parent().prev().html());
+				$('#Sample2').html($table.parent().html());
+			}
+		});
 	});
 });
