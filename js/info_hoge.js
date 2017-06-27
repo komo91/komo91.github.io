@@ -17,6 +17,7 @@ function readHtml(url) {
 readHtml(hoge);
 */
 $(document).ready(function() {
+	console.log("hoge2");
 	$(function() {
 		console.log("hoge");
 		$.ajax({
