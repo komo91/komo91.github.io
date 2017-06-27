@@ -24,9 +24,10 @@ $(document).ready(function() {
 			type: 'GET',
 			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 			dataType: 'html',
-			success: function(html) {
-				console.log(html);
-				$('#hoge').html(html.responseText);
+			async: false,
+			success: function(data) {
+				console.log(data);
+				$('#hoge').html(data.responseText);
 				$table = $('table',$('#hoge'));
 				$('#Sample1').html($table.parent().prev().html());
 				$('#Sample2').html($table.parent().html());
