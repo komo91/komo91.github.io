@@ -16,6 +16,9 @@ function readHtml(url) {
 
 readHtml(hoge);
 */
+
+
+/*
 $(document).ready(function() {
 	console.log("hoge2");
 	$(function() {
@@ -24,7 +27,6 @@ $(document).ready(function() {
 			type: 'GET',
 			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 			dataType: 'html',
-			async: false,
 			success: function(data) {
 				console.log(data);
 				$('#hoge').html(data.responseText);
@@ -32,6 +34,22 @@ $(document).ready(function() {
 				$('#Sample1').html($table.parent().prev().html());
 				$('#Sample2').html($table.parent().html());
 			}
+		});
+	});
+});
+*/
+
+$(document).ready(function() {
+	$(function() {
+		$.ajax({
+			type: 'GET',
+			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
+			dataType: 'html',
+		}).success(function(data) {
+			$('#hoge').html(data.responseText);
+			$table = $('table',$('#hoge'));
+			$('#Sample1').html($table.parent().prev().html());
+			$('#Sample2').html($table.parent().html());
 		});
 	});
 });
