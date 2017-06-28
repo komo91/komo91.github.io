@@ -50,7 +50,8 @@ $(document).ready(function() {
 			console.log(data);
 			$('#hoge').html(data);
 			$table = $('table',$('#hoge'));
-			$('#Sample1').html($table.parent().prev().html());
+			$title = $('title',$('#hoge'));
+			$('#Sample1').html($title.html());
 			$('#Sample2').html($table.parent().html());
 		});
 	});
