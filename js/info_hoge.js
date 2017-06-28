@@ -47,7 +47,7 @@ $(document).ready(function() {
 			url: 'LocationTest2.html',
 			dataType: 'html',
 		}).done(function(data) {
-			console.log(data;
+			console.log(data);
 			$('#hoge').html(data);
 			$table = $('table',$('#hoge'));
 			$('#Sample1').html($table.parent().prev().html());
