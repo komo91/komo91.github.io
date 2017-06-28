@@ -44,7 +44,7 @@ $(document).ready(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
-			url: 'LocationTest2.html',
+			url: 'http://takaovc599.ec-net.jp/',
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
