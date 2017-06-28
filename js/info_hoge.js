@@ -44,7 +44,7 @@ $(document).ready(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
-			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
+			url: 'LocationTest2.html',
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
