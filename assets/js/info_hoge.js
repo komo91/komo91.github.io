@@ -59,8 +59,11 @@ $(document).ready(function() {
 
 var xhr = new XMLHttpRequest();
 
-console.log(xhr);
+var url = "http://takaovc599.ec-net.jp/05event/0501event.html";
+xhr.open("GET",url);
 
+console.log(xhr);
+console.log(xhr.open)("GET",url);
 
 
 
