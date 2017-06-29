@@ -44,7 +44,7 @@ $(document).ready(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
-			url: 'http://takaovc599.ec-net.jp/',
+			url: 'Accleration.html',
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
