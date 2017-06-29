@@ -39,7 +39,6 @@ $(document).ready(function() {
 });
 */
 
-/*
 $(document).ready(function() {
 	$(function() {
 		console.log("hoge");
@@ -51,24 +50,12 @@ $(document).ready(function() {
 			console.log(data);
 			//$('#hoge').html(data);
 			$table = $('table',$('#hoge'));
-			$title = $('title',$('#hoge').html(data).hide());
+			$title = $('title',$('#hoge').data());
 			$('#Sample1').html($title.html());
 			$('#Sample2').html($table.parent().html());
 		});
 	});
 });
-*/
-
-
-//XMLHttpRequest 
-var request = new XMLHttpRequest();
-request.open('GET','https://www.mozilla.org',false);
-request.send();
-
-if(request.status == 200) {
-	console.log(request.responseText);
-}
-
 
 
 
