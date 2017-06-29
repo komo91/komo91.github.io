@@ -252,7 +252,7 @@ function PushTest(num) {	//通知機能
 	Push.Permission.request();	//通知許可
 	Push.create(CheckData[num]['message'],{	//通知情報
 		body: "詳しくはコチラ!",
-		icon: 'img/mountain_icon.png',
+		icon: 'assets/img/mountain_icon.png',
 		timeout: 10000,
 		vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
 		link: "https://komo91.github.io/PushTest.html",
