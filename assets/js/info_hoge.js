@@ -57,7 +57,7 @@ $(document).ready(function() {
 	});
 });
 
-function() {
+function XMLHttpRequestCreate() {
 	try{
 		return new XMLHttpRequest();
 	}catch(e){}
