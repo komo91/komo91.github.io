@@ -68,7 +68,7 @@ function XMLHttpRequestCreate() {
 		return new ActiveXObject('MSXML2.XMLHTTP.3.0');
 	}catch(e){
 		return new ActiveXObject('MSXML2.XMLHTTP');
-	}catch(e){}
+	}
 	
 	return null;
 }
