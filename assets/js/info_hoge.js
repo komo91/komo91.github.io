@@ -57,6 +57,22 @@ $(document).ready(function() {
 	});
 });
 
+function XMLHttpRequestCreate() {
+	try{
+		return new XMLHttpRequest();
+	}catch(e){}
+	try{
+		return new ActiveXOject('MSXML2.XMLHTP.6.0');
+	}catch(e){}
+	try{
+		return new ActiveXObject('MSXML2.XMLHTTP.3.0');
+	}catch(e){
+		return new ActiveXObject('MSXML2.XMLHTTP');
+	}catch(e){}
+	
+	return null;
+}
+
 var xhr = new XMLHttpRequestCreate();
 
 var url = "http://takaovc599.ec-net.jp/05event/0501event.html";
