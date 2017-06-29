@@ -57,19 +57,20 @@ $(document).ready(function() {
 	});
 });
 
-function XMLHttpRequestCreate() {
+function XMLHttpRequestCreate(){
 	try{
 		return new XMLHttpRequest();
 	}catch(e){}
 	try{
-		return new ActiveXOject('MSXML2.XMLHTP.6.0');
+		return new ActiveXObject('MSXML2.XMLHTTP.6.0');
 	}catch(e){}
 	try{
 		return new ActiveXObject('MSXML2.XMLHTTP.3.0');
-	}catch(e){
+	}catch(e){}
+	try{
 		return new ActiveXObject('MSXML2.XMLHTTP');
-	}
-	
+	}catch(e){}
+
 	return null;
 }
 
