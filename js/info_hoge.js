@@ -44,7 +44,7 @@ $(document).ready(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
-			url: 'Acceleration.html',
+			url: 'LocationTest2.html',
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
