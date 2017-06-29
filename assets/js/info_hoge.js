@@ -57,14 +57,11 @@ $(document).ready(function() {
 	});
 });
 
-var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequestCreate();
 
 var url = "http://takaovc599.ec-net.jp/05event/0501event.html";
 xhr.open("GET",url);
-
-console.log(xhr);
-console.log(xhr.open("GET",url));
-
+xhr.send(null);
 
 
 
