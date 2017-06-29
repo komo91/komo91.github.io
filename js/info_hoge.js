@@ -48,7 +48,7 @@ $(document).ready(function() {
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
-			$('#hoge').html(data);
+			//$('#hoge').html(data);
 			$table = $('table',$('#hoge'));
 			$title = $('title',$('#hoge'));
 			$('#Sample1').html($title.html());
