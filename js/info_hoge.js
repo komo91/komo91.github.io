@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 //XMLHttpRequest 
 var request = new XMLHttpRequest();
-request.open('GET','http://www.mozilla.org',false);
+request.open('GET','https://www.mozilla.org',false);
 request.send();
 
 if(request.status == 200) {
