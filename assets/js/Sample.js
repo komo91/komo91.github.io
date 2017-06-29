@@ -1,3 +1,4 @@
+
 var p = document.getElementById('sample');
 
 /*
@@ -29,11 +30,9 @@ $(function() {
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		success: function(data) {
-			console.log(data);
 			$('#hugu').html(data.responseText);
 			$table = $('table',$('#hugu'));
 			$('#sample1').html($table.parent().prev().html());
-			$('#sample2').html($table.parent().html());
 		}
 	});
 });

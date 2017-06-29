@@ -57,6 +57,7 @@ $(document).ready(function() {
 	});
 });
 
+/*
 function XMLHttpRequestCreate() {
 	try{
 		return new XMLHttpRequest();
@@ -80,6 +81,6 @@ var url = "https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html";
 var send_data = "Hello,World!!";
 xhr.open("GET",url);
 xhr.send(null);
-
+*/
 
 
