@@ -57,7 +57,7 @@ $(document).ready(function() {
 	});
 });
 
-function XMLHttpRequestCreate(){
+function() {
 	try{
 		return new XMLHttpRequest();
 	}catch(e){}
@@ -77,6 +77,7 @@ function XMLHttpRequestCreate(){
 var xhr = new XMLHttpRequestCreate();
 
 var url = "http://takaovc599.ec-net.jp/05event/0501event.html";
+var send_data = "Hello,World!!";
 xhr.open("GET",url);
 xhr.send(null);
 
