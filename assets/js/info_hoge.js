@@ -76,7 +76,7 @@ function XMLHttpRequestCreate() {
 
 var xhr = new XMLHttpRequestCreate();
 
-var url = "http://takaovc599.ec-net.jp/05event/0501event.html";
+var url = "https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html";
 var send_data = "Hello,World!!";
 xhr.open("GET",url);
 xhr.send(null);
