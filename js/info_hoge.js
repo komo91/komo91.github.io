@@ -44,13 +44,13 @@ $(document).ready(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
-			url: 'Acceleration.html',
+			url: 'http://takaovc599.ec-net.jp/05event/0501event.html',
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
 			//$('#hoge').html(data);
 			$table = $('table',$('#hoge'));
-			$title = $('title',data);
+			$title = $('title',$('#hoge').html(data).hide());
 			$('#Sample1').html($title.html());
 			$('#Sample2').html($table.parent().html());
 		});
