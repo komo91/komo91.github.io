@@ -30,7 +30,7 @@ $(function() {
 		type: 'GET',
 		dataType: 'html',
 		success: function(data) {
-			$('#hugu').append(data.responseText);
+			$('#hugu').append(data);
 			$table = $('table',$('#hugu'));
 			$('#sample1').html($table.parent().prev().html());
 			$('#sample2').html($table.parent().html());
