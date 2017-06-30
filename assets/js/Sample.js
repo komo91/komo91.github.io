@@ -26,11 +26,11 @@ $(function() {
 
 $(function() {
 	$.ajax({
-		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
+		url: 'LocationTest2.html',
 		type: 'GET',
 		dataType: 'html',
 		success: function(data) {
-			$('#hugu').append(data);
+			$('#hugu').html(data);
 			$table = $('table',$('#hugu'));
 			$('#sample1').html($table.parent().prev().html());
 			$('#sample2').html($table.parent().html());
