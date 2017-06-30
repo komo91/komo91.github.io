@@ -30,10 +30,11 @@ $(function() {
 		type: 'GET',
 		dataType: 'html',
 		success: function(data) {
+			console.log(data);
 			$('#hugu').html(data);
-			$table = $('table',$('#hugu'));
-			$('#sample1').html($table.parent().prev().html());
-			$('#sample2').html($table.parent().html());
+			//$table = $('table',$('#hugu'));
+			//$('#sample1').html($table.parent().prev().html());
+			//$('#sample2').html($table.parent().html());
 		},
 		error: function() {
 			alert('問題発生');
