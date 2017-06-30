@@ -26,7 +26,7 @@ $(function() {
 
 $(function() {
 	$.ajax({
-		url: 'LocationTest2.html',
+		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		dataType: 'html',
 		success: function(data) {
