@@ -48,11 +48,11 @@ $(document).ready(function() {
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
-			//$('#hoge').html(data);
-			$table = $('table',$('#hoge'));
+			$('#hoge').html(data);
+			//$table = $('table',$('#hoge'));
 			$title = $('title',$('#hoge').html(data).hide());
 			$('#Sample1').html($title.html());
-			$('#Sample2').html($table.parent().html());
+			//$('#Sample2').html($table.parent().html());
 		});
 	});
 });
