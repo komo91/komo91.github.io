@@ -47,7 +47,8 @@ $(document).ready(function() {
 			url: 'http://takaovc599.ec-net.jp/05event/0501event.html',
 			dataType: 'html',
 		}).done(function(data,textStatus) {
-			console.log(data,textStatus);
+			console.log(textStatus);
+			console.log(data);
 			$('#hoge').html($(data).find('main'));
 			//$table = $('table',$('#hoge'));
 			//$title = $('title',$('#hoge').html(data).hide());
@@ -57,7 +58,6 @@ $(document).ready(function() {
 	});
 });
 
-/*
 function XMLHttpRequestCreate() {
 	try{
 		return new XMLHttpRequest();
@@ -81,6 +81,6 @@ var url = "https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html";
 var send_data = "Hello,World!!";
 xhr.open("GET",url);
 xhr.send(null);
-*/
+
 
 
