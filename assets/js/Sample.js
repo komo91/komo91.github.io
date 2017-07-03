@@ -20,8 +20,6 @@ $(function() {
 });
 */
 
-var data;
-
 $(function() {
 	$.ajax({
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
