@@ -20,7 +20,7 @@ $(function() {
 });
 */
 
-
+var data;
 
 $(function() {
 	$.ajax({
