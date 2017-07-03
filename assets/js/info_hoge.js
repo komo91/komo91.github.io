@@ -46,6 +46,7 @@ $(document).ready(function() {
 			type: 'GET',
 			url: 'http://takaovc599.ec-net.jp/05event/0501event.html',
 			dataType: 'html',
+			async: false;
 		}).done(function(data,textStatus) {
 			console.log(textStatus);
 			console.log(data);
