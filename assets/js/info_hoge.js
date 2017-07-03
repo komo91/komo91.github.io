@@ -48,10 +48,10 @@ $(document).ready(function() {
 			dataType: 'html',
 		}).done(function(data) {
 			console.log(data);
-			$('#hoge').html(data);
+			$('#hoge').html($(data).find('main'));
 			//$table = $('table',$('#hoge'));
-			$title = $('title',$('#hoge').html(data).hide());
-			$('#Sample1').html($title.html());
+			//$title = $('title',$('#hoge').html(data).hide());
+			//$('#Sample1').html($title.html());
 			//$('#Sample2').html($table.parent().html());
 		});
 	});
