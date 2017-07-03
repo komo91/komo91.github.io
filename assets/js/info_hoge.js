@@ -46,11 +46,10 @@ $(document).ready(function() {
 			type: 'GET',
 			url: 'http://takaovc599.ec-net.jp/05event/0501event.html',
 			dataType: 'html',
-			async: false,
 		}).done(function(data,textStatus) {
 			console.log(textStatus);
 			console.log(data);
-			$('#hoge').html($(data).find('main'));
+			$('#hoge').html($(data).find('#main'));
 			//$table = $('table',$('#hoge'));
 			//$title = $('title',$('#hoge').html(data).hide());
 			//$('#Sample1').html($title.html());
