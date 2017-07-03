@@ -1,5 +1,3 @@
-var p = document.getElementById('sample');
-
 /*
 $(function() {
 	$.ajax('LocationTest.html', {
@@ -28,19 +26,15 @@ $(function() {
 	$.ajax({
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
-		dataType: 'html',
 		success: function(data) {
-			console.log(data);
-			$('#hugu').html(data);
-			//$table = $('table',$('#hugu'));
-			//$('#sample1').html($table.parent().prev().html());
-			//$('#sample2').html($table.parent().html());
-		},
-		error: function() {
-			alert('問題発生');
+			$('#hugu').html(data.responseText);
+			$table = $('table',$('#hugu'));
+			$('#sample1').html($table.parent().prev().html());
+			$('#sample2').html($table.parent().html());
 		}
 	});
 });
+
 
 
 /*
