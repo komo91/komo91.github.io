@@ -28,7 +28,7 @@ $(function() {
 		type: 'GET',
 		success: function(data) {
 			$('#hugu').html(data.responseText);
-			console.log(data.responseText);
+			console.log(data);
 			$table = $('table',$('#hugu'));
 			$('#sample1').html($table.parent().prev().html());
 			$('#sample2').html($table.parent().html());
