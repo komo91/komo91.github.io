@@ -1,15 +1,19 @@
-/*
+
 $(document).ready(function() {
 	$(function() {
 		console.log("hoge");
 		$.ajax({
 			type: 'GET',
 			url: 'http://takaovc599.ec-net.jp/05event/0501event.html',
-			//dataType: 'html',
+			dataType: 'html',
 		}).done(function(data,textStatus) {
 			console.log(textStatus);
 			console.log(data);
-			$('#hoge').html($(data).find('#main'));
+			$('#hoge').load('url',function() {
+				title = $('title',$('#hoge').html(data).hide());
+				$('#Sample1').html($title.html());
+			});
+			//$('#hoge').html($(data).find('#main'));
 			//$table = $('table',$('#hoge'));
 			//$title = $('title',$('#hoge').html(data).hide());
 			//$('#Sample1').html($title.html());
@@ -18,7 +22,7 @@ $(document).ready(function() {
 	});
 });
 
-*/
+
 
 /*
 function XMLHttpRequestCreate() {
@@ -46,6 +50,8 @@ xhr.open("GET",url);
 xhr.send(null);
 */
 
+
+/*
 var url = 'http://takaovc599.ec-net.jp/05event/0501event.html';
 
 function file_read(url,a) {
@@ -59,7 +65,7 @@ function file_read(url,a) {
 	XMLHR.open("GET",url,true);
 	XMLHR.send(null);
 }
-	
+*/
 	
 	
 
