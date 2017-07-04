@@ -1,5 +1,3 @@
-var p = document.getElementById('sample');
-
 /*
 $(function() {
 	$.ajax('LocationTest.html', {
@@ -22,14 +20,13 @@ $(function() {
 });
 */
 
-
-
 $(function() {
 	$.ajax({
 		url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
 		type: 'GET',
 		success: function(data) {
 			$('#hugu').html(data.responseText);
+			console.log(data);
 			$table = $('table',$('#hugu'));
 			$('#sample1').html($table.parent().prev().html());
 			$('#sample2').html($table.parent().html());
