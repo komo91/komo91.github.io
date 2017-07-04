@@ -1,3 +1,4 @@
+var url = http://takaovc599.ec-net.jp/05event/0501event.html;
 
 $(document).ready(function() {
 	$(function() {
