@@ -1,20 +1,3 @@
-var xmlHttp;
-
-function loadText(){
-  xmlHttp = new XMLHttpRequest();
-  xmlHttp.onreadystatechange = checkStatus;
-  xmlHttp.open("GET", "https://www.ajaxtower.jp/sample/plan.txt", true);
-
-  xmlHttp.send(null);
-}
-
-function checkStatus(){
-  if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-    alert(xmlHttp.responseText);
-  }
-}
-
-/*
 var url = 'http://takaovc599.ec-net.jp/05event/0501event.html';
 
 $(document).ready(function() {
@@ -33,8 +16,6 @@ $(document).ready(function() {
 		});
 	});
 });
-
-*/
 
 /*
 function XMLHttpRequestCreate() {
