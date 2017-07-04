@@ -10,7 +10,7 @@ $(document).ready(function() {
 			console.log(textStatus);
 			console.log(data);
 			$('#hoge').load('url',function() {
-				title = $('title',$('#hoge').html(data).hide());
+				$title = $('title',$('#hoge').html(data).hide());
 				$('#Sample1').html($title.html());
 			});
 			//$('#hoge').html($(data).find('#main'));
