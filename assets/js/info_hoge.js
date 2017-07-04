@@ -1,44 +1,4 @@
 /*
-var hoge ="https://www.yahoo.co.jp/"
-
-function readHtml(url) {
-	$.ajax({
-		type: 'GET',
-		url: url,
-		success: function(data) {
-			$('#hoge').append(data.responseText);
-		},
-		error: function(xhr,status,err) {
-			alert('HTML読み出しで問題がありました:' + url);
-		}
-	});
-}
-
-readHtml(hoge);
-*/
-
-
-/*
-$(document).ready(function() {
-	console.log("hoge2");
-	$(function() {
-		console.log("hoge");
-		$.ajax({
-			type: 'GET',
-			url: 'https://weather.yahoo.co.jp/weather/jp/13/4410/13201.html',
-			dataType: 'html',
-			success: function(data) {
-				console.log(data);
-				$('#hoge').html(data.responseText);
-				$table = $('table',$('#hoge'));
-				$('#Sample1').html($table.parent().prev().html());
-				$('#Sample2').html($table.parent().html());
-			}
-		});
-	});
-});
-*/
-
 $(document).ready(function() {
 	$(function() {
 		console.log("hoge");
@@ -57,6 +17,8 @@ $(document).ready(function() {
 		});
 	});
 });
+
+*/
 
 /*
 function XMLHttpRequestCreate() {
@@ -83,5 +45,22 @@ var send_data = "Hello,World!!";
 xhr.open("GET",url);
 xhr.send(null);
 */
+
+var url = 'http://takaovc599.ec-net.jp/05event/0501event.html';
+
+function file_read(url,a) {
+	var XMLHR = new XMLHttprequest();
+	XMLHR.onreadystaechange = function() {
+		if(XMLHR.readyState == 4 && XMLHR.status==200) {
+			var hoge = XMLHR.responseText;
+			document.getElementById("hoge").innerHTML = hoge;
+		}
+	}
+	XMLHR.open("GET",url,true);
+	XMLHR.send(null);
+	
+	
+	
+	
 
 
