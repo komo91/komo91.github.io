@@ -58,7 +58,7 @@ function file_read(url,a) {
 	}
 	XMLHR.open("GET",url,true);
 	XMLHR.send(null);
-	
+}
 	
 	
 	
