@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<title>Info_hoge</title>
+		
+		<link rel="stylesheet" href="assets/css/main.css">
+		
+		<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="assets/js/jquery.xdomainajax.js"></script>
+	</head>
+	
+	<body>
+		<h1>test_hoge</h1>
+		<div id="hoge1">hoge1</div>
+		<div id="hoge2">hoge2</div>
+		<div id="hoge3">hoge3</div>
+		<script>
+			url = 'http://www.yahoo.co.jp/';
+			$.get(url,function(data) {
+				console.log(data.responseText);
+				alert(data.responseText);
+			});
+	</body>
+</html>
