@@ -19,7 +19,7 @@
 					type: 'GET',
 					cache: false,	//キャッシュOFF
 					success: function(res) {
-						content = $(res.responseText).text();
+						content = $(res).text();
 						console.log(content);
 					}
 				});
