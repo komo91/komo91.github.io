@@ -19,11 +19,11 @@
 					type: 'GET',
 					cache: false,	//キャッシュOFF
 					success: function(res,textStatus) {
+						
+						content = $(res.responseText).text();
+						console.log(content);
 						console.log(res.responseText);
 						console.log(textStatus);
-					
-						//content = $(res.responseText);
-						//console.log(content);
 					},
 					error: function(data,textStatus,errorThrown) {
 						console.log(data.status);
