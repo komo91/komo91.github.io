@@ -4,7 +4,7 @@
 		<title>Info_hoge</title>
 		<meta charset="UTF-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="assets/js/jquery.xdomainajax.js"></script>
+		
 		
 		
 	</head>
@@ -24,10 +24,12 @@
 					success: function(res,textStatus) {		//Ajax通信成功時
 						content = $(res.responseText);
 						console.log(content);
+						$('#hoge1').html(content);
+						$title = $('table',$('#hoge1'));
 					
 						//console.log(res);
 						//console.log(res.responseText);
-						//console.log(textStatus);
+						console.log(textStatus);
 					},
 					error: function(data,textStatus,errorThrown) {	//Ajax通信エラー
 						console.log(data.status);
