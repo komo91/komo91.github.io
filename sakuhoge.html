@@ -18,8 +18,9 @@
 					url: 'http://www.yahoo.co.jp',
 					type: 'GET',
 					cache: false,	//キャッシュOFF
-					success: function(res) {
+					success: function(res,textStatus) {
 						console.log(res.status);
+						console.log(textStatus);
 					
 						//content = $(res.responseText);
 						//console.log(content);
