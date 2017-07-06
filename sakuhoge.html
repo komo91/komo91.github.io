@@ -13,14 +13,18 @@
 		<div id="hoge2">hoge2</div>
 		<div id="hoge3">hoge3</div>
 		<script>
+			var content = "";
 			$(document).ready(function() {
 				$.ajax({
-					url: 'https://www.google.co.jp',
+					url: 'http://www.yahoo.co.jp',
 					type: 'GET',
 					cache: false,	//キャッシュOFF
 					success: function(res) {
-						content = $(res);
-						console.log(content);
+						$("#hoge1").append(res);
+						console.log(res);
+					
+						//content = $(res.responseText);
+						//console.log(content);
 					}
 				});
 			});
