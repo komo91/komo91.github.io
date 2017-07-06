@@ -18,6 +18,7 @@
 					url: 'http://www.yahoo.co.jp/',
 					type: 'GET',
 					cache: false,	//キャッシュOFF
+					dataType: 'html',
 					success: function(res,textStatus) {		//Ajax通信成功時
 						content = $(res.responseText);
 						console.log(content);
