@@ -23,6 +23,11 @@
 					
 						//content = $(res.responseText);
 						//console.log(content);
+					},
+					error: function(data,textStatus,errorThrown) {
+						console.log(data.status);
+						console.log(textStatus);
+						console.log(errorThrown);
 					}
 					/*
 					,
