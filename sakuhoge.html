@@ -15,28 +15,25 @@
 		<script>
 			$(document).ready(function() {
 				$.ajax({
-					beforeSend: function(xhr) {
-						xhr.overrideMimeType('text/html;charset=UTF-8');
-					},
 					url: 'http://www.yahoo.co.jp/',
 					type: 'GET',
 					cache: false,	//キャッシュOFF
-					success: function(res,textStatus) {
+					success: function(res,textStatus) {		//Ajax通信成功時
 						content = $(res.responseText);
 						console.log(content);
 					
-						console.log(res);
-						console.log(res.responseText);
-						console.log(textStatus);
+						//console.log(res);
+						//console.log(res.responseText);
+						//console.log(textStatus);
 					},
-					error: function(data,textStatus,errorThrown) {
+					error: function(data,textStatus,errorThrown) {	//Ajax通信エラー
 						console.log(data.status);
 						console.log(textStatus);
 						console.log(errorThrown);
 					}
 					/*
 					,
-					complete: function(result) {
+					complete: function(result) {	//Ajax通信完了後
 						console.log(result);
 					}*/
 				});
