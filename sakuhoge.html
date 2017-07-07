@@ -4,7 +4,7 @@
 		<title>Info_hoge</title>
 		<meta charset="UTF-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		
+		<script src="assets/js/jquery.xdomainajax.js"></script>
 		
 		
 	</head>
@@ -17,13 +17,13 @@
 		<script>
 			$(document).ready(function() {
 				$.ajax({
-					url: 'https://www.yahoo.co.jp/',
+					url: 'http://takaovc599.ec-net.jp/',
 					type: 'GET',
 					cache: false,	//キャッシュOFF
-					dataType: 'html',
+					//dataType: 'html',
 					success: function(res,textStatus) {		//Ajax通信成功時
-						content = $(res.responseText);
-						console.log(content);
+						content = $($(res.responseText).text());
+						console.log(res);
 						$('#hoge1').html(content);
 						$title = $('table',$('#hoge1'));
 					
