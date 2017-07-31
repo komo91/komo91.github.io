@@ -28,6 +28,5 @@ op.execute(function(resp) {
   } else {
     //API実行成功時にreturnされた値を処理
     console.log(resp);
-    });
   }
 });
