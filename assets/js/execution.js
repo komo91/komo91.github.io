@@ -1,6 +1,6 @@
-var CLIENT_ID = '141427175625-6q7m1u1s9dkpbmv2eapqutk4qihiffm2.apps.googleusercontent.com';
+var scriptId = '1p5iyaVqWKumxGUhceTlbddof2mPxTal-SFcbNMkxbrsg1ivHhdV0fCCc';
 
-var scriptId = '1p5iyaVqWKumxGUhceTlbddof2mPxTal-SFcbNMkxbrsg1ivHhdV0fCCc'
+var CLIENT_ID = '141427175625-6q7m1u1s9dkpbmv2eapqutk4qihiffm2.apps.googleusercontent.com';
 
 var SCOPES = ['https://www.googleapis.com/auth/drive'];
 
