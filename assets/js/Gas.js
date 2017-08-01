@@ -293,6 +293,7 @@ function checkAuth() {
 	}, handleAuthResult);
 }
 
+//サーバからの応答処理
 function handleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('auth_test');
 	console.log(authResult);
@@ -305,17 +306,6 @@ function handleAuthResult(authResult) {
 		console.log("if ng");
 	}
 }
-
-function handleAuthClick(event) {
-	gapi.auth.authorize(
-	{
-		client_id: CLIENT_ID,
-		immediate: false
-	},handleAuthResult);
-	return false;
-}
-
-
 
 //Execution API実行してスクリプト側の関数を実行する
 function callScriptFunction() {
