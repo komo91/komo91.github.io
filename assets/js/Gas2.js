@@ -24,7 +24,7 @@ function handleAuthResult(authResult) {
 }
 
 function callScriptFunction() {
-	var scriptId = 16-Sg3Lj0tgfQD94n-7I4O4wISZ-vMXRMI5UctYJXHKa0jnu5Zk2u57z0;
+	var scriptId = '16-Sg3Lj0tgfQD94n-7I4O4wISZ-vMXRMI5UctYJXHKa0jnu5Zk2u57z0';
 	
 	var request = {
 		'function': 'getFoldersUnderRoot'
