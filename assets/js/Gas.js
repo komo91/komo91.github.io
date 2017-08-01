@@ -239,7 +239,7 @@ function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
-      PushTest(j);
+      //PushTest(j);
       Speech(j);
       alert(CheckData[j]['message']);
       var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
@@ -283,12 +283,14 @@ var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
 
 var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
 
+//ユーザー承認確認
 function checkAuth() {
 	gapi.auth.authorize(
 	{
 		'client_id': CLIENT_ID,
 		'immediate': true
 	}, handleAuthResult);
+	console.log("hoge");
 }
 
 function handleAuthResult(authResult) {
