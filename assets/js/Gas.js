@@ -293,5 +293,5 @@ function sendRequest() {
 }
 
 function displayData(data) {
-	console.log(data);
+	document.getElementById('texttest');
 }
