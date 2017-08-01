@@ -286,7 +286,7 @@ function sendRequest() {
 		},
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
-		jsonpCallback 'displayData',
+		jsonpCallback: 'displayData',
 		crossDomain: true,
 	});
 }
