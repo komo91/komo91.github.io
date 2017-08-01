@@ -283,8 +283,6 @@ var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
 
 var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
 
-//var SCOPES = ['https://www.googleapis.com/auth/drive'];
-
 function checkAuth() {
 	gapi.auth.authorize(
 	{
@@ -324,7 +322,7 @@ function callScriptFunction() {
 	
 	//APIリクエスト
 	var op = gapi.client.request({
-  		'root': '',
+  		'root': 'https://script.googleapis.com',
   		'path': 'v1/scripts/' + scriptId + ':run',
   		'method': 'POST',
   		'body': request
