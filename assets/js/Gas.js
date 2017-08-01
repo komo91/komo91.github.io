@@ -278,4 +278,74 @@ function Speech(num) {  //目的地音声案内
   speechSynthesis.speak(ssu); //
 }
 
+//--------------------------------------------------//
+var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
+
+var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
+
+//var SCOPES = ['https://www.googleapis.com/auth/drive'];
+
+function checkAuth() {
+	gapi.auth.authorize(
+	{
+		'client_id': CLIENT_ID,
+		'immediate': true
+	}, handleAuthResult);
+}
+
+function handleAuthResult(authResult) {
+	var authorizeDiv = document.getElementById('auth_test');
+	if(authResult && !authResult.error) {
+		authorizeDiv.style.display = 'none';
+		callScriptFunction();
+	} else {
+		authorizeDiv.style.display = 'inline';
+	}
+}
+
+function handleAuthClick(event) {
+	gapi.auth.authorize(
+	{
+		client_id: CLIENT_ID,
+		immediate: false
+	},handleAuthResult);
+	return false;
+}
+
+
+
+//Execution API実行してスクリプト側の関数を実行する
+function callScriptFunction() {
+
+	//スクリプト側の関数
+	var request = {
+  		'function': 'Takao_Info_XML'
+	};
+	
+	//APIリクエスト
+	var op = gapi.client.request({
+  		'root': '',
+  		'path': 'v1/scripts/' + scriptId + ':run',
+  		'method': 'POST',
+  		'body': request
+	});
+	
+	//リクエストの実行と結果の受け取り
+	op.execute(function(resp) {
+  		if(resp.error && resp.error.status) {
+    		//API実行失敗時
+    		console.log('Error calling API:' + JSON.stringify(resp, null, 2));
+  		} else if(resp.error) {
+    		//API実行時にエラー
+    		var error = resp.error.details[0];
+    		console.log('Script error! Message:' + error.errorMessage);
+  		} else {
+    		//API実行成功時にreturnされた値を処理
+    		console.log(resp);
+  		}
+	});
+}
+
+
+
 
