@@ -279,21 +279,3 @@ function Speech(num) {  //目的地音声案内
 }
 
 
-function sendRequest() {
-	jQuery.ajax({
-		type:'POST',
-		url: 'https://script.google.com/macros/s/AKfycbzk01pPaEEYyCOuV0Nfw8T2yjpT-mh6FAKpVHABm5AU-Cne83B6/exec',
-		data: {
-			parameter: hoge
-		},
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		jsonpCallback: 'displayData',
-		crossDomain: true,
-	});
-}
-
-function displayData(data) {
-	console.log(data);
-	document.getElementById('texttest');
-}
