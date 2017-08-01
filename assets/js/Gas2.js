@@ -59,7 +59,7 @@ function callScriptFunction() {
 			} else {
 				appendPre('Folders under your root folder');
 				Object.keys(folderSet).forEach(function(id) {
-					appendPre('\t' + folderSet[id] + '(' + id ')');
+					appendPre('\t' + folderSet[id] + ' (' + id  + ')');
 				});
 			}
 		}
