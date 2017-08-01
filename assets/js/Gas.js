@@ -282,71 +282,41 @@ var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
 
 var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
 
-//ユーザー承認確認
-function checkAuth() {
-	gapi.auth.authorize(
-	{
-		'client_id': CLIENT_ID,
-		'immediate': true
-	}, handleAuthResult);
-}
 
-function handleAuthResult(authResult) {
-	var authorizeDiv = document.getElementById('auth_test');
-	console.log(authResult);
-	if(authResult && !authResult.error) {
-		authorizeDiv.style.display = 'none';
-		console.log("if ok");
-		callScriptFunction();
-	} else {
-		authorizeDiv.style.display = 'inline';
-		console.log("if ng");
+
+function onGASClientReady() {
+	
+	authorize().then(function() {
+		execGoogleAppScript(function(result) {
+		console.log(result);
+		});
+	});
+	
+	function authorize() {
+		return new Promise(function(resolve,reject) {
+			gapi.auth.authorize({
+				'client_id': CLIENT_ID,
+				'scope': 'profile',
+				'immediate': false
+			},function() {
+				resolve();
+			});
+		});
+	}
+	
+	function execGoogleAppScript(callback) {
+		var request = gapi.client.request({
+			'root': 'https://script.googleapis.com',
+			'path': 'v1/scripts/' + API_ID + ':run',
+			'method': 'POST',
+			'body': {
+				'function': 'Takao_Info_XML'
+			}
+		});
+		
+		request.execute(function(response) {
+			callback(response.response.result);
+		});
 	}
 }
-
-function handleAuthClick(event) {
-	gapi.auth.authorize(
-	{
-		client_id: CLIENT_ID,
-		immediate: false
-	},handleAuthResult);
-	return false;
-}
-
-
-
-//Execution API実行してスクリプト側の関数を実行する
-function callScriptFunction() {
-
-	//スクリプト側の関数
-	var request = {
-  		'function': 'Takao_Info_XML'
-	};
-	
-	//APIリクエスト
-	var op = gapi.client.request({
-  		'root': 'https://script.googleapis.com',
-  		'path': 'v1/scripts/' + scriptId + ':run',
-  		'method': 'POST',
-  		'body': request
-	});
-	
-	//リクエストの実行と結果の受け取り
-	op.execute(function(resp) {
-  		if(resp.error && resp.error.status) {
-    		//API実行失敗時
-    		console.log('Error calling API:' + JSON.stringify(resp, null, 2));
-  		} else if(resp.error) {
-    		//API実行時にエラー
-    		var error = resp.error.details[0];
-    		console.log('Script error! Message:' + error.errorMessage);
-  		} else {
-    		//API実行成功時にreturnされた値を処理
-    		console.log(resp);
-  		}
-	});
-}
-
-
-
 
