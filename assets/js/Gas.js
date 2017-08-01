@@ -154,6 +154,7 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
+	  sendRequest()
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -293,5 +294,6 @@ function sendRequest() {
 }
 
 function displayData(data) {
+	console.log(data);
 	document.getElementById('texttest');
 }
