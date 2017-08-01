@@ -1,3 +1,5 @@
+//jQuery
+
 var lat, //緯度,
     lng, //経度
     accLatlng; //緯度・経度の精度
@@ -270,8 +272,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 
 function Speech(num) {  //目的地音声案内
   var ssu = new SpeechSynthesisUtterance(); //
-  //ssu.text = CheckData[num]['message'];  //現在地の名称
-  ssu.text = V_text;
+  ssu.text = CheckData[num]['message'];  //現在地の名称
   ssu.lang = 'ja-JP';
   speechSynthesis.speak(ssu); //
 }
@@ -280,7 +281,7 @@ function Speech(num) {  //目的地音声案内
 function sendRequest() {
 	jQuery.ajax({
 		type:'POST',
-		url: '',
+		url: 'https://script.google.com/macros/s/AKfycbzk01pPaEEYyCOuV0Nfw8T2yjpT-mh6FAKpVHABm5AU-Cne83B6/exec',
 		data: {
 			parameter: hoge
 		},
