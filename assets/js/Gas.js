@@ -242,7 +242,7 @@ function decision() { //目的地判定
       //PushTest(j);
       Speech(j);
       alert(CheckData[j]['message']);
-      var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
+      //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -290,16 +290,18 @@ function checkAuth() {
 		'client_id': CLIENT_ID,
 		'immediate': true
 	}, handleAuthResult);
-	console.log("hoge");
 }
 
 function handleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('auth_test');
+	console.log("hoge!!!!");
 	if(authResult && !authResult.error) {
 		authorizeDiv.style.display = 'none';
+		console.log("if ok");
 		callScriptFunction();
 	} else {
 		authorizeDiv.style.display = 'inline';
+		console.log("if ng");
 	}
 }
 
