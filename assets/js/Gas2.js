@@ -67,7 +67,7 @@ function callScriptFunction() {
 }
 
 function appendPre(message) {
-	var pre = document.getElementById('output');
+	var pre = document.getElementById('hoge');
 	var textContent = document.createTextNode(message + '\n');
 	pre.appendChild(textContent);
 }
