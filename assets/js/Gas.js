@@ -116,14 +116,6 @@ var CheckData = [ //位置情報配列
   }
 ];
 
-
-
-function test(data) {
-  document.getElementById('TEST').innerHTML = data;
-  console.log(data);
-  V_text = data;
-}
-
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -276,25 +268,29 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
   }
 }
 
-function PushTest(num) {	//通知機能
-	Push.Permission.request();	//通知許可
-	Push.create(CheckData[num]['message'],{	//通知情報
-		body: "詳しくはコチラ!",
-		icon: 'https://raw.githubusercontent.com/komo91/komo91.github.io/master/assets/img/mountain_icon.png',
-		timeout: 10000,
-		vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-		onClick: function (){	//クリック時
-			console.log("Fired!");
-			window.focus();	//windowsを最前列移動
-			this.close();	//通知を閉じる
-		},
-	});
-}
-
 function Speech(num) {  //目的地音声案内
   var ssu = new SpeechSynthesisUtterance(); //
   //ssu.text = CheckData[num]['message'];  //現在地の名称
   ssu.text = V_text;
   ssu.lang = 'ja-JP';
   speechSynthesis.speak(ssu); //
+}
+
+
+function sendRequest() {
+	jQuery.ajax({
+		type:'POST',
+		url: '',
+		data: {
+			parameter: hoge
+		},
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		jsonpCallback 'displayData',
+		crossDomain: true,
+	});
+}
+
+function displayData(data) {
+	console.log(data);
 }
