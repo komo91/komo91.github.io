@@ -154,7 +154,6 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
-	  callScriptFunction();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -294,7 +293,7 @@ function checkAuth() {
 
 function handleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('auth_test');
-	console.log("hoge!!!!");
+	console.log(authResult);
 	if(authResult && !authResult.error) {
 		authorizeDiv.style.display = 'none';
 		console.log("if ok");
