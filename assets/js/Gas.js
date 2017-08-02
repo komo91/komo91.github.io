@@ -280,7 +280,7 @@ function Speech(num) {  //目的地音声案内
 //--------------------------------------------------//
 var scriptId = '1ajJrVwkCSEuImE3BMTAROEHCFpEAPHMrZlhglnG8xdm6b1VPAcAzXXsf';
 
-var CLIENT_ID = '50210843084-274lkink2h4hjkov5o7tu1k1693c1242.apps.googleusercontent.com';
+var CLIENT_ID = '50210843084-kkk9qimt419uqgrcs5s1rubkp8j9dt3p.apps.googleusercontent.com';
 
 //var API_ID = 'MPnV47FRhroYWZYgNG76uRj4NmpXSktCT';
 
