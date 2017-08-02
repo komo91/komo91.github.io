@@ -278,11 +278,11 @@ function Speech(num) {  //目的地音声案内
 }
 
 //--------------------------------------------------//
-var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
+var scriptId = '1V1MOucBNCP5P_-71e8gTasK71SWctIvyMJcnHQ0yCYunKvWt9SZKDb4Z';
 
-var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
+var CLIENT_ID = '888841974181-lhqr8ijq38r5smbjovqu9dm2cdm2jgkm.apps.googleusercontent.com';
 
-//var API_ID = 'MrgKfKTH_cFPB7WLEHykczj4NmpXSktCT';
+//var API_ID = 'MkcxOC7dm_n6SoG-zJO4cwI3kGGdWVv__';
 
 
 
