@@ -154,7 +154,6 @@ if(navigator.geolocation) {
       });
       
       inputMarker();  //マーカー作成
-	  displayData();
       
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -278,21 +277,67 @@ function Speech(num) {  //目的地音声案内
   speechSynthesis.speak(ssu); //
 }
 
+//--------------------------------------------------//
+var scriptId = '1V1MOucBNCP5P_-71e8gTasK71SWctIvyMJcnHQ0yCYunKvWt9SZKDb4Z';
 
-function sendRequest() {
-	jQuery.ajax({
-		type:'POST',
-		url: 'https://script.google.com/macros/s/AKfycby1aaAv4nHfJCnIi22bdVIhpu8B-4k1HFaW_wDVdBn9YBiSbbw/exec',
-		data: {
-			parameter: 'hoge'
-		},
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		jsonpCallback: 'displayData',
-		crossDomain: true,
+var CLIENT_ID = '888841974181-lhqr8ijq38r5smbjovqu9dm2cdm2jgkm.apps.googleusercontent.com';
+
+//var API_ID = 'MkcxOC7dm_n6SoG-zJO4cwI3kGGdWVv__';
+
+
+
+//ユーザー承認確認
+function checkAuth() {
+	gapi.auth.authorize(
+	{
+		'client_id': CLIENT_ID,
+		'immediate': true
+	}, handleAuthResult);
+}
+
+//サーバからの応答処理
+function handleAuthResult(authResult) {
+	var authorizeDiv = document.getElementById('auth_test');
+	console.log(authResult);
+	if(authResult && !authResult.error) {
+		authorizeDiv.style.display = 'none';
+		console.log("if ok");
+		callScriptFunction();
+	} else {
+		authorizeDiv.style.display = 'inline';
+		console.log("if ng");
+	}
+}
+
+//Execution API実行してスクリプト側の関数を実行する
+function callScriptFunction() {
+
+	//スクリプト側の関数
+	var request = {
+	  'function': 'Takao_Info_XML'
+	};
+	//APIリクエスト
+	var op = gapi.client.request({
+	  'root': 'https://script.googleapis.com',
+	  'path': 'v1/scripts/' + scriptId + ':run',
+	  'method': 'POST',
+	  'body': request
+	});
+	//リクエストの実行と結果の受け取り
+	op.execute(function(resp) {
+	  if(resp.error && resp.error.status) {
+	    //API実行失敗時
+	    console.log('Error calling API:' + JSON.stringify(resp, null, 2));
+	  } else if(resp.error) {
+	    //API実行時にエラー
+	    var error = resp.error.details[0];
+	    console.log('Script error! Message:' + error.errorMessage);
+	  } else {
+	    //API実行成功時にreturnされた値を処理
+	    console.log(resp);
+	  }
 	});
 }
 
-function displayData(data) {
-	console.log(data);
-}
+
+
