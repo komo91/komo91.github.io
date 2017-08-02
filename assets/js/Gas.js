@@ -325,10 +325,7 @@ function callScriptFunction() {
 	});
 	//リクエストの実行と結果の受け取り
 	op.execute(function(resp) {
-	  if(resp.error && resp.error.status) {
-	    //API実行失敗時
-	    console.log('Error calling API:' + JSON.stringify(resp, null, 2));
-	  } else if(resp.error) {
+	  if(resp.error) {
 	    //API実行時にエラー
 	    var error = resp.error.details[0];
 	    console.log('Script error! Message:' + error.errorMessage);
