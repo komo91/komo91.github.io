@@ -284,6 +284,8 @@ var CLIENT_ID = '50210843084-274lkink2h4hjkov5o7tu1k1693c1242.apps.googleusercon
 
 //var API_ID = 'MPnV47FRhroYWZYgNG76uRj4NmpXSktCT';
 
+var SCOPE = ['https://www.googleapis.com/auth.drive'];
+
 
 
 //ユーザー承認確認
@@ -291,6 +293,7 @@ function checkAuth() {
 	gapi.auth.authorize(
 	{
 		'client_id': CLIENT_ID,
+		'scope': SCOPE.join(' '),
 		'immediate': true
 	}, handleAuthResult);
 }
@@ -298,7 +301,6 @@ function checkAuth() {
 //サーバからの応答処理
 function handleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('auth_test');
-	console.log(authResult);
 	if(authResult && !authResult.error) {
 		authorizeDiv.style.display = 'none';
 		console.log("if ok");
