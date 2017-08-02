@@ -282,6 +282,8 @@ var scriptId = '13XMyPTrBsD4ZI6-twfgbe7Hcgx--BLLyLg_yiXTLtNrJG5b37xy69f_W';
 
 var CLIENT_ID = '725899385821-lm8bjv12j39umoereo5j0g1o75ht7gl8.apps.googleusercontent.com';
 
+//var API_ID = 'MrgKfKTH_cFPB7WLEHykczj4NmpXSktCT';
+
 
 
 //ユーザー承認確認
