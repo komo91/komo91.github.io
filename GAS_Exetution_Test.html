@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      var CLIENT_ID = '210768603326-jo3oe3rq5h038k1s5pel9cuv2ibtbn28.apps.googleusercontent.com';
+      var API_ID = 'MANqTExCB0vWU6U9g-sMBM43kGGdWVv__';
+      var SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
+
+      function onClientLoaded()
+      {
+        gapi.auth.authorize({client_id: CLIENT_ID, scope: SCOPES, immediate: true}, handleAuthResult);
+      }
+
+      function handleAuthResult(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+        if (authResult && !authResult.error) {
+          authorizeDiv.style.display = 'none';
+          callMyFirstAPI();
+        } else {
+          authorizeDiv.style.display = 'inline';
+        }
+      }
+      function handleAuthClick(event) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
+        return false;
+      }
+
+      function callMyFirstAPI()
+      {
+        var request = {
+          'function': 'myFirstAPI',
+          'parameters': ['foo'],
+        };
+
+        var op = gapi.client.request({
+            'root': 'https://script.googleapis.com',
+            'path': 'v1/scripts/' + API_ID + ':run',
+            'method': 'POST',
+            'body': request
+        });
+
+        op.execute(function(resp) {
+          console.log(resp);
+          if (resp.error) {
+            appendPre('Error calling API:');
+            appendPre(JSON.stringify(resp, null, 2));
+          } else {
+            appendPre(JSON.stringify(resp.response.result, null, 2));
+          }
+        });
+      }
+
+      function appendPre(message) {
+        var pre = document.getElementById('output');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
+
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoaded"></script>
+  <body>
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Google Apps Script Execution API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <pre id="output"></pre>
+  </body>
+</html>
