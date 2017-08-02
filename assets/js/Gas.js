@@ -293,7 +293,6 @@ function checkAuth() {
 	gapi.auth.authorize(
 	{
 		'client_id': CLIENT_ID,
-		'scope': SCOPE.join(' '),
 		'immediate': true
 	}, handleAuthResult);
 }
