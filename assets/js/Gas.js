@@ -320,7 +320,7 @@ function callScript() {
 	//APIリクエスト
 	var op = gapi.client.request({
 	  'root': 'https://script.googleapis.com',
-	  'path': 'v1/scripts/' + API_ID + ':run',
+	  'path': 'v1/scripts/' + script_ID + ':run',
 	  'method': 'POST',
 	  'body': request
 	});
