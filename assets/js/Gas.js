@@ -283,7 +283,7 @@ function sendRequest() {
 		type:'POST',
 		url: 'https://script.google.com/macros/s/AKfycby1aaAv4nHfJCnIi22bdVIhpu8B-4k1HFaW_wDVdBn9YBiSbbw/exec',
 		data: {
-			parameter: 'hoge';
+			parameter: 'hoge'
 		},
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
