@@ -294,16 +294,16 @@ function checkAuth() {
 	{
 		'client_id': CLIENT_ID,
 		'immediate': true
-	}, handleAuthResult);
+	}, HandleAuthResult);
 }
 
 //サーバからの応答処理
-function handleAuthResult(authResult) {
+function HandleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('auth_test');
 	if(authResult && !authResult.error) {
 		authorizeDiv.style.display = 'none';
 		console.log("if ok");
-		callScriptFunction();
+		callScript();
 	} else {
 		authorizeDiv.style.display = 'inline';
 		console.log("if ng");
@@ -311,7 +311,7 @@ function handleAuthResult(authResult) {
 }
 
 //Execution API実行してスクリプト側の関数を実行する
-function callScriptFunction() {
+function callScript() {
 
 	//スクリプト側の関数
 	var request = {
@@ -320,7 +320,7 @@ function callScriptFunction() {
 	//APIリクエスト
 	var op = gapi.client.request({
 	  'root': 'https://script.googleapis.com',
-	  'path': 'v1/scripts/' + scriptId + ':run',
+	  'path': 'v1/scripts/' + API_ID + ':run',
 	  'method': 'POST',
 	  'body': request
 	});
