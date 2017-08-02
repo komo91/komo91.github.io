@@ -126,15 +126,15 @@ if(navigator.geolocation) {
     lat = data.latitude;
     lng = data.longitude;
     accLatlng = data.accuracy;
-    
+
     //時間カウント
     ++syncerWatchPosition.count;
     var nowTime = ~~(new Date() / 1000);
-    
+
     //3秒後に表示変更
     if((syncerWatchPosition.lastTime + 3) > nowTime) {
       return false;
-    }  
+    }
     syncerWatchPosition.lastTime = nowTime;
 
     //divにて結果表示
@@ -146,23 +146,23 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-    
+
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 18,
         center: myPosition,
       });
-      
+
       inputMarker();  //マーカー作成
-      
+
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
-      
+
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-    } 
+    }
     decision(); //目的地判定
   }
 
@@ -193,7 +193,7 @@ if(navigator.geolocation) {
 
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-  
+
   alert(errorMessage);
 
   document.getElementById('result').innerHTML = errorMessage;
@@ -228,10 +228,10 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
       map: syncerWatchPosition.map,
       radius: CheckData[i]['radius']
     };
-    
+
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
-    
+
   }
 }
 function decision() { //目的地判定
@@ -240,6 +240,7 @@ function decision() { //目的地判定
     if(CirclePoint[j].radius　>　distance) {
       //PushTest(j);
       Speech(j);
+      test(j);
       alert(CheckData[j]['message']);
       //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
@@ -264,7 +265,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
       map: syncerWatchPosition.map,
       radius: CheckData[i]['radius']
     };
-    
+
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
@@ -277,65 +278,14 @@ function Speech(num) {  //目的地音声案内
   speechSynthesis.speak(ssu); //
 }
 
-//--------------------------------------------------//
-var scriptId = '1ajJrVwkCSEuImE3BMTAROEHCFpEAPHMrZlhglnG8xdm6b1VPAcAzXXsf';
-
-var CLIENT_ID = '50210843084-kkk9qimt419uqgrcs5s1rubkp8j9dt3p.apps.googleusercontent.com';
-
-//var API_ID = 'MPnV47FRhroYWZYgNG76uRj4NmpXSktCT';
-
-var SCOPE = ['https://www.googleapis.com/auth.drive'];
-
-
-
-//ユーザー承認確認
-function checkAuth() {
-	gapi.auth.authorize(
-	{
-		'client_id': CLIENT_ID,
-		'immediate': true
-	}, HandleAuthResult);
+function test(num) {
+  var script = document.createElement('script');  //scriptタグ生成
+  var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
+  script.src = base + '?callback=receiveJson&text=' + encodeURI(num);
+  document.body.appendChild(script);  //bodyにscript追加
+  console.log(script.src);
 }
 
-//サーバからの応答処理
-function HandleAuthResult(authResult) {
-	var authorizeDiv = document.getElementById('auth_test');
-	if(authResult && !authResult.error) {
-		authorizeDiv.style.display = 'none';
-		console.log("if ok");
-		callScript();
-	} else {
-		authorizeDiv.style.display = 'inline';
-		console.log("if ng");
-	}
+function requestJson(json) {
+  console.log(json.response);
 }
-
-//Execution API実行してスクリプト側の関数を実行する
-function callScript() {
-
-	//スクリプト側の関数
-	var request = {
-	  'function': 'Takao_Info_XML'
-	};
-	//APIリクエスト
-	var op = gapi.client.request({
-	  'root': 'https://script.googleapis.com',
-	  'path': 'v1/scripts/' + script_ID + ':run',
-	  'method': 'POST',
-	  'body': request
-	});
-	//リクエストの実行と結果の受け取り
-	op.execute(function(resp) {
-	  if(resp.error) {
-	    //API実行時にエラー
-	    var error = resp.error.details[0];
-	    console.log('Script error! Message:' + error.errorMessage);
-	  } else {
-	    //API実行成功時にreturnされた値を処理
-	    console.log(resp);
-	  }
-	});
-}
-
-
-
