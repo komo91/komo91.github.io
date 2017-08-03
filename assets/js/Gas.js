@@ -120,6 +120,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
+  test(j);
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -241,7 +242,6 @@ function decision() { //目的地判定
     if(CirclePoint[j].radius　>　distance) {
       //PushTest(j);
       Speech(j);
-      test(j);
       alert(CheckData[j]['message']);
       //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
