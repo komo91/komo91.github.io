@@ -282,7 +282,7 @@ function Speech(num) {  //目的地音声案内
 function test(num) {
   var script = document.createElement('script');  //scriptタグ生成
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
-  script.src = base + '?callback=receiveJson&text=' + encodeURI(num);
+  script.src = base + '?callback=receiveJson&action=' + encodeURI(num);
   document.body.appendChild(script);  //bodyにscript追加
   console.log(script.src);
 }
