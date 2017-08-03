@@ -288,5 +288,5 @@ function test(num) {
 }
 
 function receiveJson(json) {
-  console.log(json);
+  console.log(json.response);
 }
