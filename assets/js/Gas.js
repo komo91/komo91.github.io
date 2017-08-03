@@ -287,6 +287,6 @@ function test(num) {
   console.log(script.src);
 }
 
-function requestJson(json) {
+function receiveJson(json) {
   console.log(json.response);
 }
