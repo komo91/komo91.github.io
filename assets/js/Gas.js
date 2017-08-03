@@ -26,91 +26,91 @@ var CheckData = [ //位置情報配列
     lat: lat,
     lng: lng
   },{
-    name: '大学',
+    name: 'University',
     lat: 35.6259947,
     lng: 139.2785662,
     radius: 20,
     message: "研究室前"
   }, {
-    name: '高尾山口駅',
+    name: 'Takaosanguchi_Station',
     lat: 35.632489,
     lng: 139.269910,
     radius: 35,
     message: "高尾山口駅ですよ"
   }, {
-    name: '清滝駅',
+    name: 'Kiyotaki_Station',
     lat: 35.631079,
     lng: 139.266788,
     radius: 20,
     message: "ロープウェイ清滝駅ですよ"
   }, {
-    name: '山上駅',
+    name: 'Yamakami_Station',
     lat: 35.632475,
     lng: 139.257566,
     radius: 20,
     message: "ロープウェイ山上駅ですよ"
   }, {
-    name: 'ケーブルカー高尾山駅',
+    name: 'Takao_CableCar',
     lat: 35.631106,
     lng: 139.256226,
     radius: 30,
     message: "ケーブルカー高尾山駅ですよ"
   }, {
-    name: '十一丁目茶屋',
+    name: '11th_Chaya',
     lat: 35.630254,
     lng: 139.255414,
     radius: 20,
     messsage: "十一丁目茶屋ですよ"
   },{
-    name: '権現茶屋',
+    name: 'Gongen_Chaya',
     lat: 35.627434,
     lng: 139.250309,
     radius: 20,
     message: "権現茶屋ですよ"
   },{
-    name: 'もみじや',
+    name: 'Momijiya',
     lat: 35.626204,
     lng: 139.250899,
     radius: 20,
     message: "もみじやですよ"
   },{
-    name: '高尾山薬王院',
+    name: 'Takao_Yakuoin',
     lat: 35.625807,
     lng: 139.249408,
     radius: 60,
     message: "薬王院ですよ"
   }, {
-    name: '山頂前トイレ',
+    name: 'Toilet',
     lat: 35.625722,
     lng: 139.244564,
     radius: 20,
     message: "山頂前トイレですよ"
   },{
-    name: '高尾山山頂',
+    name: 'Takao_Peak',
     lat: 35.625123,
     lng: 139.243657,
     radius: 15,
     message: "高尾山山頂ですよ"
   }, {
-    name: '曙亭',
+    name: 'Akebono',
     lat: 35.624817,
     lng: 139.243261,
     radius: 10,
     message: "曙亭(蕎麦屋)ですよ"
   }, {
-    name: '高尾ビジターセンター',
+    name: 'VisitorCenter',
     lat: 35.625003,
     lng: 139.243245,
     radius: 10,
     message: "高尾ビジターセンターですよ"
   },{
-    name: 'やまびこ茶屋',
+    name: 'Yamabiko_Chaya',
     lat: 35.625507,
     lng: 139.243756,
     radius: 15,
     message: "やまびこ茶屋ですよ"
   }, {
-    name: '高尾599ミュージアム',
+    name: 'Takao_599Museum',
     lat: 35.630442,
     lng: 139.268698,
     radius: 25,
@@ -120,7 +120,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  test(1);
+  GasRequest(1);
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -242,6 +242,7 @@ function decision() { //目的地判定
     if(CirclePoint[j].radius　>　distance) {
       //PushTest(j);
       Speech(j);
+      //GasRequest(j);
       alert(CheckData[j]['message']);
       //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
@@ -279,14 +280,18 @@ function Speech(num) {  //目的地音声案内
   speechSynthesis.speak(ssu); //
 }
 
-function test(num) {
+function GasRequest(num) { //GASに指定の値をJSONにて送信
   var script = document.createElement('script');  //scriptタグ生成
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
-  script.src = base + '?callback=receiveJson&action=' + num;
+  script.src = base + '?callback=receiveJson&action=' + CheckData[num]['name'];
   document.body.appendChild(script);  //bodyにscript追加
   console.log(script.src);
 }
 
-function receiveJson(json) {
-  console.log(json.response);
+function receiveJson(json) {  //GASから返った値を表示させる
+  console.log(json.response[0]);
+  console.log(json.response[1]);
+  if(!json.response){
+    return null;
+  }
 }
