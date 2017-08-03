@@ -155,7 +155,6 @@ if(navigator.geolocation) {
       });
 
       inputMarker();  //マーカー作成
-      test(1);
 
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -291,6 +290,8 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 function receiveJson(json) {  //GASから返った値を表示させる
   console.log(json.response[0]);
   console.log(json.response[1]);
+  console.log(json.response[2]);
+  console.log(json.response[3]);
   if(!json.response){
     return null;
   }
