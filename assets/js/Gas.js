@@ -120,7 +120,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  test(hoge);
+  test(1);
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -282,7 +282,7 @@ function Speech(num) {  //目的地音声案内
 function test(num) {
   var script = document.createElement('script');  //scriptタグ生成
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
-  script.src = base + '?callback=receiveJson&action=' + encodeURI(num);
+  script.src = base + '?callback=receiveJson&action=' + num;
   document.body.appendChild(script);  //bodyにscript追加
   console.log(script.src);
 }
