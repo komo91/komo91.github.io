@@ -120,7 +120,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  test(1);
+  test(hoge);
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
