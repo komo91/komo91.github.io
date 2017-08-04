@@ -225,7 +225,7 @@ function Speech(text) {  //指定されたテキスト内容を喋らす
   var ssu = new SpeechSynthesisUtterance(); //
   ssu.text = text;  //現在地の名称
   ssu.lang = 'ja-JP';
-  suu.rate = 2;
+  ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
 
