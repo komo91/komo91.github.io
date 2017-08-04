@@ -151,8 +151,8 @@ function GPS_measure() {
 
     document.getElementById('result').innerHTML = errorMessage;
   }
-}
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+}
 
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
