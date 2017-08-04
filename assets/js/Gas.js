@@ -70,7 +70,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  //GasRequest(1);
+  //GasRequest(1);  //testData
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -221,10 +221,11 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
   }
 }
 
-function Speech(text) {  //目的地音声案内
+function Speech(text) {  //指定されたテキスト内容を喋らす
   var ssu = new SpeechSynthesisUtterance(); //
   ssu.text = text;  //現在地の名称
   ssu.lang = 'ja-JP';
+  suu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
 
@@ -254,13 +255,12 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 
 function receiveJson(json) {  //GASから返った値を表示させる
   document.getElementById('result_test').innerHTML = json.response;
-  console.log(CheckData[1]['name']);
-  console.log(json.spot);
   //研究室
   if(json.spot==CheckData[1]['name']) {
     var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
-    console.log(text);
     Speech(text);
+  } else if(json.spot==CheckData[2]['name']) {
+
   }
   if(!json.response){
     document.getElementById('result_test').innerHTML = json.error;
