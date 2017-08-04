@@ -68,90 +68,90 @@ var CheckData = [ //位置情報配列
     radius: 25,
     message: "高尾599ミュージアムですよ"
   }
-];
 
-//GeoLocationAPI対応
-if(navigator.geolocation) {
-  //GasRequest(1);
-  //現在地測定成功の場合
-  function successFunc( position ) {
-    var data = position.coords;
-    lat = data.latitude;
-    lng = data.longitude;
-    accLatlng = data.accuracy;
+function GPS_measure() {
+  //GeoLocationAPI対応
+  if(navigator.geolocation) {
+    //GasRequest(1);
+    //現在地測定成功の場合
+    function successFunc( position ) {
+      var data = position.coords;
+      lat = data.latitude;
+      lng = data.longitude;
+      accLatlng = data.accuracy;
 
-    //時間カウント
-    ++syncerWatchPosition.count;
-    var nowTime = ~~(new Date() / 1000);
+      //時間カウント
+      ++syncerWatchPosition.count;
+      var nowTime = ~~(new Date() / 1000);
 
-    //3秒後に表示変更
-    if((syncerWatchPosition.lastTime + 3) > nowTime) {
-      return false;
+      //3秒後に表示変更
+      if((syncerWatchPosition.lastTime + 3) > nowTime) {
+        return false;
+      }
+      syncerWatchPosition.lastTime = nowTime;
+
+      //divにて結果表示
+      document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd></dl>';
+
+      //現在地宣言
+      myPosition = new google.maps.LatLng(
+        {
+          lat: lat,
+          lng: lng
+        });
+
+      if(syncerWatchPosition.map == null) { //新規Map作成
+        syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 18,
+          center: myPosition,
+        });
+
+        inputMarker();  //マーカー作成
+
+        syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
+          map: syncerWatchPosition.map,
+          position: myPosition
+        });
+
+      } else {
+        syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
+      }
+      decision(); //目的地判定
     }
-    syncerWatchPosition.lastTime = nowTime;
 
-    //divにて結果表示
-    document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd></dl>';
+    //現在地測定失敗の場合
+    function errorFunc(error)
+    {
+      var errorInfo = [
+        "原因不明のエラー", //0
+        "位置情報取得許可されない", //1
+        "電波状況で位置情報取得できず", //2
+        "タイムアウト"  //3
+      ];
 
-    //現在地宣言
-    myPosition = new google.maps.LatLng(
-      {
-        lat: lat,
-        lng: lng
-      });
+      var errorNo = error.code;
 
-    if(syncerWatchPosition.map == null) { //新規Map作成
-      syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 18,
-        center: myPosition,
-      });
+      var errorMessage = "[エラー番号:" + errorNo + "]\n" + errorInfo[errorNo];
 
-      inputMarker();  //マーカー作成
+      document.getElementById("result").innerHTML = errorMessage;
 
-      syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
-        map: syncerWatchPosition.map,
-        position: myPosition
-      });
-
-    } else {
-      syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
     }
-    decision(); //目的地判定
+
+    //オプション
+    var optionObj = {
+      "enableHighAccuracy": false,
+      "timeout": 10000,
+      "maximumAge": 0,
+    };
+
+  } else {
+    var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
+
+    alert(errorMessage);
+
+    document.getElementById('result').innerHTML = errorMessage;
   }
-
-  //現在地測定失敗の場合
-  function errorFunc(error)
-  {
-    var errorInfo = [
-      "原因不明のエラー", //0
-      "位置情報取得許可されない", //1
-      "電波状況で位置情報取得できず", //2
-      "タイムアウト"  //3
-    ];
-
-    var errorNo = error.code;
-
-    var errorMessage = "[エラー番号:" + errorNo + "]\n" + errorInfo[errorNo];
-
-    document.getElementById("result").innerHTML = errorMessage;
-
-  }
-
-  //オプション
-  var optionObj = {
-    "enableHighAccuracy": false,
-    "timeout": 10000,
-    "maximumAge": 0,
-  };
-
-} else {
-  var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-
-  alert(errorMessage);
-
-  document.getElementById('result').innerHTML = errorMessage;
 }
-
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
