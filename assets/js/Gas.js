@@ -258,7 +258,7 @@ function receiveJson(json) {  //GASから返った値を表示させる
   console.log(json.spot);
   //研究室
   if(json.spot==CheckData[1]['name']) {
-    var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + ",湿度は" + json.response[3] + "となっています";
+    var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
     console.log(text);
     Speech(text);
   }
