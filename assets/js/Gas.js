@@ -69,7 +69,6 @@ var CheckData = [ //位置情報配列
     message: "高尾599ミュージアムですよ"
   }
 
-function GPS_measure() {
   //GeoLocationAPI対応
   if(navigator.geolocation) {
     //GasRequest(1);
@@ -152,7 +151,6 @@ function GPS_measure() {
     document.getElementById('result').innerHTML = errorMessage;
   }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
-}
 
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
