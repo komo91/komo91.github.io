@@ -25,7 +25,7 @@ var CheckData = [ //位置情報配列
     name: '現在地',
     lat: lat,
     lng: lng
-  },{
+  }, {
     name: 'University',
     lat: 35.6259947,
     lng: 139.2785662,
@@ -38,77 +38,29 @@ var CheckData = [ //位置情報配列
     radius: 35,
     message: "高尾山口駅ですよ"
   }, {
-    name: 'Kiyotaki_Station',
-    lat: 35.631079,
-    lng: 139.266788,
-    radius: 20,
-    message: "ロープウェイ清滝駅ですよ"
-  }, {
-    name: 'Yamakami_Station',
-    lat: 35.632475,
-    lng: 139.257566,
-    radius: 20,
-    message: "ロープウェイ山上駅ですよ"
-  }, {
     name: 'Takao_CableCar',
     lat: 35.631106,
     lng: 139.256226,
     radius: 30,
     message: "ケーブルカー高尾山駅ですよ"
   }, {
-    name: '11th_Chaya',
-    lat: 35.630254,
-    lng: 139.255414,
-    radius: 20,
-    messsage: "十一丁目茶屋ですよ"
-  },{
     name: 'Gongen_Chaya',
     lat: 35.627434,
     lng: 139.250309,
     radius: 20,
     message: "権現茶屋ですよ"
-  },{
-    name: 'Momijiya',
-    lat: 35.626204,
-    lng: 139.250899,
-    radius: 20,
-    message: "もみじやですよ"
-  },{
-    name: 'Takao_Yakuoin',
-    lat: 35.625807,
-    lng: 139.249408,
-    radius: 60,
-    message: "薬王院ですよ"
   }, {
-    name: 'Toilet',
-    lat: 35.625722,
-    lng: 139.244564,
-    radius: 20,
-    message: "山頂前トイレですよ"
-  },{
     name: 'Takao_Peak',
     lat: 35.625123,
     lng: 139.243657,
     radius: 15,
     message: "高尾山山頂ですよ"
   }, {
-    name: 'Akebono',
-    lat: 35.624817,
-    lng: 139.243261,
-    radius: 10,
-    message: "曙亭(蕎麦屋)ですよ"
-  }, {
     name: 'VisitorCenter',
     lat: 35.625003,
     lng: 139.243245,
     radius: 10,
     message: "高尾ビジターセンターですよ"
-  },{
-    name: 'Yamabiko_Chaya',
-    lat: 35.625507,
-    lng: 139.243756,
-    radius: 15,
-    message: "やまびこ茶屋ですよ"
   }, {
     name: 'Takao_599Museum',
     lat: 35.630442,
@@ -288,10 +240,7 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 }
 
 function receiveJson(json) {  //GASから返った値を表示させる
-  console.log(json.response[0]);
-  console.log(json.response[1]);
-  console.log(json.response[2]);
-  console.log(json.response[3]);
+  document.getElementById('result_test').innerHTML = json.response;
   if(!json.response){
     return null;
   }
