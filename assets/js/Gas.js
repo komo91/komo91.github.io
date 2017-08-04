@@ -254,7 +254,7 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 
 function receiveJson(json) {  //GASから返った値を表示させる
   document.getElementById('result_test').innerHTML = json.response;
-  console.log(CheckData[1][name]);
+  console.log(CheckData[1]['name']);
   console.log(json.spot);
   //研究室
   if(json.spot==CheckData[1][name]) {
