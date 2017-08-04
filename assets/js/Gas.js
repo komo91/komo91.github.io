@@ -1,4 +1,3 @@
-//jQuery
 var lat, //緯度,
     lng, //経度
     accLatlng; //緯度・経度の精度
@@ -71,7 +70,7 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  GasRequest(1);
+  //GasRequest(1);
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -190,9 +189,9 @@ function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
-      //PushTest(j);
+      PushTest(j);
       Speech(j);
-      //GasRequest(j);
+      GasRequest(j);
       alert(CheckData[j]['message']);
       //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
@@ -228,6 +227,22 @@ function Speech(num) {  //目的地音声案内
   ssu.text = CheckData[num]['message'];  //現在地の名称
   ssu.lang = 'ja-JP';
   speechSynthesis.speak(ssu); //
+}
+
+function PushTest(num) {	//通知機能
+	Push.Permission.request();	//通知許可
+	Push.create(CheckData[num]['message'],{	//通知情報
+		body: "詳しくはコチラ!",
+		icon: 'assets/img/mountain_icon.png',
+		timeout: 10000,
+		vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+		link: "https://komo91.github.io/PushTest.html",
+		onClick: function (){	//クリック時
+			console.log("Fired!");
+			window.focus();	//windowsを最前列移動
+			this.close();	//通知を閉じる
+		},
+	});
 }
 
 function GasRequest(num) { //GASに指定の値をJSONにて送信
