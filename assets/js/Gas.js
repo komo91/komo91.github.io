@@ -65,6 +65,24 @@ var CheckData = [ //位置情報配列
     lng: 139.268698,
     radius: 25,
     message: "高尾599ミュージアムですよ"
+  }, {
+    name: 'Cafe',
+    lat: 35.624922,
+    lng: 139.281390,
+    radius: 20,
+    message: "Grand E'terna Caf'eですって"
+  }, {
+    name: 'A_Museum',
+    lat: 35.628576,
+    lng: 139.279588,
+    radius: 20,
+    message: 'A館ですって'
+  }, {
+    name: 'library',
+    lat: 35.626448,
+    lng: 139.279523,
+    radius: 20,
+    message: '図書館ですって'
   }
 ];
 
@@ -225,7 +243,7 @@ function Speech(text) {  //指定されたテキスト内容を喋らす
   var ssu = new SpeechSynthesisUtterance(); //
   ssu.text = text;  //現在地の名称
   ssu.lang = 'ja-JP';
-  ssu.rate = 2;
+  //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
 
@@ -261,6 +279,15 @@ function receiveJson(json) {  //GASから返った値を表示させる
     Speech(text);
   } else if(json.spot==CheckData[2]['name']) {
 
+  } else if(json.spot==CheckData[8]['name']) {
+    var text = json.response + 'に着きました';
+    Speech(text);
+  } else if(json.spot==CheckData[9]['name']) {
+    var text =
+    Speech(text)
+  } else if(json.spot==CheckData[10]['name']) {
+    var text =
+    Speech(text);
   }
   if(!json.response){
     document.getElementById('result_test').innerHTML = json.error;
