@@ -71,18 +71,6 @@ var CheckData = [ //位置情報配列
     lng: 139.281390,
     radius: 20,
     message: "Grand E'terna Caf'eですって"
-  }, {
-    name: 'A_Museum',
-    lat: 35.628576,
-    lng: 139.279588,
-    radius: 20,
-    message: 'A館ですって'
-  }, {
-    name: 'library',
-    lat: 35.626448,
-    lng: 139.279523,
-    radius: 20,
-    message: '図書館ですって'
   }
 ];
 
@@ -263,6 +251,12 @@ function PushTest(num) {	//通知機能
 	});
 }
 
+function Acceleration() {
+  window.addEventListener('devicemotion',function(e) {
+  })
+
+}
+
 function GasRequest(num) { //GASに指定の値をJSONにて送信
   var script = document.createElement('script');  //scriptタグ生成
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
@@ -278,15 +272,10 @@ function receiveJson(json) {  //GASから返った値を表示させる
     var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
     Speech(text);
   } else if(json.spot==CheckData[2]['name']) {
-
+    var text = '高尾山口駅から登る際には' + json.response[0] + 'と' + json.response[11] + 'と' + json.response[13] + 'の３つのコースから選べます';
+    Speech(text);
   } else if(json.spot==CheckData[8]['name']) {
     var text = json.response + 'に着きました';
-    Speech(text);
-  } else if(json.spot==CheckData[9]['name']) {
-    var text =
-    Speech(text)
-  } else if(json.spot==CheckData[10]['name']) {
-    var text =
     Speech(text);
   }
   if(!json.response){
