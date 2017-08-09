@@ -7,9 +7,6 @@ var myPosition,  //現在地地点
 var marker = [];  //登録位置情報
 var CirclePoint = []; //位置範囲設定
 
-var V_text = '';
-
-
 //動的情報取得データ
 var syncerWatchPosition = {
   count: 0,
@@ -264,17 +261,32 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 function receiveJson(json) {  //GASから返った値を表示させる
   document.getElementById('gas_result').innerHTML = json.response;
   //研究室
-  if(json.spot==CheckData[1]['name']) {
+  if(json.spot==CheckData[1]['name']) { //研究室
     var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
     Speech(text);
-  } else if(json.spot==CheckData[2]['name']) {
+  } else if(json.spot==CheckData[2]['name']) {  //高尾山口駅
     var text = '高尾山口駅から登る際には' + json.response[0] + 'と' + json.response[11] + 'と' + json.response[13] + 'の３つのコースから選べます';
+    Speech(text);
+  } else if(json.spot==CheckData[3]['name']) {  //ケーブルカー高尾駅
+    var text = '本日の運行時間は' + json.response[0] + ',' + json.response[1];
+    Speech(text);
+  } else if(json.spot==CheckData[4]['name']) {  //権現茶屋
+    var text = '権現茶屋のおすすめメニューは' + json.response + 'となってます';
+    Speech(text);
+  } else if(json.spot==CheckData[5]['name']) {  //高尾山山頂
+    var text = json.response;
+    Speech(text);
+  } else if(json.spot==CheckData[6]['name']) {  //高尾ビジターセンター
+    var text = json.response;
+    Speech(text);
+  } else if(json.spot==CheckData[7]['name']) {  //高尾599ミュージアム
+    var text = 'ミュージアムからのお知らせは' + json.response[0] + 'です。詳しくは本施設まで';
     Speech(text);
   } else if(json.spot==CheckData[8]['name']) {
     var text = json.response + 'に着きました';
     Speech(text);
   }
-  if(!json.response){
+  if(!json.response){ //responseなし
     document.getElementById('result_test').innerHTML = json.error;
   }
 }
