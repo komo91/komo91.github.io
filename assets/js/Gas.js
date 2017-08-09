@@ -119,6 +119,7 @@ if(navigator.geolocation) {
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
+      LogPost(myPosition);
     }
     decision(); //目的地判定
   }
@@ -229,8 +230,9 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 
 function Speech(text) {  //指定されたテキスト内容を喋らす
   var ssu = new SpeechSynthesisUtterance(); //
-  ssu.text = text;  //現在地の名称
+  ssu.text = text;  //
   ssu.lang = 'ja-JP';
+  LogPost(text);
   //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
@@ -249,12 +251,6 @@ function PushTest(num) {	//通知機能
 			this.close();	//通知を閉じる
 		},
 	});
-}
-
-function Acceleration() {
-  window.addEventListener('devicemotion',function(e) {
-  })
-
 }
 
 function GasRequest(num) { //GASに指定の値をJSONにて送信
@@ -281,4 +277,12 @@ function receiveJson(json) {  //GASから返った値を表示させる
   if(!json.response){
     document.getElementById('result_test').innerHTML = json.error;
   }
+}
+
+function LogPost(text) {
+  var script = document.createElement('script');
+  var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
+  script.src = base + '?log=' + text;
+  document.body.appendChild(script);
+  console.log(script.src);
 }
