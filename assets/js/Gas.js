@@ -266,7 +266,7 @@ function GasRequest(num) { //GASに指定の値をJSONにて送信
 }
 
 function receiveJson(json) {  //GASから返った値を表示させる
-  document.getElementById('result_test').innerHTML = json.response;
+  document.getElementById('gas_result').innerHTML = json.response;
   //研究室
   if(json.spot==CheckData[1]['name']) {
     var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
