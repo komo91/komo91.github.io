@@ -293,16 +293,24 @@ function LogPost(text) {
   var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
   var os = navigator.platform;
   console.log(os);
-  script.src = base + '?log=' + encodeURI(text) + '&os=' + os;
+  var user = navicheck();
+  script.src = base + '?log=' + encodeURI(text) + '&user=' + user;
   document.body.appendChild(script);
   console.log(script.src);
 }
 
 function navicheck() {
-  var os = navigator.platform;
-  console.log(os);
   var ua = navigator.userAgent.toLowerCase();
-  console.log(ua);
-  var ver = navigator.appVersion.toLowerCase();
-  console.log(ver);
+  if(ua.indexOf('iPhone') != -1) {
+    return 'iPhone';
+  } else if(ua.indexOf('iPad') != -1) {
+    return 'iPad';
+  } else if(ua.indexOf('android') != -1) {
+    if(ua.indexOf('moblie') != -1) {
+      return 'android(スマホ)';
+    } else {
+      return 'android(タブレット)';
+    }
+  }
+
 }
