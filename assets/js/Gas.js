@@ -294,7 +294,8 @@ function LogPost(text) {
   var os = navigator.platform;
   console.log(os);
   var user = navicheck();
-  script.src = base + '?log=' + encodeURI(text) + '&user=' + user;
+  var browser = browserCheck();
+  script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
   document.body.appendChild(script);
   console.log(script.src);
 }
@@ -312,5 +313,24 @@ function navicheck() {
       return 'android(タブレット)';
     }
   }
+}
 
+function browserCheck() {
+  var ua = navigator.userAgent.toLowerCase();
+
+  if(ua.index('msie') != -1 || ua.indexOf('trident') != -1) {
+    return 'IE';
+  } else if(ua.indexOf('edge') != -1) {
+    return 'Edge';
+  } else if(ua.indexOf('chrome') != -1) {
+    return 'chrome';
+  } else if(ua.indexOf('safari') != -1) {
+    return 'safari';
+  } else if(ua.indexOf('firefox') != -1) {
+    return 'Firefox';
+  } else if(ua.indexOf('opera') != -1) {
+    return 'Opera';
+  } else {
+    return 'other';
+  }
 }
