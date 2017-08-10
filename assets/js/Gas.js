@@ -300,7 +300,7 @@ function LogPost(text) {
 }
 
 function navicheck() {
-  var ua = navigator.userAgent.toLowerCase();
+  var ua = window.navigator.userAgent.toLowerCase();
   if(ua.indexOf('iphone') != -1) {
     return 'iPhone';
   } else if(ua.indexOf('ipad') != -1) {
