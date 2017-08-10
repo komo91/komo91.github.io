@@ -107,6 +107,8 @@ if(navigator.geolocation) {
       });
 
       inputMarker();  //マーカー作成
+      var os = navigator.platform;
+      console.log(os);
 
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
