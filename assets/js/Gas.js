@@ -188,6 +188,7 @@ function decision() { //目的地判定
     if(CirclePoint[j].radius　>　distance) {
       PushTest(j);
       GasRequest(j);
+      LogPost(CheckData[j]['name']);
       alert(CheckData[j]['message']);
       //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
       navigator.geolocation.clearWatch(watchId);
@@ -222,7 +223,6 @@ function Speech(text) {  //指定されたテキスト内容を喋らす
   var ssu = new SpeechSynthesisUtterance(); //
   ssu.text = text;  //
   ssu.lang = 'ja-JP';
-  LogPost(text);
   //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
