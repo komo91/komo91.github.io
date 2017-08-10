@@ -326,7 +326,7 @@ function navicheck() {
 function browserCheck() {
   var ua = window.navigator.userAgent.toLowerCase();
 
-  if(ua.index('msie') != -1 || ua.indexOf('trident') != -1) {
+  if(ua.indexOf('msie') != -1 || ua.indexOf('trident') != -1) {
     return 'IE';
   } else if(ua.indexOf('edge') != -1) {
     return 'Edge';
