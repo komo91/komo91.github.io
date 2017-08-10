@@ -107,8 +107,7 @@ if(navigator.geolocation) {
       });
 
       inputMarker();  //マーカー作成
-      var os = navigator.platform;
-      console.log(os);
+      navicheck();
 
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -297,4 +296,13 @@ function LogPost(text) {
   script.src = base + '?log=' + encodeURI(text) + '&os=' + os;
   document.body.appendChild(script);
   console.log(script.src);
+}
+
+function navicheck() {
+  var os = navigator.platform;
+  console.log(os);
+  var ua = navigator.userAgent.toLowerCase();
+  console.log(ua);
+  var ver = navigator.appVersion.toLowerCase();
+  console.log(ver);
 }
