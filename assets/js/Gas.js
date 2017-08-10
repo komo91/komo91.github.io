@@ -99,6 +99,7 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
+      LogPost(myPosition);
 
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -107,7 +108,6 @@ if(navigator.geolocation) {
       });
 
       inputMarker();  //マーカー作成
-      navicheck();
 
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
@@ -261,27 +261,35 @@ function receiveJson(json) {  //GASから返った値を表示させる
   if(json.spot==CheckData[1]['name']) { //研究室
     var text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[2]['name']) {  //高尾山口駅
     var text = '高尾山口駅から登る際には' + json.response[0] + 'と' + json.response[11] + 'と' + json.response[13] + 'の３つのコースから選べます';
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[3]['name']) {  //ケーブルカー高尾駅
     var text = '本日の運行時間は' + json.response[0] + ',' + json.response[1];
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[4]['name']) {  //権現茶屋
     var text = '権現茶屋のおすすめメニューは' + json.response + 'となってます';
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[5]['name']) {  //高尾山山頂
     var text = json.response;
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[6]['name']) {  //高尾ビジターセンター
     var text = json.response;
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[7]['name']) {  //高尾599ミュージアム
     var text = 'ミュージアムからのお知らせは' + json.response[0] + 'です。詳しくは本施設まで';
     Speech(text);
+    LogPost(text);
   } else if(json.spot==CheckData[8]['name']) {
     var text = json.response + 'に着きました';
     Speech(text);
+    LogPost(text);
   }
   if(!json.response){ //responseなし
     document.getElementById('result_test').innerHTML = json.error;
@@ -291,8 +299,6 @@ function receiveJson(json) {  //GASから返った値を表示させる
 function LogPost(text) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
-  var os = navigator.platform;
-  console.log(os);
   var user = navicheck();
   console.log(user);
   var browser = browserCheck();
