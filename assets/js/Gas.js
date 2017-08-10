@@ -5,7 +5,7 @@ var lat, //緯度,
     watchId,
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
-    CheckPoint;
+    CheckPoint = false;
 
 //動的情報取得データ
 var syncerWatchPosition = {
