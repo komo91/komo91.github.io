@@ -301,9 +301,9 @@ function LogPost(text) {
 
 function navicheck() {
   var ua = navigator.userAgent.toLowerCase();
-  if(ua.indexOf('iPhone') != -1) {
+  if(ua.indexOf('iphone') != -1) {
     return 'iPhone';
-  } else if(ua.indexOf('iPad') != -1) {
+  } else if(ua.indexOf('ipad') != -1) {
     return 'iPad';
   } else if(ua.indexOf('android') != -1) {
     if(ua.indexOf('moblie') != -1) {
