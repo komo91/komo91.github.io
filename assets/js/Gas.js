@@ -294,7 +294,9 @@ function LogPost(text) {
   var os = navigator.platform;
   console.log(os);
   var user = navicheck();
+  console.log(user);
   var browser = browserCheck();
+  console.log(browser);
   script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
   document.body.appendChild(script);
   console.log(script.src);
