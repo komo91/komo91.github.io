@@ -301,7 +301,7 @@ function LogPost(text) {
 }
 
 function navicheck() {
-  var ua = navigator.userAgent.toLowerCase();
+  var ua = window.navigator.userAgent.toLowerCase();
   if(ua.indexOf('iphone') > 0) {
     return 'iPhone';
   } else if(ua.indexOf('ipad') > 0) {
@@ -316,7 +316,7 @@ function navicheck() {
 }
 
 function browserCheck() {
-  var ua = navigator.userAgent.toLowerCase();
+  var ua = window.navigator.userAgent.toLowerCase();
 
   if(ua.index('msie') != -1 || ua.indexOf('trident') != -1) {
     return 'IE';
