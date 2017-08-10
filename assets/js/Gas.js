@@ -290,7 +290,9 @@ function receiveJson(json) {  //GASから返った値を表示させる
 function LogPost(text) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
-  script.src = base + '?log=' + encodeURI(text);
+  var os = navigator.platform;
+  console.log(os);
+  script.src = base + '?log=' + encodeURI(text) + '&os=' + os;
   document.body.appendChild(script);
   console.log(script.src);
 }
