@@ -4,7 +4,8 @@ var lat, //緯度,
     myPosition,  //現在地地点
     watchId,
     marker = [],  //登録位置情報
-    CirclePoint = []; //位置範囲設定
+    CirclePoint = [], //位置範囲設定
+    CheckPoint;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -184,14 +185,17 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
+    //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius　>　distance) {
-      PushTest(j);
-      GasRequest(j);
-      LogPost(CheckData[j]['name']);
-      alert(CheckData[j]['message']);
-      //var hoge =  google.script.run.withSuccessHandler(test).Takao_Info_XML();
-      navigator.geolocation.clearWatch(watchId);
+    if(CirclePoint[j].radius　>　distance) {  //範囲円に現在地点に入った場合
+      if(CheckPoint==false) {
+        PushTest(j);
+        GasRequest(j);
+        LogPost(CheckData[j]['name']);
+        alert(CheckData[j]['message']);
+        CheckPoint = true;
+        navigator.geolocation.clearWatch(watchId);
+      }
     }
   }
 }
