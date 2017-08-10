@@ -1,11 +1,10 @@
 var lat, //緯度,
     lng, //経度
-    accLatlng; //緯度・経度の精度
-
-var myPosition,  //現在地地点
-    watchId;
-var marker = [];  //登録位置情報
-var CirclePoint = []; //位置範囲設定
+    accLatlng, //緯度・経度の精度
+    myPosition,  //現在地地点
+    watchId,
+    marker = [],  //登録位置情報
+    CirclePoint = [], //位置範囲設定
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -73,7 +72,6 @@ var CheckData = [ //位置情報配列
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
-  //GasRequest(1);  //testData
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
@@ -138,22 +136,16 @@ if(navigator.geolocation) {
     document.getElementById("result").innerHTML = errorMessage;
 
   }
-
   //オプション
   var optionObj = {
     "enableHighAccuracy": false,
     "timeout": 10000,
     "maximumAge": 0,
   };
-
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-
-  alert(errorMessage);
-
   document.getElementById('result').innerHTML = errorMessage;
 }
-
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 function decision() { //目的地判定
@@ -189,6 +181,7 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
 
   }
 }
+
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
