@@ -187,7 +187,7 @@ function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius　>　distance) {  //範囲円に現在地点に入った場合
+    if(CirclePoint[j].radius　>　distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
       PushTest(j);
       GasRequest(j);
       LogPost(CheckData[j]['name']);
