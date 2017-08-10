@@ -188,15 +188,13 @@ function decision() { //目的地判定
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {  //範囲円に現在地点に入った場合
+      PushTest(j);
+      GasRequest(j);
+      LogPost(CheckData[j]['name']);
+      alert(CheckData[j]['message']);
+      CheckPoint = true;
       console.log(CheckPoint);
-      if(CheckPoint==false) {
-        PushTest(j);
-        GasRequest(j);
-        LogPost(CheckData[j]['name']);
-        alert(CheckData[j]['message']);
-        CheckPoint = true;
-        navigator.geolocation.clearWatch(watchId);
-      }
+      navigator.geolocation.clearWatch(watchId);
     }
   }
 }
