@@ -318,9 +318,9 @@ function navicheck() {
     return 'iPad';
   } else if(ua.indexOf('android') > 0) {
     if(ua.indexOf('moblie') > 0) {
-      return 'android(スマホ)';
+      return 'android_smart';
     } else {
-      return 'android(タブレット)';
+      return 'android_tab';
     }
   }
 }
