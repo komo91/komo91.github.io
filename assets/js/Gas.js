@@ -310,7 +310,7 @@ function LogPost(text) {
 }
 
 function navicheck() {
-  var ua = navigator.userAgent;
+  var ua = window.navigator.userAgent;
   if(ua.indexOf('iphone') > 0) {
     return 'iPhone';
   } else if(ua.indexOf('ipad') > 0) {
