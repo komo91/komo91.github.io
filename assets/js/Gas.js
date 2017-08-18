@@ -312,12 +312,12 @@ function LogPost(text) {
 function navicheck() {
   var ua = window.navigator.userAgent.toLowerCase();
   console.log(ua);
-  if(ua.indexOf('iphone') > 0) {
+  if(ua.indexOf('iphone') > -1) {
     return 'iPhone';
-  } else if(ua.indexOf('ipad') > 0) {
+  } else if(ua.indexOf('ipad') > -1) {
     return 'iPad';
-  } else if(ua.indexOf('android') > 0) {
-    if(ua.indexOf('moblie') > 0) {
+  } else if(ua.indexOf('android') > -1) {
+    if(ua.indexOf('moblie') > -1) {
       return 'android_smart';
     } else {
       return 'android_tab';
