@@ -311,6 +311,7 @@ function LogPost(text) {
 
 function navicheck() {
   var ua = window.navigator.userAgent.toLowerCase();
+  console.log(ua);
   if(ua.indexOf('iphone') > 0) {
     return 'iPhone';
   } else if(ua.indexOf('ipad') > 0) {
