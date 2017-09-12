@@ -109,7 +109,7 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  for(var i = 1; i < spotData.length; i++) {
+  for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
         lat: spotData[i][1],
@@ -198,6 +198,7 @@ function receiveJson(json) {
       spotData.push(json.response[i]);
     }
     console.log(spotData);
+    console.log(spotData.length);
   }
   //研究室
   if(json.key==spotData[0][0]) {
@@ -224,8 +225,8 @@ function receiveJson(json) {
   } else if(json.key==spotData[7][0]) {
     text = json.response + 'に着きました';
   }
-  Speech(text);
-  LogPost(text);
+  //Speech(text);
+  //LogPost(text);
   if(!json.response){
     document.getElementById('result_test').innerHTML = json.error;
   }
