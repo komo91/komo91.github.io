@@ -194,7 +194,7 @@ function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
-    for(var i = 0; i < json.response.length; i++) {
+    for(var i = 0; i < 8; i++) {
       spotData = json.response[i];
     }
     console.log(spotData);
