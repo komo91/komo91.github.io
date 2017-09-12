@@ -59,6 +59,7 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       GasRequest('CheckData');
+      console.log(spotData);
 
       inputMarker();
       navicheck();
@@ -134,7 +135,7 @@ function inputMarker() {
 
 //目的地判定
 function decision() {
-  for(var j = 1; j < spotData.length; j++) {
+  for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
@@ -197,8 +198,6 @@ function receiveJson(json) {
     for(var i = 0; i < 8; i++) {
       spotData.push(json.response[i]);
     }
-    console.log(spotData);
-    console.log(spotData.length);
   }
   //研究室
   if(json.key==spotData[0][0]) {
