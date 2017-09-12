@@ -193,7 +193,7 @@ function GasRequest(num) {
 function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
-  if(json.key==spot) {
+  if(json.key=='spot') {
     for(var i = 0; i < json.response.length; i++) {
       spotData = json.response[i];
     }
