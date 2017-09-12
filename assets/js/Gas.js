@@ -19,7 +19,7 @@ var CheckData =
   {
     name: '現在地',
     lat: lat,
-    lng: lng;
+    lng: lng
   };
 var spotData = [];
 
