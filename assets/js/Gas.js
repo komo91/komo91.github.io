@@ -21,6 +21,7 @@ var CheckData =
     lat: lat,
     lng: lng
   };
+var spotData;
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -193,7 +194,7 @@ function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
-    var spotData = new Array();
+    spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
       spotData.push(json.response[i]);
     }
