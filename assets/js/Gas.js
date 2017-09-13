@@ -197,7 +197,10 @@ function receiveJson(json) {
   var text;
   if(json.key=='spot') {
     for(var i = 0; i < 8; i++) {
-      spotData.push(json.response[i]);
+      for(var j = 0; j < 5; j++) {
+        spotData.push(json.response[i][j]);
+        console.log(spotData);
+      }
     }
   }
   //研究室
