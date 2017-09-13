@@ -16,18 +16,11 @@ var syncerWatchPosition = {
 };
 
 var CheckData =
-[ //位置情報配列
-{
-  name: '現在地',
-  lat: lat,
-  lng: lng
-}, {
-  name: 'University',
-  lat: 35.6259947,
-  lng: 139.2785662,
-  radius: 20,
-  message: "研究室前"
-}];
+  {
+    name: '現在地',
+    lat: lat,
+    lng: lng
+  };
 var spotData = [];
 
 //GeoLocationAPI対応
@@ -67,7 +60,6 @@ if(navigator.geolocation) {
       });
       GasRequest('CheckData');
       console.log(spotData);
-      console.log(CheckData);
 
       inputMarker();
       navicheck();
@@ -118,7 +110,7 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  console.log(spotData);
+  console.log(spotData[0][0]);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
