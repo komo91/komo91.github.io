@@ -21,7 +21,6 @@ var CheckData =
     lat: lat,
     lng: lng
   };
-var spotData = [];
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -194,7 +193,11 @@ function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
-    spot(json);
+    var spotData = new Array();
+    for(var i = 0; i < json.response.length; i++) {
+      spotData.push(json.response[i]);
+    }
+    console.log(spotData);
   }
   //研究室
   if(json.key==spotData[0][0]) {
@@ -275,13 +278,4 @@ function browserCheck() {
   } else {
     return 'other';
   }
-}
-
-function spot(json) {
-  for(var i = 0; i < json.response.length; i++) {
-    for(var j = 0; j < 5; j++) {
-      spotData.push(json.response[i]);
-    }
-  }
-  console.log(spotData);
 }
