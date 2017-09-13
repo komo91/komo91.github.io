@@ -21,7 +21,7 @@ var CheckData =
     lat: lat,
     lng: lng
   };
-var spotData = [];
+var spotData;
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
