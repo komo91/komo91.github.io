@@ -194,9 +194,7 @@ function receiveJson(json) {
   var text;
   if(json.key=='spot') {
     for(var i = 0; i < json.response.length; i++) {
-      for(var j = 0; j < 5; j++) {
-        spotData.push(json.response[i][j]);
-      }
+      spotData.push(json.response[i]);
     }
     console.log(spotData[2][3]);
   }
