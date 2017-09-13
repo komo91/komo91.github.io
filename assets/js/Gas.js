@@ -278,8 +278,8 @@ function browserCheck() {
 }
 
 function spot(json) {
-  for(var i = 0; i < json.response.length; i++;) {
-    for(var j = 0; j < 5; j++;) {
+  for(var i = 0; i < json.response.length; i++) {
+    for(var j = 0; j < 5; j++) {
       spotData.push(json.response[i]);
     }
   }
