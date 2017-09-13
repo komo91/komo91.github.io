@@ -60,8 +60,6 @@ if(navigator.geolocation) {
       });
       GasRequest('CheckData');
 
-      inputMarker();
-
       //新規マーカー作成
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
@@ -199,6 +197,7 @@ function receiveJson(json) {
       spotData.push(json.response[i]);
     }
     console.log(spotData);
+    inputMarker();
   }
   //研究室
   if(json.key==spotData[0][0]) {
