@@ -196,12 +196,7 @@ function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
-    for(var i = 0; i < 8; i++) {
-      for(var j = 0; j < 5; j++) {
-        spotData.push(json.response[i][j]);
-        console.log(spotData);
-      }
-    }
+    console.log(json.response[0]);
   }
   //研究室
   if(json.key==spotData[0][0]) {
