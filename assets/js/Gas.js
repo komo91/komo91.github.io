@@ -27,7 +27,7 @@ var CheckData =
   lng: 139.2785662,
   radius: 20,
   message: "研究室前"
-};
+}];
 var spotData = [];
 
 //GeoLocationAPI対応
