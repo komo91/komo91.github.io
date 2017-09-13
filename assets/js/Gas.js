@@ -59,11 +59,9 @@ if(navigator.geolocation) {
         center: myPosition,
       });
       GasRequest('CheckData');
-      console.log(spotData);
 
       inputMarker();
-      navicheck();
-      browserCheck();
+      
       //新規マーカー作成
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
@@ -72,7 +70,7 @@ if(navigator.geolocation) {
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      LogPost(myPosition);
+      //LogPost(myPosition);
     }
     decision();
   }
@@ -110,7 +108,6 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  console.log(spotData[0]);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
