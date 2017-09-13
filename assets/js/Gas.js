@@ -108,6 +108,7 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
+  console.log(spotData[0][1]);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
@@ -196,7 +197,8 @@ function receiveJson(json) {
     for(var i = 0; i < json.response.length; i++) {
       spotData.push(json.response[i]);
     }
-    console.log(spotData[2][3]);
+    return spotData;
+    //console.log(spotData[2][3]);
   }
   //研究室
   if(json.key==spotData[0][0]) {
