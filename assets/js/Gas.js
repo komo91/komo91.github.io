@@ -16,11 +16,18 @@ var syncerWatchPosition = {
 };
 
 var CheckData =
-  {
-    name: '現在地',
-    lat: lat,
-    lng: lng
-  };
+[ //位置情報配列
+{
+  name: '現在地',
+  lat: lat,
+  lng: lng
+}, {
+  name: 'University',
+  lat: 35.6259947,
+  lng: 139.2785662,
+  radius: 20,
+  message: "研究室前"
+};
 var spotData = [];
 
 //GeoLocationAPI対応
@@ -60,6 +67,7 @@ if(navigator.geolocation) {
       });
       GasRequest('CheckData');
       console.log(spotData);
+      console.log(CheckData);
 
       inputMarker();
       navicheck();
