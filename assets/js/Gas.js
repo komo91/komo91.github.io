@@ -226,7 +226,7 @@ function receiveJson(json) {
   //Speech(text);
   //LogPost(text);
   if(!json.response){
-    document.getElementById('result_test').innerHTML = json.error;
+    document.getElementById('gas_result').innerHTML = json.error;
   }
 }
 
