@@ -192,12 +192,7 @@ function receiveJson(json) {
   document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
-    spotData = new Array();
-    for(var i = 0; i < json.response.length; i++) {
-      spotData.push(json.response[i]);
-    }
-    console.log(spotData);
-    inputMarker();
+    spot_input(json);
   }
   //研究室
   if(json.key==spotData[0][0]) {
@@ -278,4 +273,14 @@ function browserCheck() {
   } else {
     return 'other';
   }
+}
+
+function spot_input(json) {
+  spotData = new Array();
+  for(var i = 0; i < json.response.length; i++) {
+    spotData.push(json.response[i]);
+  }
+  console.log(spotData);
+  inputMarker();
+  return spotData;
 }
