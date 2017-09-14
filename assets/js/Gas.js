@@ -155,7 +155,11 @@ function Speech(text) {
   var ssu = new SpeechSynthesisUtterance(); //
   ssu.text = text;  //
   ssu.lang = 'ja-JP';
-  ssu.volume = 1;
+  ssu.volume = 2;
+  var voices = speechSynthesis.getVoices();
+  voices.forEach(function(v,i) {
+    if(v.name=='Google 日本語') ssu.voice = v;
+  });
   //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
