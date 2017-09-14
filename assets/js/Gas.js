@@ -106,7 +106,6 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  console.log(spotData);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
@@ -132,6 +131,7 @@ function inputMarker() {
 
 //目的地判定
 function decision() {
+  console.log(spotData);
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
@@ -280,7 +280,6 @@ function spot_input(json) {
   for(var i = 0; i < json.response.length; i++) {
     spotData.push(json.response[i]);
   }
-  console.log(spotData);
   inputMarker();
   return spotData;
 }
