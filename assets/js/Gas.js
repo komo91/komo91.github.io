@@ -223,8 +223,8 @@ function receiveJson(json) {
   } else if(json.key==spotData[7][0]) {
     text = json.response + 'に着きました';
   }
-  //Speech(text);
-  //LogPost(text);
+  Speech(text);
+  LogPost(text);
   if(!json.response){
     document.getElementById('gas_result').innerHTML = json.error;
   }
