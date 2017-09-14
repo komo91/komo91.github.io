@@ -201,6 +201,7 @@ function receiveJson(json) {
   //研究室
   if(json.key==spotData[0][0]) {
     text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
+    Speech(text);
   //高尾山口駅
   } else if(json.key==spotData[1][0]) {
     text = '高尾山口駅から登る際には' + json.response[0] + 'と' + json.response[11] + 'と' + json.response[13] + 'の３つのコースから選べます';
@@ -223,7 +224,7 @@ function receiveJson(json) {
   } else if(json.key==spotData[7][0]) {
     text = json.response + 'に着きました';
   }
-  Speech(text);
+
   LogPost(text);
   if(!json.response){
     document.getElementById('gas_result').innerHTML = json.error;
