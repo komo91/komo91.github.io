@@ -157,6 +157,7 @@ function Speech(text) {
   ssu.lang = 'ja-JP';
   ssu.volume = 2;
   var voices = speechSynthesis.getVoices();
+  console.log(voices);
   voices.forEach(function(v,i) {
     if(v.name=='Google 日本語') ssu.voice = v;
   });
@@ -189,7 +190,7 @@ function GasRequest(num) {
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
   script.src = base + '?callback=receiveJson&action=' + num;
   document.body.appendChild(script);  //bodyにscript追加
-  console.log(script.src);
+  //console.log(script.src);
 }
 
 //GASから返った値を表示させる
@@ -200,7 +201,7 @@ function receiveJson(json) {
     spot_input(json);
   }
 
-  console.log(spotData[0][0]);
+  //console.log(spotData[0][0]);
 
   //研究室
   if(json.key==spotData[0][0]) {
@@ -243,7 +244,7 @@ function LogPost(text) {
   var browser = browserCheck();
   script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
   document.body.appendChild(script);
-  console.log(script.src);
+  //console.log(script.src);
 }
 
 //端末情報
