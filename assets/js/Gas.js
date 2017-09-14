@@ -58,13 +58,14 @@ if(navigator.geolocation) {
         zoom: 18,
         center: myPosition,
       });
-      GasRequest('CheckData');
 
       //新規マーカー作成
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
         position: myPosition
       });
+
+      GasRequest('CheckData');
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -281,5 +282,6 @@ function spot_input(json) {
     spotData.push(json.response[i]);
   }
   inputMarker();
+  decision();
   return spotData;
 }
