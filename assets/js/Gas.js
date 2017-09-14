@@ -195,6 +195,9 @@ function receiveJson(json) {
   if(json.key=='spot') {
     spot_input(json);
   }
+
+  console.log(spotData[0][0]);
+
   //研究室
   if(json.key==spotData[0][0]) {
     text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
