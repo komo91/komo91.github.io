@@ -152,11 +152,11 @@ function decision() {
 
 //指定されたテキスト内容を喋らす
 function Speech(text) {
-  var ssu = new SpeechSynthesisUtterance(); //
-  ssu.text = text;  //
+  var voices = speechSynthesis.getVoices();
+  var ssu = new SpeechSynthesisUtterance();
+  ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 2;
-  var voices = speechSynthesis.getVoices();
   console.log(voices);
   voices.forEach(function(v,i) {
     if(v.name=='Google 日本語') ssu.voice = v;
