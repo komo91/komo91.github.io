@@ -106,7 +106,7 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  console.log(spotData);
+  //console.log(spotData);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
@@ -132,17 +132,17 @@ function inputMarker() {
 
 //目的地判定
 function decision() {
-  console.log(spotData);
+  //console.log(spotData);
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
       PushTest(j);
-      GasRequest(j);
+      GasRequest(spotData[j][0]);
       LogPost(spotData[j][0]);
       alert(spotData[j][4]);
       CheckPoint = true;
-      console.log(CheckPoint);
+      //console.log(CheckPoint);
       navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -195,18 +195,18 @@ function GasRequest(num) {
 
 //GASから返った値を表示させる
 function receiveJson(json) {
-  document.getElementById('gas_result').innerHTML = json.response;
   var text;
   if(json.key=='spot') {
     spot_input(json);
   }
-
+  //取得情報反映
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
+      document.getElementById('gas_result').innerHTML = json.response[0];
+      document.getElementById('gas_url').innerHTML = json.response[1];
       Speech(json.response);
     }
   }
-
   LogPost(text);
   if(!json.response){
     document.getElementById('gas_result').innerHTML = json.error;
