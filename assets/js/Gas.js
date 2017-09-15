@@ -71,7 +71,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       //LogPost(myPosition);
     }
-    decision();
+    //decision();
   }
 
   //現在地測定失敗の場合
