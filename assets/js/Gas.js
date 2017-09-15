@@ -201,7 +201,7 @@ function receiveJson(json) {
     spot_input(json);
   }
 
-  for(var i spotData) {
+  for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Speech(json.response);
     }
