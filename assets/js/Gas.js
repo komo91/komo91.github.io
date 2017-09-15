@@ -71,7 +71,6 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       //LogPost(myPosition);
     }
-    //decision();
   }
 
   //現在地測定失敗の場合
@@ -202,33 +201,10 @@ function receiveJson(json) {
     spot_input(json);
   }
 
-  //console.log(spotData[0][0]);
-
-  //研究室
-  if(json.key==spotData[0][0]) {
-    text = json.response[0] + "時現在の天気は" + json.response[1] + ",気温は" + json.response[2] + "度,湿度は" + json.response[3] + "%となっています";
-    Speech(text);
-  //高尾山口駅
-  } else if(json.key==spotData[1][0]) {
-    text = '高尾山口駅から登る際には' + json.response[0] + 'と' + json.response[11] + 'と' + json.response[13] + 'の３つのコースから選べます';
-  //ケーブルカー高尾駅
-  } else if(json.key==spotData[2][0]) {
-    text = '本日の運行時間は' + json.response[0] + ',' + json.response[1];
-  //権現茶屋
-  } else if(json.key==spotData[3][0]) {
-    text = '権現茶屋のおすすめメニューは' + json.response + 'となってます';
-  //高尾山山頂
-  } else if(json.key==spotData[4][0]) {
-    text = json.response;
-  //高尾ビジターセンター
-  } else if(json.key==spotData[5][0]) {
-    text = json.response;
-  //高尾599ミュージアム
-  } else if(json.key==spotData[6][0]) {
-    text = 'ミュージアムからのお知らせは' + json.response[0] + 'です。詳しくは本施設まで';
-  //Cafe_学内テスト
-  } else if(json.key==spotData[7][0]) {
-    text = json.response + 'に着きました';
+  for(var i spotData) {
+    if(json.key==spotData[i][0]) {
+      Speech(json.response);
+    }
   }
 
   LogPost(text);
