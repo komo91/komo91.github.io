@@ -69,7 +69,7 @@ if(navigator.geolocation) {
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      //LogPost(myPosition);
+      LogPost(myPosition);
     }
   }
 
@@ -190,7 +190,7 @@ function GasRequest(num) {
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
   script.src = base + '?callback=receiveJson&action=' + num;
   document.body.appendChild(script);  //bodyにscript追加
-  //console.log(script.src);
+  console.log(script.src);
 }
 
 //GASから返った値を表示させる
@@ -204,10 +204,9 @@ function receiveJson(json) {
     if(json.key==spotData[i][0]) {
       document.getElementById('gas_result').innerHTML = json.response[0];
       document.getElementById('gas_url').innerHTML = json.response[1];
-      Speech(json.response);
+      Speech(json.response[0]);
     }
   }
-  LogPost(text);
   if(!json.response){
     document.getElementById('gas_result').innerHTML = json.error;
   }
