@@ -65,7 +65,7 @@ if(navigator.geolocation) {
         position: myPosition
       });
 
-      GasRequest('CheckData');
+      GasRequest('CheckData');  //spot情報要求
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -203,7 +203,9 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       document.getElementById('gas_result').innerHTML = json.response[0];
-      document.getElementById('gas_url').innerHTML = json.response[1];
+      var a = document.createElement("a");
+      a.href = json.response[1];
+      element.parentNode.insertBefore(a,element.nextSibling);
       Speech(json.response[0]);
     }
   }
@@ -261,6 +263,7 @@ function browserCheck() {
   }
 }
 
+//位置情報取得・設定
 function spot_input(json) {
   spotData = new Array();
   for(var i = 0; i < json.response.length; i++) {
