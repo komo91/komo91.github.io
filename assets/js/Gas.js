@@ -203,9 +203,9 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       document.getElementById('gas_result').innerHTML = json.response[0];
-      var a = document.createElement("a");
+      var a = document.createElement('a');
       a.href = json.response[1];
-      element.parentNode.insertBefore(a,element.nextSibling);
+      a.appendChild(document.createTextNode(document.getElementById('gas_url').firstChild.nodeValue));      
       Speech(json.response[0]);
     }
   }
