@@ -205,7 +205,8 @@ function receiveJson(json) {
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
       a.href = json.response[1];
-      a.appendChild(document.createTextNode(document.getElementById('gas_url').firstChild.nodeValue));      
+      var str = document.createTextNode('URL');
+      a.appendChild(str);
       Speech(json.response[0]);
     }
   }
