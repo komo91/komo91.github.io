@@ -207,6 +207,7 @@ function receiveJson(json) {
       a.href = json.response[1];
       var str = document.createTextNode('URL');
       a.appendChild(str);
+      document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
     }
   }
