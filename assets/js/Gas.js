@@ -155,9 +155,9 @@ function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
   ssu.text = text;
   ssu.lang = 'ja-JP';
-  ssu.volume = 0.5;
+  ssu.volume = 0.8;
   //console.log(voices);
-  ssu.rate = 2;
+  //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
 
