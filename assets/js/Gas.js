@@ -163,17 +163,18 @@ function Speech(text) {
 
 //通知機能
 function PushTest(num,url) {
-  Push.create('Hello world!', {
-        body: 'How\'s it hangin\'?',
-        icon: 'assets/img/mountain_icon.png',
-        link: '/#',
-        timeout: 4000,
-        onClick: function () {
-            console.log("Fired!");
-            window.focus();
-            this.close();
-        },
-        vibrate: [200, 100, 200, 100, 200, 100, 200]
+  Push.Permission.request();	//通知許可
+    Push.create(spotData[num][4],{	//通知情報
+      body: "詳しくはコチラ!",
+      icon: 'assets/img/mountain_icon.png',
+      link: 'https://komo91.github.io/',
+      timeout: 10000,
+      vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+      onClick: function (){	//クリック時
+        console.log("Fired!");
+        window.focus();	//windowsを最前列移動
+        this.close();	//通知を閉じる
+      },
     });
 }
 
@@ -211,6 +212,22 @@ function receiveJson(json) {
     document.getElementById('gas_result').innerHTML = json.error;
   }
 }
+
+//位置情報取得・設定
+function spot_input(json) {
+  spotData = new Array();
+  for(var i = 0; i < json.response.length; i++) {
+    spotData.push(json.response[i]);
+  }
+  inputMarker();
+  decision();
+  return spotData;
+}
+
+
+
+
+/* ----- Log記録 ----- */
 
 //GASに指定値をpost
 function LogPost(text) {
@@ -259,15 +276,4 @@ function browserCheck() {
   } else {
     return 'other';
   }
-}
-
-//位置情報取得・設定
-function spot_input(json) {
-  spotData = new Array();
-  for(var i = 0; i < json.response.length; i++) {
-    spotData.push(json.response[i]);
-  }
-  inputMarker();
-  decision();
-  return spotData;
 }
