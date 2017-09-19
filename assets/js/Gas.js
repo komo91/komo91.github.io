@@ -171,6 +171,7 @@ function PushTest(num,url) {
       timeout: 10000,
       vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
       onClick: function (){	//クリック時
+        console.log(url);
         console.log("Fired!");
         window.focus();	//windowsを最前列移動
         this.close();	//通知を閉じる
