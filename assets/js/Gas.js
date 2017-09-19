@@ -166,7 +166,7 @@ function PushTest(num,url) {
 	Push.create('hello world', {
     body: 'how',
     icon: 'assets/img/mountain_icon.png',
-    link: url,
+    link: 'http://www.cyokodog.net/blog/web-speechi-api/',
     timeout: 4000,
     onClick: function() {
       console.log("Fired!hoge");
