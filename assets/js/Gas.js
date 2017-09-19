@@ -165,8 +165,8 @@ function Speech(text) {
 function PushTest(num,url) {
 	Push.create('hello world', {
     body: 'how',
-    icon: '',
-    link: '',
+    icon: 'assets/img/mountain_icon.png',
+    link: url,
     timeout: 4000,
     onClick: function() {
       console.log("Fired!hoge");
