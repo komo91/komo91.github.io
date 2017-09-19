@@ -163,19 +163,18 @@ function Speech(text) {
 
 //通知機能
 function PushTest(num,url) {
-	Push.Permission.request();	//通知許可
-	Push.create(spotData[num][4],{	//通知情報
-		body: "詳しくはコチラ!",
-		icon: 'assets/img/mountain_icon.png',
-		timeout: 10000,
-		vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-		link: url,
-		onClick: function (){	//クリック時
-			console.log("Fired!");
-			window.focus();	//windowsを最前列移動
-			this.close();	//通知を閉じる
-		},
-	});
+	Push.create('hello world', {
+    body: 'how',
+    icon: '',
+    link: '',
+    timeout: 4000,
+    onClick: function() {
+      console.log("Fired!hoge");
+      window.focus();
+      this.close();
+    },
+    vibrate: [200,100,200,100,200,100]
+  });
 }
 
 /* ----- GAS設定 ----- */
