@@ -155,7 +155,7 @@ function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
   ssu.text = text;
   ssu.lang = 'ja-JP';
-  ssu.volume = 5;
+  ssu.volume = 0.5;
   //console.log(voices);
   ssu.rate = 2;
   speechSynthesis.speak(ssu); //
@@ -171,7 +171,6 @@ function PushTest(num,url) {
       timeout: 10000,
       vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
       onClick: function (){	//クリック時
-        console.log(url);
         console.log("Fired!");
         window.focus();	//windowsを最前列移動
         this.close();	//通知を閉じる
