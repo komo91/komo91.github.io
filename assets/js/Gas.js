@@ -137,7 +137,6 @@ function decision() {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
-      PushTest(j);
       GasRequest(spotData[j][0]);
       LogPost(spotData[j][0]);
       alert(spotData[j][4]);
@@ -163,14 +162,14 @@ function Speech(text) {
 }
 
 //通知機能
-function PushTest(num) {
+function PushTest(num,url) {
 	Push.Permission.request();	//通知許可
 	Push.create(spotData[num][4],{	//通知情報
 		body: "詳しくはコチラ!",
 		icon: 'assets/img/mountain_icon.png',
 		timeout: 10000,
 		vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-		link: "https://komo91.github.io/PushTest.html",
+		link: url,
 		onClick: function (){	//クリック時
 			console.log("Fired!");
 			window.focus();	//windowsを最前列移動
@@ -206,6 +205,7 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
+      PushTest(i,json.response[1]);
     }
   }
   if(!json.response){
