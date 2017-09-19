@@ -167,7 +167,7 @@ function PushTest(num,url) {
     Push.create(spotData[num][4],{	//通知情報
       body: "詳しくはコチラ!",
       icon: 'assets/img/mountain_icon.png',
-      link: 'https://komo91.github.io/',
+      link: url,
       timeout: 10000,
       vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
       onClick: function (){	//クリック時
