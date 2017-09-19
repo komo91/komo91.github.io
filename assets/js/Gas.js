@@ -163,18 +163,18 @@ function Speech(text) {
 
 //通知機能
 function PushTest(num,url) {
-	Push.create('hello world', {
-    body: 'how',
-    icon: 'assets/img/mountain_icon.png',
-    link: 'http://www.cyokodog.net/blog/web-speechi-api/',
-    timeout: 4000,
-    onClick: function() {
-      console.log("Fired!hoge");
-      window.focus();
-      this.close();
-    },
-    vibrate: [200,100,200,100,200,100]
-  });
+  Push.create('Hello world!', {
+        body: 'How\'s it hangin\'?',
+        icon: '/images/icon.png',
+        link: '/#',
+        timeout: 4000,
+        onClick: function () {
+            console.log("Fired!");
+            window.focus();
+            this.close();
+        },
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+    });
 }
 
 /* ----- GAS設定 ----- */
