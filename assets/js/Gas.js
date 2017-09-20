@@ -156,8 +156,8 @@ function Speech(text) {
   ssu.voice = voices[7];
   ssu.text = text;
   ssu.lang = 'ja-JP';
-  ssu.volume = 0.2;
-  //console.log(voices);
+  ssu.volume = 1.0;
+  ssu.pitch = 1.5;
   //ssu.rate = 2;
   speechSynthesis.speak(ssu); //
 }
@@ -173,6 +173,7 @@ function PushTest(num,url) {
       vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
       onClick: function (){	//クリック時
         console.log("Fired!");
+        window.open(url);
         window.focus();	//windowsを最前列移動
         this.close();	//通知を閉じる
       },
