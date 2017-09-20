@@ -126,8 +126,11 @@ function inputMarker() {
 
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
-
   }
+  syncerWatchPosition.marker = new google.maps.Marker({
+    map: syncerWatchPosition.map,
+    position: myPosition
+  });
 }
 
 //目的地判定
@@ -157,8 +160,8 @@ function Speech(text) {
   ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 1.0;
-  ssu.pitch = 1.2;
-  ssu.rate = 0.8;
+  ssu.pitch = 1.1;
+  ssu.rate = 0.7;
   speechSynthesis.speak(ssu); //
 }
 
