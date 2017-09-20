@@ -127,10 +127,6 @@ function inputMarker() {
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
-  syncerWatchPosition.marker = new google.maps.Marker({
-    map: syncerWatchPosition.map,
-    position: myPosition
-  });
 }
 
 //目的地判定
@@ -168,18 +164,18 @@ function Speech(text) {
 //通知機能
 function PushTest(num,url) {
   Push.Permission.request();	//通知許可
-    Push.create(spotData[num][4],{	//通知情報
-      body: "詳しくはコチラ!",
-      icon: 'assets/img/mountain_icon.png',
-      timeout: 10000,
-      vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-      onClick: function (){	//クリック時
-        console.log("Fired!");
-        window.open(url);
-        window.focus();	//windowsを最前列移動
-        this.close();	//通知を閉じる
-      },
-    });
+  Push.create(spotData[num][4],{	//通知情報
+    body: "詳しくはコチラ!",
+    icon: 'assets/img/mountain_icon.png',
+    timeout: 10000,
+    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+    onClick: function (){	//クリック時
+      console.log("Fired!");
+      window.open(url);
+      window.focus();	//windowsを最前列移動
+      this.close();	//通知を閉じる
+    },
+  });
 }
 
 /* ----- GAS設定 ----- */
@@ -227,9 +223,6 @@ function spot_input(json) {
   decision();
   return spotData;
 }
-
-
-
 
 /* ----- Log記録 ----- */
 
