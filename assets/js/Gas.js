@@ -157,8 +157,8 @@ function Speech(text) {
   ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 1.0;
-  ssu.pitch = 1.5;
-  //ssu.rate = 2;
+  ssu.pitch = 1.2;
+  ssu.rate = 0.8;
   speechSynthesis.speak(ssu); //
 }
 
@@ -168,7 +168,6 @@ function PushTest(num,url) {
     Push.create(spotData[num][4],{	//通知情報
       body: "詳しくはコチラ!",
       icon: 'assets/img/mountain_icon.png',
-      link: url,
       timeout: 10000,
       vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
       onClick: function (){	//クリック時
