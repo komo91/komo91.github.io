@@ -100,6 +100,7 @@ if(navigator.geolocation) {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
   document.getElementById('result').innerHTML = errorMessage;
 }
+accleration();
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 /* ----- Map設定 ----- */
@@ -276,4 +277,27 @@ function browserCheck() {
   } else {
     return 'other';
   }
+}
+
+function accleration() {
+  window.addEventListener('devicemotion',function(e) {
+    var acc = e.accleration;
+    var x = obj2NumberFix(acc.x,2);
+    var y = obj2NumberFix(acc.y,2);
+    var z = obj2NumberFix(acc.z,2);
+
+    var acc_g = e.acclerationIncludingGravity;
+    var gx = obj2NumberFix(acc_g.x,2);
+    var gy = obj2NumberFix(acc_gx.y,2);
+    var gz = obj2NumberFix(acc_gx.z,2);
+
+    var rota_r = e.rotationRate;
+    var r_a = obj2NumberFix(rota_a.alpha,2);
+    var r_b = obj2NumberFix(rota_a.beta,2);
+    var r_g = obj2NumberFix(rota_a.gamma,2);
+
+    if(x>=5) {
+      alert('歩きスマホダメゼッタイ！');
+    }
+  });
 }
