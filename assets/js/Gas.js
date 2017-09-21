@@ -151,8 +151,8 @@ function decision() {
 //指定されたテキスト内容を喋らす
 function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
-  //var voices = window.speechSynthesis.getVoices();
-  //ssu.voice = voices[7];
+  var voices = window.speechSynthesis.getVoices();
+  ssu.voice = voices[];
   ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 1.0;
@@ -204,8 +204,9 @@ function receiveJson(json) {
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
-      document.getElementById('gas_img').innerHTML = json.response[2];
-      console.log(json.response[2]);
+      var b = document.createElement('img');
+      b.src = json.response[2];
+      document.getElementById('gas_img').appendChild(b);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
     }
