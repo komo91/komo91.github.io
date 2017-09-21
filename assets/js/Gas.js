@@ -151,7 +151,7 @@ function decision() {
 //指定されたテキスト内容を喋らす
 function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
-  var voices = window.speechSynthesis.getVoices();
+  //var voices = window.speechSynthesis.getVoices();
   //ssu.voice = voices[7];
   ssu.text = text;
   ssu.lang = 'ja-JP';
