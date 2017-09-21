@@ -205,6 +205,7 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       document.getElementById('gas_img').innerHTML = json.response[2];
+      console.log(json.response[2]);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
     }
