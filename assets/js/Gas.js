@@ -152,7 +152,7 @@ function decision() {
 function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
   var voices = window.speechSynthesis.getVoices();
-  ssu.voice = voices[7];
+  //ssu.voice = voices[7];
   ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 1.0;
