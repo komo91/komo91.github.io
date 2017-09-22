@@ -103,15 +103,6 @@ if(navigator.geolocation) {
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 window.addEventListener('devicemotion',function(e) {
-
-/*
-  var acc = e.acceleration;
-
-  var x = e.acc.x;
-  var y = e.acc.y;
-  var z = e.acc.z;
-
-*/
   var acc = e.acceleration;
   var x = obj2NumberFix(acc.x, 5);
   var y = obj2NumberFix(acc.y, 5);
@@ -174,13 +165,15 @@ function decision() {
 
 //指定されたテキスト内容を喋らす
 function Speech(text) {
-  var ssu = new SpeechSynthesisUtterance();
-  ssu.text = text;
-  ssu.lang = 'ja-JP';
-  //ssu.volume = 1.0;
-  //ssu.pitch = 1.1;
-  //ssu.rate = 0.7;
-  speechSynthesis.speak(ssu); //
+  window.speechSynthesis.onvoiceschanged = function() {
+    var ssu = new SpeechSynthesisUtterance();
+    ssu.volume = 1.0;
+    ssu.rate = 0.7;
+    ssu.pitch = 1.1;
+    ssu.text = text;
+    ssu.lang = 'ja-JP';
+    speechSynthesis.speak(ssu); //
+  };
 }
 
 //通知機能
