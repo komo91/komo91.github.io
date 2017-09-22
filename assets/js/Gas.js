@@ -175,14 +175,12 @@ function decision() {
 //指定されたテキスト内容を喋らす
 function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
-  var voices = window.speechSynthesis.getVoices();
-  ssu.voice = voices[7];
   ssu.text = text;
   ssu.lang = 'ja-JP';
   ssu.volume = 1.0;
   ssu.pitch = 1.1;
   ssu.rate = 0.7;
-  window.speechSynthesis.speak(ssu); //
+  speechSynthesis.speak(ssu); //
 }
 
 //通知機能
