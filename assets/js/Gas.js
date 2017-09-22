@@ -177,9 +177,9 @@ function Speech(text) {
   var ssu = new SpeechSynthesisUtterance();
   ssu.text = text;
   ssu.lang = 'ja-JP';
-  ssu.volume = 1.0;
-  ssu.pitch = 1.1;
-  ssu.rate = 0.7;
+  //ssu.volume = 1.0;
+  //ssu.pitch = 1.1;
+  //ssu.rate = 0.7;
   speechSynthesis.speak(ssu); //
 }
 
