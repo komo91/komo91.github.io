@@ -114,6 +114,24 @@ var CheckData = [ //位置情報配列
     lng: 139.268698,
     radius: 25,
     message: "高尾599ミュージアムですよ"
+  }, {
+    name: 'iPhonetest1',
+    lat: 35.627525,
+    lng: 139.280097,
+    radius: 30
+    message: 'iPhone端末テスト1'
+  }, {
+    name: 'iPhonetest2',
+    lat: 35.626893,
+    lng: 139.280645,
+    radius: 30,
+    message: 'iPhone端末テスト2'
+  }, {
+    name: 'iPhonetest3',
+    lat: 35.625886,
+    lng: 139.282077,
+    radius: 30,
+    message: 'iPhone端末テスト3'
   }
 ];
 
@@ -122,7 +140,7 @@ if(navigator.geolocation) {
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
-    
+
     lat = data.latitude;
     lng = data.longitude;
     alt = data.altitude;
@@ -130,18 +148,18 @@ if(navigator.geolocation) {
     accAlt = data.altitudeAccuracy;
     heading = data.heading;
     speed = data.speed;
-    
+
     //時間カウント
     ++syncerWatchPosition.count;
     var nowTime = ~~(new Date() / 1000);
-    
+
     //3秒後に表示変更
     if((syncerWatchPosition.lastTime + 3) > nowTime) {
       return false;
     }
-      
+
     syncerWatchPosition.lastTime = nowTime;
-      
+
     //document.getElementById('result1').innerHTML = '<dl><dt>現在地</dt><dd>' + lat + ',' + lng '</dd></dl>'
 
     //divにて結果表示
@@ -153,23 +171,23 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-    
+
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 13,
         center: myPosition,
       });
-      
+
       inputMarker();  //マーカー作成
-      
+
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
-      
+
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-    } 
+    }
     decision(); //目的地判定
   }
 
@@ -202,7 +220,7 @@ if(navigator.geolocation) {
 
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-  
+
   alert(errorMessage);
 
   document.getElementById('result').innerHTML = errorMessage;
@@ -215,7 +233,7 @@ function decision() { //目的地判定
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius　>　distance) {
       Speech(j);
-      
+
       alert(CheckData[j]['message']);
       navigator.geolocation.clearWatch(watchId);
     }
@@ -241,11 +259,11 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
       map: syncerWatchPosition.map,
       radius: CheckData[i]['radius']
     };
-    
+
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
-    
+
   }
 }
 
