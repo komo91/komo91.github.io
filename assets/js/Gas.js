@@ -182,7 +182,7 @@ function Speech(text) {
   ssu.volume = 1.0;
   ssu.pitch = 1.1;
   ssu.rate = 0.7;
-  speechSynthesis.speak(ssu); //
+  window.speechSynthesis.speak(ssu); //
 }
 
 //通知機能
