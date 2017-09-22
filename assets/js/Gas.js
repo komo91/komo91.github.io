@@ -102,6 +102,7 @@ if(navigator.geolocation) {
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
+//加速度処理
 window.addEventListener('devicemotion',function(e) {
   var acc = e.acceleration;
   var x = obj2NumberFix(acc.x, 5);
@@ -146,7 +147,6 @@ function inputMarker() {
 
 //目的地判定
 function decision() {
-  //console.log(spotData);
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
