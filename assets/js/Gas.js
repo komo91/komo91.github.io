@@ -165,8 +165,8 @@ function decision() {
 
 //指定されたテキスト内容を喋らす
 function Speech(text) {
+  var ssu = new SpeechSynthesisUtterance();
   window.speechSynthesis.onvoiceschanged = function() {
-    var ssu = new SpeechSynthesisUtterance();
     ssu.volume = 1.0;
     ssu.rate = 0.7;
     ssu.pitch = 1.1;
@@ -174,8 +174,6 @@ function Speech(text) {
     ssu.lang = 'ja-JP';
     speechSynthesis.speak(ssu); //
   };
-  console.log(ssu.pitch);
-  console.log(ssu.rate);
 }
 
 //通知機能
