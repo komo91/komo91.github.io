@@ -118,7 +118,7 @@ var CheckData = [ //位置情報配列
     name: 'iPhonetest1',
     lat: 35.627525,
     lng: 139.280097,
-    radius: 30
+    radius: 30,
     message: 'iPhone端末テスト1'
   }, {
     name: 'iPhonetest2',
