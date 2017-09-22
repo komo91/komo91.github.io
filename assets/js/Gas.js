@@ -117,16 +117,6 @@ window.addEventListener('devicemotion',function(e) {
   var y = obj2NumberFix(acc.y, 5);
   var z = obj2NumberFix(acc.z, 5);
 
-  var acc_g = e.acclerationIncludingGravity;
-  var gx = obj2NumberFix(acc_g.x,2);
-  var gy = obj2NumberFix(acc_gx.y,2);
-  var gz = obj2NumberFix(acc_gx.z,2);
-
-  var rota_r = e.rotationRate;
-  var r_a = obj2NumberFix(rota_a.alpha,2);
-  var r_b = obj2NumberFix(rota_a.beta,2);
-  var r_g = obj2NumberFix(rota_a.gamma,2);
-
   document.getElementById("x_test").innerHTML = x;
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
