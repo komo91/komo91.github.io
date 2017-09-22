@@ -111,9 +111,6 @@ window.addEventListener('devicemotion',function(e) {
   var y = e.acc.y;
   var z = e.acc.z;
 
-  document.getElementById("x_test").innerHTML = x;
-  document.getElementById("y_test").innerHTML = y;
-  document.getElementById("z_test").innerHTML = z;
 */
   var acc = e.acceleration;
   var x = obj2NumberFix(acc.x, 5);
@@ -129,7 +126,11 @@ window.addEventListener('devicemotion',function(e) {
   var r_a = obj2NumberFix(rota_a.alpha,2);
   var r_b = obj2NumberFix(rota_a.beta,2);
   var r_g = obj2NumberFix(rota_a.gamma,2);
-  
+
+  document.getElementById("x_test").innerHTML = x;
+  document.getElementById("y_test").innerHTML = y;
+  document.getElementById("z_test").innerHTML = z;
+
   if(x>=5) {
     alert('歩きスマホダメゼッタイ！');
   }
