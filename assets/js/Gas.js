@@ -103,10 +103,10 @@ if(navigator.geolocation) {
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 window.addEventListener('devicemotion',function(e) {
-  var acc = e.accleration;
-  var x = obj2NumberFix(acc.x,2);
-  var y = obj2NumberFix(acc.y,2);
-  var z = obj2NumberFix(acc.z,2);
+  var acc = e.acceleration;
+  var x = obj2NumberFix(acc.x, 5);
+  var y = obj2NumberFix(acc.y, 5);
+  var z = obj2NumberFix(acc.z, 5);
 
   var acc_g = e.acclerationIncludingGravity;
   var gx = obj2NumberFix(acc_g.x,2);
