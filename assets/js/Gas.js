@@ -104,6 +104,7 @@ watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj
 
 window.addEventListener('devicemotion',function(e) {
 
+/*
   var acc = e.acceleration;
 
   var x = e.acc.x;
@@ -113,7 +114,7 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("x_test").innerHTML = x;
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
-/*
+*/
   var acc = e.acceleration;
   var x = obj2NumberFix(acc.x, 5);
   var y = obj2NumberFix(acc.y, 5);
@@ -128,7 +129,7 @@ window.addEventListener('devicemotion',function(e) {
   var r_a = obj2NumberFix(rota_a.alpha,2);
   var r_b = obj2NumberFix(rota_a.beta,2);
   var r_g = obj2NumberFix(rota_a.gamma,2);
-*/
+  
   if(x>=5) {
     alert('歩きスマホダメゼッタイ！');
   }
