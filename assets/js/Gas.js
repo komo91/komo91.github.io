@@ -226,10 +226,11 @@ function receiveJson(json) {
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
+/*
       var b = document.createElement('img');
       b.src = json.response[2];
       document.getElementById('gas_img').appendChild(b);
-      console.log(json.response[2]);
+*/
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
     }
