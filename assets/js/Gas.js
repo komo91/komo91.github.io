@@ -174,6 +174,8 @@ function Speech(text) {
     ssu.lang = 'ja-JP';
     speechSynthesis.speak(ssu); //
   };
+  console.log(ssu.pitch);
+  console.log(ssu.rate);
 }
 
 //通知機能
