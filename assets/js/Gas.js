@@ -114,7 +114,7 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("z_test").innerHTML = z;
 
   if(x>=4.0) {
-    sdlog.show('歩きスマホダメゼッタイ!',{opacity:0.7,duration:1.0,backgroundColor:'#111'},{width:100%,heigth:100%,padding:#fff});
+    sdlog.show('歩きスマホダメゼッタイ!',{opacity:0.7,duration:1.0,backgroundColor:'#111'},{width:'100%',heigth:'100%',padding:'#fff'});
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   }
 });
