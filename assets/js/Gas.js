@@ -113,8 +113,11 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
 
-  if(x>=5) {
-    alert('歩きスマホダメゼッタイ！');
+  if(x>=4.0) {
+    var hoge = document.getElementById('Sub');
+    hoge.style.visibility = "visible";
+    hoge.innreHTML = '歩きスマホダメゼッタイ!';
+    //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   }
 });
 
@@ -173,6 +176,9 @@ function Speech(text) {
     ssu.text = text;
     ssu.lang = 'ja-JP';
     speechSynthesis.speak(ssu); //
+    //https://www.mitsue.co.jp/knowledge/blog/frontend/201611/04_1421.html
+    //http://blog.e-riverstyle.com/2015/01/web-speech-apitts.html
+
   };
 }
 
