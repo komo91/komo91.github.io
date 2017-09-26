@@ -318,8 +318,5 @@ function hoge() {
 
   tar.style.visibility = "visible";
 
-  if(tar.style.visibility == "visible") {
-
-  }
-
+  document.getElementById('sub').onclick = tar.style.visibility = "hidden";
 }
