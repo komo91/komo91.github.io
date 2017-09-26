@@ -30,12 +30,13 @@ div {
   z-index: 1;
 }
 
-p {
+p#caution {
   margin:  0 auto;
   padding: 200px 200px;
   font-size: 38pt;
   color: #faa;
   text-align: center;
+  display: inline-block;
 }
 
 span#btn {
@@ -46,14 +47,7 @@ span#btn {
   color: #fff;
   border-style: none;
   text-align: center;
-}
-
-.caution {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%)translateX(-50%);
-  -webkit transform: translateY(-50%)translateX(-50%);
+  display: inline-block;
 }
 
 #result {
