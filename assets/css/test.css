@@ -41,9 +41,8 @@ p#caution {
 span#btn {
   font-size: 30pt;
   font-weight: bold;
-  padding: 10px 30px;
-  margin: 300px 300px;
-  background-color: #248;
+  padding: 50px 150px;
+  margin: 50% 0;
   color: #fff;
   border-style: none;
   text-align: center;
