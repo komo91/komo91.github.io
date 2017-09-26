@@ -317,4 +317,6 @@ function hoge() {
 
   tar.style.visibility = "visible";
 
+  tar.innerHTML = "hoge";
+
 }
