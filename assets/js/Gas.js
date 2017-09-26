@@ -304,5 +304,17 @@ function obj2NumberFix(obj,fix_deg) {
 
 function hoge() {
   var tar = document.getElementById('sub');
+
+  var a_height = Math.max(document.body.clientHeight,document.body.scrollHeight);
+  var b_height = Math.max(document.documentElement.scroollheight,document.documentElement.clientHeight);
+  var max_height = Math.max(a_height,b_height);
+  tar.style.height - max_height + 'px';
+
+  var a_width = Math.max(document.body.clientWidth,document.body.scrollWidth);
+  var b_width = Math.max(document.documentElement.scrollWidth,document.documentElement.clientWidth);
+  var max_width = Math.max(a_width,b_width);
+  tar.style.width = max_width + 'px';
+
   tar.style.visibility = "visible";
+
 }
