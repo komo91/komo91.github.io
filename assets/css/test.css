@@ -46,6 +46,7 @@ span#btn {
   background-color: #248;
   color: #fff;
   border-style: none;
+  text-align: center;
 }
 
 #result {
