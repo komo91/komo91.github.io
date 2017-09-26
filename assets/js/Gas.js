@@ -114,7 +114,8 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("z_test").innerHTML = z;
 
   if(x>=4.0) {
-    alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
+    hoge();
+    //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   }
 });
 
@@ -317,6 +318,8 @@ function hoge() {
 
   tar.style.visibility = "visible";
 
-  tar.innerHTML = "hoge";
+  if(tar.style.visibility == "visible") {
+
+  }
 
 }
