@@ -36,7 +36,6 @@ p#caution {
   font-size: 38pt;
   color: #faa;
   text-align: center;
-  display: inline-block;
 }
 
 span#btn {
@@ -47,7 +46,6 @@ span#btn {
   color: #fff;
   border-style: none;
   text-align: center;
-  display: inline-block;
 }
 
 #result {
