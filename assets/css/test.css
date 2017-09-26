@@ -31,11 +31,20 @@ div {
 }
 
 p {
-  margin: 50px 0 auto;
-  padding: 0 auto;
-  font-size: 30pt;
+  margin:  0 auto;
+  padding: 200px 0 auto;
+  font-size: 40pt;
   color: #faa;
   text-align: center;
+}
+
+span#btn {
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px 30px;
+  background-color: #248;
+  color: #fff;
+  border-style: none;
 }
 
 #result {
