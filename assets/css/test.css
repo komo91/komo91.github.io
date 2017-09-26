@@ -31,8 +31,8 @@ div {
 }
 
 p {
-  margin: 0 auto;
-  padding: 0 50px auto;
+  margin: 0 50px auto;
+  padding: 0 auto;
   font-size: 30pt;
   color: #faa;
   text-align: center;
