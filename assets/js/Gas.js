@@ -303,6 +303,6 @@ function obj2NumberFix(obj,fix_deg) {
 }
 
 function hoge() {
-  var tar = document.getElementById('Sub');
+  var tar = document.getElementById('sub');
   tar.style.visibility = "visible";
 }
