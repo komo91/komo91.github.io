@@ -325,7 +325,7 @@ function warning_view() {
 }
 
 function pushtest() {
-  ush.create('Hello world!', {
+  Push.create('Hello world!', {
         body: 'How\'s it hangin\'?',
         icon: 'assets/img/mountain_icon.png',
         link: '/#',
