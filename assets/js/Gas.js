@@ -116,7 +116,7 @@ window.addEventListener('devicemotion',function(e) {
   walk_log(x,y,z);
 
   //歩きスマホしてる時のみ表示させる
-  if(x>=0.9) {
+  if(x>=0.5 || y>=1.3 || z>=2.0) {
     warning_view();
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
