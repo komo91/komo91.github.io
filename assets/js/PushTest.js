@@ -279,6 +279,6 @@ function pushtest_hoge() {
     });
 }
 
-$(document).ready(function()) {
+$(document).ready(function() {
   $('#hoge_test').click(pushtest_hoge);
-}
+)};
