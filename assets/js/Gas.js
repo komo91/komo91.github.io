@@ -113,8 +113,9 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
 
-  if(x>=1.2) {
-    hoge();
+  //歩きスマホしてる時のみ表示させる
+  if(x>=0.9) {
+    warning_view();
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
     document.getElementById('sub').style.visibility = "hidden";
@@ -301,11 +302,13 @@ function browserCheck() {
   }
 }
 
+//加速度計算
 function obj2NumberFix(obj,fix_deg) {
   return Number(obj).toFixed(fix_deg);
 }
 
-function hoge() {
+//歩きスマホ警告
+function warning_view() {
   var tar = document.getElementById('sub');
 
   var a_height = Math.max(document.body.clientHeight,document.body.scrollHeight);
@@ -319,4 +322,20 @@ function hoge() {
   tar.style.width = max_width + 'px';
 
   tar.style.visibility = "visible";
+}
+
+function pushtest() {
+  Push.Permission.request();	//通知許可
+  Push.create(test,{	//通知情報
+    body: "詳しくはコチラ!",
+    icon: 'assets/img/mountain_icon.png',
+    timeout: 10000,
+    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+    onClick: function (){	//クリック時
+      console.log("Fired!");
+      window.open(url);
+      window.focus();	//windowsを最前列移動
+      this.close();	//通知を閉じる
+    },
+  });
 }
