@@ -122,7 +122,7 @@ if(navigator.geolocation) {
   //現在地測定成功の場合
   function successFunc( position ) {
     var data = position.coords;
-    
+
     lat = data.latitude;
     lng = data.longitude;
     alt = data.altitude;
@@ -130,18 +130,18 @@ if(navigator.geolocation) {
     accAlt = data.altitudeAccuracy;
     heading = data.heading;
     speed = data.speed;
-    
+
     //時間カウント
     ++syncerWatchPosition.count;
     var nowTime = ~~(new Date() / 1000);
-    
+
     //3秒後に表示変更
     if((syncerWatchPosition.lastTime + 3) > nowTime) {
       return false;
     }
-      
+
     syncerWatchPosition.lastTime = nowTime;
-      
+
     //document.getElementById('result1').innerHTML = '<dl><dt>現在地</dt><dd>' + lat + ',' + lng '</dd></dl>'
 
     //divにて結果表示
@@ -153,23 +153,23 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-    
+
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 18,
         center: myPosition,
       });
-      
+
       inputMarker();  //マーカー作成
-      
+
       syncerWatchPosition.marker = new google.maps.Marker({ //新規マーカー作成
         map: syncerWatchPosition.map,
         position: myPosition
       });
-      
+
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-    } 
+    }
     decision(); //目的地判定
   }
 
@@ -202,7 +202,7 @@ if(navigator.geolocation) {
 
 } else {
   var errorMessage = "御使いの端末は、GeoLocationAPIに対応していません"
-  
+
   alert(errorMessage);
 
   document.getElementById('result').innerHTML = errorMessage;
@@ -240,11 +240,11 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
       map: syncerWatchPosition.map,
       radius: CheckData[i]['radius']
     };
-    
+
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
-    
+
   }
 }
 
@@ -262,4 +262,23 @@ function PushTest(num) {	//通知機能
 			this.close();	//通知を閉じる
 		},
 	});
+}
+
+function pushtest_hoge() {
+  Push.create('Hello world!', {
+        body: 'How\'s it hangin\'?',
+        icon: 'assets/img/mountain_icon.png',
+        link: '/#',
+        timeout: 4000,
+        onClick: function () {
+            console.log("Fired!");
+            window.focus();
+            this.close();
+        },
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+    });
+}
+
+$(document).ready(function()) {
+  $('#hoge_test').click(pushtest_hoge);
 }
