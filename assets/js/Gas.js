@@ -325,17 +325,16 @@ function warning_view() {
 }
 
 function pushtest() {
-  Push.Permission.request();	//通知許可
-  Push.create('test',{	//通知情報
-    body: "詳しくはコチラ!",
-    icon: 'assets/img/mountain_icon.png',
-    timeout: 10000,
-    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-    onClick: function (){	//クリック時
-      console.log("Fired!");
-      window.open(url);
-      window.focus();	//windowsを最前列移動
-      this.close();	//通知を閉じる
-    },
-  });
+  ush.create('Hello world!', {
+        body: 'How\'s it hangin\'?',
+        icon: 'assets/img/mountain_icon.png',
+        link: '/#',
+        timeout: 4000,
+        onClick: function () {
+            console.log("Fired!");
+            window.focus();
+            this.close();
+        },
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+    });
 }
