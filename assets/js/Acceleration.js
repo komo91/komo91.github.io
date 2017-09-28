@@ -52,8 +52,8 @@ window.addEventListener("devicemotion",function(e){
 
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
-   print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
-   print_3('rx',r_a,'ry',r_b,'rz',r_c);
+   //print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
+   //print_3('rx',r_a,'ry',r_b,'rz',r_c);
 
     function print_3(id1,value1,id2,value2,id3,value3) {
       print_1(id1,value1);
