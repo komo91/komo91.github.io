@@ -65,8 +65,6 @@ window.addEventListener("devicemotion",function(e){
      var b_width = Math.max(document.documentElement.scrollWidth,document.documentElement.clientWidth);
      var max_width = Math.max(a_width,b_width);
      tar.style.width = max_width + 'px';
-
-     tar.style.visibility = "visible";
    }
 
    function walk_log(x,y,z) {
