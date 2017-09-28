@@ -121,7 +121,7 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("z_test").innerHTML = z;
 
   //歩きスマホしてる時のみ表示させる
-  if(x>=0.5 || y>=1.3 || z>=2.0) {
+  if(x>=0.2 || y>=1.0 || z>=2.0) {
     document.getElementById('sub').style.visibility = "visible"
     //warning_view();
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
