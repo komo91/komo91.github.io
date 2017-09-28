@@ -1,11 +1,3 @@
-//動的情報取得データ
-var syncerWatchPosition = {
-  count: 0,
-  lastTime: 0,
-  map: null,
-  marker: null,
-};
-
 window.addEventListener("devicemotion",function(e){
    //加速度
    var acc = e.acceleration;
