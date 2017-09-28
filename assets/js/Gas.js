@@ -115,7 +115,8 @@ window.addEventListener('devicemotion',function(e) {
 
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
-    warning_view();
+    document.getElementById('sub').style.visibility = "visible"
+    //warning_view();
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
     document.getElementById('sub').style.visibility = "hidden";
@@ -320,8 +321,6 @@ function warning_view() {
   var b_width = Math.max(document.documentElement.scrollWidth,document.documentElement.clientWidth);
   var max_width = Math.max(a_width,b_width);
   tar.style.width = max_width + 'px';
-
-  tar.style.visibility = "visible";
 }
 
 function pushtest() {
