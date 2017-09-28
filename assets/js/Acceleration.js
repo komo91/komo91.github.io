@@ -31,6 +31,7 @@ window.addEventListener("devicemotion",function(e){
      document.getElementById('result').style.visibility = "hidden";
    }
 
+   sleep(1000);
    walk_log(x,y,z);
 
    //表示
