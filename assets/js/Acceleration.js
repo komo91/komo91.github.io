@@ -5,13 +5,14 @@ window.addEventListener("devicemotion",function(e){
    var y = obj2NumberFix(acc.y,2);
    var z = obj2NumberFix(acc.z,2);
 
-   /*
+
    //傾き(重力加速度)
    var acc_g = e.accelerationIncludingGravity;
    var gx = obj2NumberFix(acc_g.x,2);
    var gy = obj2NumberFix(acc_g.y,2);
    var gz = obj2NumberFix(acc_g.z,2);
 
+   /*
    //回転値
    var rota_r = e.rotationRate;
    var r_a = obj2NumberFix(rota_r.alpha,2);
@@ -34,7 +35,7 @@ window.addEventListener("devicemotion",function(e){
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
    //sleep(2000);
-   walk_log(x,y,z);
+   walk_log(gx,gy,gz);
 
    mes = "送信完了!";
    //表示
