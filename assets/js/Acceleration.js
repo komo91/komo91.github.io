@@ -1,3 +1,11 @@
+//動的情報取得データ
+var syncerWatchPosition = {
+  count: 0,
+  lastTime: 0,
+  map: null,
+  marker: null,
+};
+
 window.addEventListener("devicemotion",function(e){
    //加速度
    var acc = e.acceleration;
@@ -5,6 +13,7 @@ window.addEventListener("devicemotion",function(e){
    var y = obj2NumberFix(acc.y,2);
    var z = obj2NumberFix(acc.z,2);
 
+   /*
    //傾き(重力加速度)
    var acc_g = e.accelerationIncludingGravity;
    var gx = obj2NumberFix(acc_g.x,2);
@@ -16,12 +25,22 @@ window.addEventListener("devicemotion",function(e){
    var r_a = obj2NumberFix(rota_r.alpha,2);
    var r_b = obj2NumberFix(rota_r.beta,2);
    var r_c = obj2NumberFix(rota_r.gamma,2);
+   */
+
+   //時間カウント
+   ++syncerWatchPosition.count;
+   var nowTime = ~~(new Date() / 1000);
+
+   //3秒後に表示変更
+   if((syncerWatchPosition.lastTime + 1) > nowTime) {
+     walk_log(x,y,z);
+   }
 
    function obj2NumberFix(obj,fix_deg) {
       return Number(obj).toFixed(fix_deg);
    }
 
-   walk_log(x,y,z);
+
 
    //歩きスマホしてる時のみ表示させる
    if(x>=0.5 || y>=1.3 || z>=2.0) {
