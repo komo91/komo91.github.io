@@ -33,11 +33,10 @@ window.addEventListener("devicemotion",function(e){
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
-   sleep(2000);
+   //sleep(2000);
    walk_log(x,y,z);
 
    mes = "送信完了!";
-   sleep(1000);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
    //print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
