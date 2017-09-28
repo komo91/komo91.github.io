@@ -27,22 +27,11 @@ window.addEventListener("devicemotion",function(e){
    var r_c = obj2NumberFix(rota_r.gamma,2);
    */
 
-   //時間カウント
-   ++syncerWatchPosition.count;
-   var nowTime = ~~(new Date() / 1000);
-
-   //3秒後に表示変更
-   if((syncerWatchPosition.lastTime + 1) > nowTime) {
-     walk_log(x,y,z);
-   }
-
-   syncerWatchPosition.lastTime = nowTime;
-
    function obj2NumberFix(obj,fix_deg) {
       return Number(obj).toFixed(fix_deg);
    }
 
-
+   walk_log(x,y,z);
 
    //歩きスマホしてる時のみ表示させる
    if(x>=0.5 || y>=1.3 || z>=2.0) {
