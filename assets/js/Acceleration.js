@@ -23,8 +23,6 @@ window.addEventListener("devicemotion",function(e){
       return Number(obj).toFixed(fix_deg);
    }
 
-   walk_log(x,y,z);
-
    //歩きスマホしてる時のみ表示させる
    if(x>=0.5 || y>=1.3 || z>=2.0) {
      warning_view();
@@ -32,6 +30,8 @@ window.addEventListener("devicemotion",function(e){
    } else {
      document.getElementById('result').style.visibility = "hidden";
    }
+
+   walk_log(x,y,z);
 
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
