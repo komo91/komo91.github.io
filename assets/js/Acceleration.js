@@ -79,7 +79,7 @@ window.addEventListener("devicemotion",function(e){
    }
 
    function sleep(wait_time) {
-     var start = new Data();
-     while(new Data() - start < wait_time);
+     var start = new Date();
+     while(new Date() - start < wait_time);
    }
 });
