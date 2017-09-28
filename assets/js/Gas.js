@@ -128,9 +128,6 @@ window.addEventListener('devicemotion',function(e) {
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
-
-  document.getElementById('sub').click(function {
-  });
 });
 
 /* ----- Map設定 ----- */
