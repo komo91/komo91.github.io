@@ -116,7 +116,7 @@ var CheckData = [ //位置情報配列
     message: "高尾599ミュージアムですよ"
   }
 ];
-
+/*
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -210,6 +210,7 @@ if(navigator.geolocation) {
 
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
+*/
 function decision() { //目的地判定
   for(var j = 1; j < CheckData.length; j++) {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
