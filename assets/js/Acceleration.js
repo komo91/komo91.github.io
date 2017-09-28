@@ -28,12 +28,16 @@ window.addEventListener("devicemotion",function(e){
      //warning_view();
      //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
    } else {
-     document.getElementById('result').style.visibility = "hidden";
+     //document.getElementById('result').style.visibility = "hidden";
    }
 
-   sleep(1000);
+   document.getElementById('result').innerHTML = "送信中...";
+
+   sleep(2000);
    walk_log(x,y,z);
 
+   document.getElmentById('result').innerHTML = "送信完了!";
+   sleep(1000);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
    //print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
@@ -72,5 +76,10 @@ window.addEventListener("devicemotion",function(e){
      script.src = base + '?x=' + x + '&y=' + y + '&z=' + z;
      document.body.appendChild(script);
      //console.log(script.src);
+   }
+
+   function sleep(wait_time) {
+     var start = new Data();
+     while(new Data() - start < wait_time);
    }
 });
