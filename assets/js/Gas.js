@@ -130,7 +130,7 @@ window.addEventListener('devicemotion',function(e) {
   }
 
   document.getElementById('sub').click(function {
-  })
+  });
 });
 
 /* ----- Map設定 ----- */
