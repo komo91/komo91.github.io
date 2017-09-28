@@ -66,6 +66,7 @@ if(navigator.geolocation) {
       });
 
       GasRequest('CheckData');  //spot情報要求
+      warning_view();
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
@@ -112,8 +113,6 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("x_test").innerHTML = x;
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
-
-  warning_view();
 
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
