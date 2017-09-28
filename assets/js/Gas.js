@@ -7,7 +7,7 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = false;
 
-var hoge = true;
+var view = true;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -69,9 +69,9 @@ if(navigator.geolocation) {
 
       GasRequest('CheckData');  //spot情報要求
 
-      if(hoge==true) {
+      if(view==true) {
         warning_view();
-        hoge = false;
+        view = false;
       }
 
     } else {
@@ -128,6 +128,9 @@ window.addEventListener('devicemotion',function(e) {
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
+
+  document.getElementById('sub').click(function {
+  })
 });
 
 /* ----- Map設定 ----- */
@@ -315,7 +318,7 @@ function obj2NumberFix(obj,fix_deg) {
   return Number(obj).toFixed(fix_deg);
 }
 
-//歩きスマホ警告
+//レイヤー作成
 function warning_view() {
   var tar = document.getElementById('sub');
 
