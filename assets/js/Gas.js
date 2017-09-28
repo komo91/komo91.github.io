@@ -113,6 +113,8 @@ window.addEventListener('devicemotion',function(e) {
   document.getElementById("y_test").innerHTML = y;
   document.getElementById("z_test").innerHTML = z;
 
+  warning_view();
+
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
     document.getElementById('sub').style.visibility = "visible"
