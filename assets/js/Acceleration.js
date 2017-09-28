@@ -36,6 +36,8 @@ window.addEventListener("devicemotion",function(e){
      walk_log(x,y,z);
    }
 
+   syncerWatchPosition.lastTime = nowTime;
+
    function obj2NumberFix(obj,fix_deg) {
       return Number(obj).toFixed(fix_deg);
    }
