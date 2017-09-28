@@ -7,6 +7,8 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = false;
 
+var hoge = true;
+
 //動的情報取得データ
 var syncerWatchPosition = {
   count: 0,
@@ -66,7 +68,11 @@ if(navigator.geolocation) {
       });
 
       GasRequest('CheckData');  //spot情報要求
-      warning_view();
+
+      if(hoge==true) {
+        warning_view();
+        hoge = false;
+      }
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
