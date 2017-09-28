@@ -1,7 +1,7 @@
-function pushtest_hoge() {
-  Push.create('Hello world!', {
+function demo() {
+    Push.create('Hello world!', {
         body: 'How\'s it hangin\'?',
-        icon: 'assets/img/mountain_icon.png',
+        icon: '',
         link: '/#',
         timeout: 4000,
         onClick: function () {
@@ -14,5 +14,5 @@ function pushtest_hoge() {
 }
 
 $(document).ready(function() {
-    $("#hoge_test").click(pushtest_hoge);
+    $("#demo_button").click(demo);
 });
