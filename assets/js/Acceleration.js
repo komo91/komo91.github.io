@@ -34,7 +34,7 @@ window.addEventListener("devicemotion",function(e){
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
-   sleep(2000);
+   sleep(1000);
    walk_log(x,y,z);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
