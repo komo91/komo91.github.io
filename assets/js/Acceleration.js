@@ -28,7 +28,7 @@ window.addEventListener("devicemotion",function(e){
    }
 
    acceleration_decision(x,y,z);
-   //sleep(1000);
+   sleep(1000);
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
@@ -90,6 +90,6 @@ function acceleration_decision(x,y,z) {
     document.getElementById('sub').style.visibility = "visible";
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
-    document.getElementById('result').style.visibility = "hidden";
+    document.getElementById('sub').style.visibility = "hidden";
   }
 }
