@@ -71,7 +71,6 @@ window.addEventListener("devicemotion",function(e){
      var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
      script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&gx=' + gx + '&gy=' + gy + '&gz=' + gz;
      document.body.appendChild(script);
-     //console.log(script.src);
    }
 
    function receiveJson(json) {
