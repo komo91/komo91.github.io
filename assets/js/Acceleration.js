@@ -31,7 +31,6 @@ window.addEventListener("devicemotion",function(e){
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
-   sleep(1000);
    walk_log(x,y,z);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
@@ -88,6 +87,7 @@ function acceleration_decision(x,y,z) {
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
     document.getElementById('sub').style.visibility = "visible";
+    sleep(1000);
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
     document.getElementById('result').style.visibility = "hidden";
