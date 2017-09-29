@@ -35,7 +35,7 @@ window.addEventListener("devicemotion",function(e){
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
    sleep(2000);
-   walk_log(x,y,z,gx,gy,gz);
+   walk_log(x,y,z);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
    print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
@@ -66,10 +66,10 @@ window.addEventListener("devicemotion",function(e){
      tar.style.width = max_width + 'px';
    }
 
-   function walk_log(x,y,z,gx,gy,gz) {
+   function walk_log(x,y,z) {
      var script = document.createElement('script');
      var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
-     script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&gx=' + gx + '&gy=' + gy + '&gz=' + gz;
+     script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z;
      document.body.appendChild(script);
    }
 
