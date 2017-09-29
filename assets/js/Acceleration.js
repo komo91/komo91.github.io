@@ -71,7 +71,7 @@ function warning_view() {
 function walk_log(x,y,z,check) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
-  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + EncodeURI(check);
+  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + encodeURI(check);
   document.body.appendChild(script);
 }
 
