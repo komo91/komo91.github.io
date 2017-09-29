@@ -27,12 +27,12 @@ window.addEventListener("devicemotion",function(e){
      view = false;
    }
 
-   acceleration_decision(x,y,z);
+   var check = acceleration_decision(x,y,z);
    sleep(1000);
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
-   walk_log(x,y,z);
+   walk_log(x,y,z,check);
    //表示
    print_3('acc-x',x,'acc-y',y,'acc-z',z);
    print_3('acc-gx',gx,'acc-gy',gy,'acc-gz',gz);
@@ -68,10 +68,10 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
-function walk_log(x,y,z) {
+function walk_log(x,y,z,check) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
-  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z;
+  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + check;
   document.body.appendChild(script);
 }
 
@@ -88,8 +88,10 @@ function acceleration_decision(x,y,z) {
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
     document.getElementById('sub').style.visibility = "visible";
+    return 'True';
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
     document.getElementById('sub').style.visibility = "hidden";
+    return 'False';
   }
 }
