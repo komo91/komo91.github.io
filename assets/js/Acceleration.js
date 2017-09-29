@@ -27,7 +27,7 @@ window.addEventListener("devicemotion",function(e){
      view = false;
    }
 
-   var check = acceleration_decision(x,y,z);
+   acceleration_decision(x,y,z);
    sleep(1000);
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
@@ -68,7 +68,7 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
-function walk_log(x,y,z,check) {
+function walk_log(x,y,z) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
   script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + check;
