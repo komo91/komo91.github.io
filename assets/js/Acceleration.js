@@ -28,7 +28,7 @@ window.addEventListener("devicemotion",function(e){
    }
 
    acceleration_decision(x,y,z);
-   sleep(1000);
+   //sleep(1000);
 
    var mes = document.getElementById('result').innerHTML = "送信中...";
 
