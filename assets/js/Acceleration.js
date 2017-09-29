@@ -71,7 +71,7 @@ function warning_view() {
 function walk_log(x,y,z,check) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbzZ3mZG_xRCN9OaOYIViGn9PQMyHvbgS6PdAtENGAEWVRzZ2LE/exec';
-  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + check;
+  script.src = base + '?callback=receiveJson&x=' + x + '&y=' + y + '&z=' + z + '&check=' + EncodeURI(check);
   document.body.appendChild(script);
 }
 
@@ -88,10 +88,10 @@ function acceleration_decision(x,y,z) {
   //歩きスマホしてる時のみ表示させる
   if(x>=0.5 || y>=1.3 || z>=2.0) {
     document.getElementById('sub').style.visibility = "visible";
-    return 'True';
+    return 'Ok!';
     //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
   } else {
     document.getElementById('sub').style.visibility = "hidden";
-    return 'False';
+    return '(判定)ダメです';
   }
 }
