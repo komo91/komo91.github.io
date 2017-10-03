@@ -32,4 +32,16 @@ function onDeviceMotion(e) {
   }
   console.log(step + "歩");
   document.getElementById('meter').innerHTML = step + "歩";
+  GAS_log(ag,acc,hoge,step);
+}
+
+function GAS_log() {
+  var script = document.createElement('script');
+  var base = 'https://script.google.com/macros/s/AKfycbywGjrfpRlSSfyyePUUDrJl_SeQIESZCw0ZjaHi0eFAJNdsdDs/exec';
+  script.src = base + '?callback=receiveJson&ag=' + ag + '&acc=' + acc + '&isStep=' + hoge + '&step' + step;
+  document.body.appendChild(script);
+}
+
+function receiveJson(json) {
+  console.log(json);
 }
