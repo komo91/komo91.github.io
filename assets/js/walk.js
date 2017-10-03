@@ -35,7 +35,7 @@ function onDeviceMotion(e) {
   GAS_log(ag,acc,hoge,step);
 }
 
-function GAS_log() {
+function GAS_log(ag,acc,hoge,step) {
   var script = document.createElement('script');
   var base = 'https://script.google.com/macros/s/AKfycbywGjrfpRlSSfyyePUUDrJl_SeQIESZCw0ZjaHi0eFAJNdsdDs/exec';
   script.src = base + '?callback=receiveJson&ag=' + ag + '&acc=' + acc + '&isStep=' + hoge + '&step' + step;
