@@ -13,7 +13,7 @@ function initalize() {
 
 window.addEventListener('devicemotion',onDeviceMotion);
 
-function onDeviceMotion() {
+function onDeviceMotion(e) {
   e.preventDefault();
 
   var ag = e.accelerationIncludingGravity;
