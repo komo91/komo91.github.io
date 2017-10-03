@@ -5,9 +5,13 @@ var step = 0;
 
 var hoge = false;
 
+/*
 function initalize() {
   window.addEventListener('devicemotion',onDeviceMotion);
 }
+*/
+
+window.addEventListener('devicemotion',onDeviceMotion);
 
 function onDeviceMotion() {
   e.preventDefalut();
