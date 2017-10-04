@@ -9,6 +9,11 @@ var lat, //緯度,
 
 var view = true;
 
+var GRAVITY_min = 9.8;
+var GRAVITY_max = 12.0;
+var isStep = false;
+var step = 0;
+
 //動的情報取得データ
 var syncerWatchPosition = {
   count: 0,
@@ -110,32 +115,12 @@ if(navigator.geolocation) {
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
 //加速度処理
-window.addEventListener('devicemotion',function(e) {
-  var acc = e.acceleration;
-  var x = obj2NumberFix(acc.x, 5);
-  var y = obj2NumberFix(acc.y, 5);
-  var z = obj2NumberFix(acc.z, 5);
-
-  document.getElementById("x_test").innerHTML = x;
-  document.getElementById("y_test").innerHTML = y;
-  document.getElementById("z_test").innerHTML = z;
-
-  //歩きスマホしてる時のみ表示させる
-  if(x>=0.2 || y>=1.0 || (z>=0.3&&z<=1.1)) {
-    document.getElementById('sub').style.visibility = "visible";
-    sleep(1000);
-    //warning_view();
-    //alert('歩きスマホダメゼッタイ！');  //レイヤ透明度を低く調整したい
-  } else {
-    document.getElementById('sub').style.visibility = "hidden";
-  }
-});
+window.addEventListener('devicemotion',onDeviceMotion);
 
 /* ----- Map設定 ----- */
 
 //マーカー・目的地範囲設定・作成
 function inputMarker() {
-  //console.log(spotData);
   for(var i = 0; i < spotData.length; i++) {
     var MarkerLatLng = new google.maps.LatLng(  //緯度経度データ作成
       {
@@ -168,7 +153,6 @@ function decision() {
       LogPost(spotData[j][0]);
       alert(spotData[j][4]);
       CheckPoint = true;
-      //console.log(CheckPoint);
       navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -224,7 +208,12 @@ function GasRequest(num) {
 function receiveJson(json) {
   var text;
   if(json.key=='spot') {
-    spot_input(json);
+    spotData = new Array();
+    for(var i = 0; i < json.response.length; i++) {
+      spotData.push(json.response[i]);
+    }
+    inputMarker();
+    decision();
   }
   //取得情報反映
   for(var i = 0; i < spotData.length; i++) {
@@ -235,11 +224,11 @@ function receiveJson(json) {
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
-/*
+      /*
       var b = document.createElement('img');
       b.src = json.response[2];
       document.getElementById('gas_img').appendChild(b);
-*/
+      */
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
     }
@@ -248,7 +237,7 @@ function receiveJson(json) {
     document.getElementById('gas_result').innerHTML = json.error;
   }
 }
-
+/*
 //位置情報取得・設定
 function spot_input(json) {
   spotData = new Array();
@@ -259,6 +248,7 @@ function spot_input(json) {
   decision();
   return spotData;
 }
+*/
 
 /* ----- Log記録 ----- */
 
@@ -331,22 +321,32 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
-function pushtest() {
-  Push.create('Hello world!', {
-        body: 'How\'s it hangin\'?',
-        icon: 'assets/img/mountain_icon.png',
-        link: '/#',
-        timeout: 4000,
-        onClick: function () {
-            console.log("Fired!");
-            window.focus();
-            this.close();
-        },
-        vibrate: [200, 100, 200, 100, 200, 100, 200]
-    });
-}
+//歩数測定・歩きスマホ判定
+function onDeviceMotion(e) {
+  e.preventDefault();
+  var a_g = e.accelerationIncludingGravity;
+  var acc = Math.sqrt(a_g.x*a_g.x + a_g.y*a_g.y + a_g.z*a_g.z);
+  var hoge = step;
 
-function sleep(wait_time) {
-  var start = new Date();
-  while(new Date() - start < wait_time);
+  //
+  if(isStep) {
+    //指定値より低い場合，歩数判定(+1)
+    if(acc < GRAVITY_min) {
+      step++;
+      isStep = false;
+    }
+  } else {
+    //指定値より大きい場合，歩行判定
+    if(acc > GRAVITY_max) {
+      isStep = true;
+    }
+  }
+
+  //歩数増えたら警告文表示
+  if(hoge < step) {
+    document.getElementById('sub').style.visibility = "visible";
+  } else {
+    document.getElementById('sub').style.visibility = "hidden";
+  }
+
 }
