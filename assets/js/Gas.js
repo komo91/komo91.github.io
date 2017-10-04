@@ -7,8 +7,6 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = false;
 
-var view = true;
-
 var GRAVITY_min = 9.8;
 var GRAVITY_max = 12.0;
 var isStep = false;
@@ -321,33 +319,36 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
+function sleep(wait_time) {
+  var start = new Date();
+  while(new Date() - start < wait_time);
+}
+
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
-  var a_g = e.accelerationIncludingGravity;
-  var acc = Math.sqrt(a_g.x*a_g.x + a_g.y*a_g.y + a_g.z*a_g.z);
+  var ag = e.accelerationIncludingGravity;
+  var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
   var hoge = step;
 
-  //
   if(isStep) {
-    //指定値より低い場合，歩数判定(+1)
-    if(acc < GRAVITY_min) {
+    if(acc < GRAVITY_MIN) {
       step++;
-      isStep = false;
-      document.getElementById('hoge').innerHTML = step;
+      hoge = false;
     }
   } else {
-    //指定値より大きい場合，歩行判定
-    if(acc > GRAVITY_max) {
-      isStep = true;
+    if(acc > GRAVITY_MAX) {
+      hoge = true;
     }
   }
+  console.log(step + "歩");
+  document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩数増えたら警告文表示
   if(hoge < step) {
     document.getElementById('sub').style.visibility = "visible";
+    sleep(1000);
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
-
 }
