@@ -7,8 +7,8 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = false;
 
-var GRAVITY_min = 9.8;
-var GRAVITY_max = 12.0;
+var GRAVITY_MIN = 9.8;
+var GRAVITY_MAX = 12.0;
 var isStep = false;
 var step = 0;
 
