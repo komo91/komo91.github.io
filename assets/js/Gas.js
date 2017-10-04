@@ -334,11 +334,11 @@ function onDeviceMotion(e) {
   if(isStep) {
     if(acc < GRAVITY_MIN) {
       step++;
-      hoge = false;
+      isStep = false;
     }
   } else {
     if(acc > GRAVITY_MAX) {
-      hoge = true;
+      isStep = true;
     }
   }
   console.log(step + "歩");
@@ -347,7 +347,7 @@ function onDeviceMotion(e) {
   //歩数増えたら警告文表示
   if(hoge < step) {
     document.getElementById('sub').style.visibility = "visible";
-    sleep(1000);
+    sleep(3000);
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
