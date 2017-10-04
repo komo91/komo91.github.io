@@ -345,9 +345,8 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩数増えたら警告文表示
-  if(hoge < step) {
+  if(isStep) {
     document.getElementById('sub').style.visibility = "visible";
-    sleep(3000);
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
