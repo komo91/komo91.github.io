@@ -334,7 +334,7 @@ function onDeviceMotion(e) {
     if(acc < GRAVITY_min) {
       step++;
       isStep = false;
-      document.getElemenetById('hoge').innerHTML = step;
+      document.getElementById('hoge').innerHTML = step;
     }
   } else {
     //指定値より大きい場合，歩行判定
