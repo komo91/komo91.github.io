@@ -349,10 +349,10 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩数増えたら警告文表示
-  if(isStep && Time_last + 3 < isTime) {
+  if(isStep) {
     document.getElementById('sub').style.visibility = "visible";
-    Time_last = isTime;
   } else {
+    sleep(1000);
     document.getElementById('sub').style.visibility = "hidden";
   }
 }
