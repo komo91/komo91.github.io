@@ -11,6 +11,8 @@ var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
 var isStep = false;
 var step = 0;
+var Time =
+var Time_last = 0;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -331,6 +333,9 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
   var hoge = step;
 
+  var isTime = ~~(new Date() / 1000);
+
+
   if(isStep) {
     if(acc < GRAVITY_MIN) {
       step++;
@@ -345,8 +350,9 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩数増えたら警告文表示
-  if(isStep) {
+  if(isStep && Time_last + 3 < isTime) {
     document.getElementById('sub').style.visibility = "visible";
+    Time_last = isTime;
   } else {
     document.getElementById('sub').style.visibility = "hidden";
   }
