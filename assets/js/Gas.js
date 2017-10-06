@@ -356,5 +356,3 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "hidden";
   }
 }
-
-function Time_count
