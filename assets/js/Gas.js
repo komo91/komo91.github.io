@@ -339,10 +339,12 @@ function onDeviceMotion(e) {
     if(acc < GRAVITY_MIN) {
       step++;
       isStep = false;
+      document.getElementById('sub').style.visibility = "visible";
     }
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
+      Time_last = isiTime;
     }
   }
   console.log(step + "歩");
@@ -350,9 +352,9 @@ function onDeviceMotion(e) {
 
   //歩数増えたら警告文表示
   if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
-  } else {
-    sleep(1000);
+  } else if(!isStep && isTime > Time_last+1){
     document.getElementById('sub').style.visibility = "hidden";
   }
 }
+
+function Time_count
