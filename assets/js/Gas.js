@@ -336,23 +336,18 @@ function onDeviceMotion(e) {
 
 
   if(isStep) {
+    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
+    } else {
       isStep = false;
-      document.getElementById('sub').style.visibility = "visible";
+      document.getElementById('sub').style.visibility = "hidden";
     }
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
-      Time_last = isiTime;
     }
   }
   console.log(step + "歩");
   document.getElementById('hoge').innerHTML = step + "歩";
-
-  //歩数増えたら警告文表示
-  if(isStep) {
-  } else if(!isStep && isTime > Time_last+1){
-    document.getElementById('sub').style.visibility = "hidden";
-  }
 }
