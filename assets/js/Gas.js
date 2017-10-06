@@ -11,7 +11,6 @@ var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
 var isStep = false;
 var step = 0;
-var Time =
 var Time_last = 0;
 
 //動的情報取得データ
