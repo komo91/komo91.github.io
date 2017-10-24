@@ -350,6 +350,11 @@ function view_hoge() {
 }
 
 function exhoge() {
-  document.getElementById('sub').style.visibility = "hidden";
-  clearTimeout(timerId);
+  if(isStep) {
+    view_hoge();
+  } else {
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+  }
+
 }
