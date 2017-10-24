@@ -42,6 +42,7 @@ if(navigator.geolocation) {
     //時間カウント
     ++syncerWatchPosition.count;
     var nowTime = ~~(new Date() / 1000);
+    console.log(nowTime);
 
     //3秒後に表示変更
     if((syncerWatchPosition.lastTime + 3) > nowTime) {
