@@ -5,7 +5,7 @@ var lat, //緯度,
     watchId,  //
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
-    CheckPoint = false, //
+    CheckPoint = [], //
     spotData, //GASよりspot情報取得
     sub_view = true;
 
