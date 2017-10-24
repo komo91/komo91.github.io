@@ -2,16 +2,18 @@ var lat, //緯度,
     lng, //経度
     accLatlng, //緯度・経度の精度
     myPosition,  //現在地地点
-    watchId,
+    watchId,  //
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
-    CheckPoint = false;
+    CheckPoint = false, //
+    spotData, //GASよりspot情報取得
+    sub_view = true;
 
 var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
-var isStep = false;
-var step = 0;
-var Time_last = 0;
+var isStep = false,
+    step = 0,
+    Time_last = 0;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -27,7 +29,6 @@ var CheckData =
     lat: lat,
     lng: lng
   };
-var spotData;
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -73,14 +74,15 @@ if(navigator.geolocation) {
 
       GasRequest('CheckData');  //spot情報要求
 
-      if(view==true) {
+      if(sub_view==true) {
         warning_view();
-        view = false;
+        sub_view = false;
       }
 
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       LogPost(myPosition);
+      decision();
     }
   }
 
@@ -137,6 +139,8 @@ function inputMarker() {
       radius: spotData[i][3]
     };
 
+    CheckPoint[i] = false;
+
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
@@ -147,11 +151,11 @@ function decision() {
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius > distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
+    if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った場合
       GasRequest(spotData[j][0]);
       LogPost(spotData[j][0]);
       alert(spotData[j][4]);
-      CheckPoint = true;
+      CheckPoint[j] = true;
       navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -236,18 +240,6 @@ function receiveJson(json) {
     document.getElementById('gas_result').innerHTML = json.error;
   }
 }
-/*
-//位置情報取得・設定
-function spot_input(json) {
-  spotData = new Array();
-  for(var i = 0; i < json.response.length; i++) {
-    spotData.push(json.response[i]);
-  }
-  inputMarker();
-  decision();
-  return spotData;
-}
-*/
 
 /* ----- Log記録 ----- */
 
