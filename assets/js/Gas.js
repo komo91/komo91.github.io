@@ -82,7 +82,6 @@ if(navigator.geolocation) {
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       LogPost(myPosition);
-      decision();
     }
   }
 
