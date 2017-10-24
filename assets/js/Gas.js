@@ -349,7 +349,7 @@ function exhoge() {
   } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
-    exit;
+    break;
 
   }
 
