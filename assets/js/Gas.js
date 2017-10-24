@@ -14,6 +14,7 @@ var GRAVITY_MAX = 12.0;
 var isStep = false,
     step = 0,
     Time_last = 0;
+var timeId;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -345,7 +346,7 @@ function onDeviceMotion(e) {
   //歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
-  timerId() = setTimeout(exhoge , 1000);
+  timerId = setTimeout(exhoge , 1000);
 }
 
 function exhoge() {
