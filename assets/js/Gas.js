@@ -341,7 +341,7 @@ function onDeviceMotion(e) {
   }
   //console.log(step + "歩");
   document.getElementById('hoge').innerHTML = step + "歩";
-
+}
   //歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
