@@ -322,7 +322,7 @@ function onDeviceMotion(e) {
   e.preventDefault();
   var ag = e.accelerationIncludingGravity;
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
-  var hoge = step;
+  var step = 0;
 
   var isTime = ~~(new Date() / 1000);
 
@@ -338,9 +338,12 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  console.log(step + "歩");
+  //console.log(step + "歩");
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩行状態ではないかつ歩行停止1秒後
-  if(!isStep)  document.getElementById('sub').style.visibility = "hidden";
+  if(!isStep && (hogeTime + 3) > isTime) {
+    document.getElementById('sub').style.visibility = "hidden";
+  }
+  hogeTime = isTime;
 }
