@@ -342,8 +342,17 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩行状態ではないかつ歩行停止1秒後
-  if(!isStep && (hogeTime + 3) > isTime) {
-    document.getElementById('sub').style.visibility = "hidden";
+  if(!isStep) {
+    view_hoge();
   }
-  hogeTime = isTime;
+}
+
+function view_hoge() {
+  document.getElementById('sub').style.visibility = "visible";
+  timerId() = setTimeout(exhoge , 1000);
+}
+
+function exhoge() {
+  document.getElementById('sub').style.visibility = "hidden";
+  clearTimeout(timerId);
 }
