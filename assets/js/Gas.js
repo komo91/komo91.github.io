@@ -331,6 +331,7 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
+      view_hoge();
       isStep = false;
     }
   } else {
@@ -342,11 +343,6 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 
   //歩行状態ではないかつ歩行停止1秒後
-  if(!isStep) {
-    view_hoge();
-  }
-}
-
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
   timerId() = setTimeout(exhoge , 1000);
