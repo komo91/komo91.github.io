@@ -174,9 +174,6 @@ function Speech(text) {
     ssu.text = text;
     ssu.lang = 'ja-JP';
     speechSynthesis.speak(ssu); //
-    //https://www.mitsue.co.jp/knowledge/blog/frontend/201611/04_1421.html
-    //http://blog.e-riverstyle.com/2015/01/web-speech-apitts.html
-
   };
 }
 
@@ -325,13 +322,10 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
   var step = 0;
 
-  var isTime = ~~(new Date() / 1000);
-
-
   if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
+      document.getElementById('hoge').innerHTML = step + "歩";
       view_hoge();
       isStep = false;
     }
@@ -341,7 +335,7 @@ function onDeviceMotion(e) {
     }
   }
   //console.log(step + "歩");
-  document.getElementById('hoge').innerHTML = step + "歩";
+  //document.getElementById('hoge').innerHTML = step + "歩";
 }
   //歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
