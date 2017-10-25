@@ -340,16 +340,5 @@ function onDeviceMotion(e) {
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
   timerId = setTimeout(exhoge , 1000);
-}
-
-function exhoge() {
-  if(isStep) {
-    view_hoge();
-  } else {
-    document.getElementById('sub').style.visibility = "hidden";
-    clearTimeout(timerId);
-    break;
-
-  }
-
+  document.getElementById('sub').style.visibility = "hidden";
 }
