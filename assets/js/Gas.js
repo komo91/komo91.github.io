@@ -314,6 +314,7 @@ function sleep(wait_time) {
   while(new Date() - start < wait_time);
 }
 
+/*
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -340,5 +341,16 @@ function onDeviceMotion(e) {
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
   timerId = setTimeout(exhoge , 1000);
-  document.getElementById('sub').style.visibility = "hidden";
 }
+
+function exhoge() {
+  if(isStep) {
+  } else {
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+    break;
+
+  }
+
+}
+*/
