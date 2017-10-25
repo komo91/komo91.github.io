@@ -320,12 +320,15 @@ function onDeviceMotion(e) {
   e.preventDefault();
   var ag = e.accelerationIncludingGravity;
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
-  var step = 0;
+  var hoge = step;
+
+  var isTime = ~~(new Date() / 1000);
+
 
   if(isStep) {
+    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      view_hoge();
       isStep = false;
     }
   } else {
@@ -333,7 +336,11 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
+  console.log(step + "歩");
   document.getElementById('hoge').innerHTML = step + "歩";
+
+  //歩行状態ではないかつ歩行停止1秒後
+  if(!isStep)  document.getElementById('sub').style.visibility = "hidden";
 }
 /*
   //歩行状態ではないかつ歩行停止1秒後
@@ -348,8 +355,6 @@ function exhoge() {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
     break;
-
   }
-
 }
 */
