@@ -31,6 +31,9 @@ var CheckData =
     lng: lng
   };
 
+//加速度処理
+window.addEventListener('devicemotion',onDeviceMotion);
+
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -114,9 +117,6 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
-
-//加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
 
 /* ----- Map設定 ----- */
 
