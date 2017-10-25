@@ -31,6 +31,9 @@ var CheckData =
     lng: lng
   };
 
+  //加速度処理
+  window.addEventListener('devicemotion',onDeviceMotion);
+
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -115,8 +118,7 @@ if(navigator.geolocation) {
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
-//加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+
 
 /* ----- Map設定 ----- */
 
@@ -309,18 +311,25 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
+function sleep(wait_time) {
+  var start = new Date();
+  while(new Date() - start < wait_time);
+}
+
+
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
   var ag = e.accelerationIncludingGravity;
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
-  var step = 0;
+  var hoge = step;
+
+  var isTime = ~~(new Date() / 1000);
+
 
   if(isStep) {
     if(acc < GRAVITY_MIN) {
       step++;
-      document.getElementById('hoge').innerHTML = step + "歩";
-      view_hoge();
       isStep = false;
     }
   } else {
@@ -328,10 +337,11 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  //console.log(step + "歩");
-  //document.getElementById('hoge').innerHTML = step + "歩";
+  console.log(step + "歩");
+  document.getElementById('hoge').innerHTML = step + "歩";
 }
-  //歩行状態ではないかつ歩行停止1秒後
+
+//歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
   timerId = setTimeout(exhoge , 1000);
@@ -339,11 +349,9 @@ function view_hoge() {
 
 function exhoge() {
   if(isStep) {
-    view_hoge();
   } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
     break;
-
   }
 }
