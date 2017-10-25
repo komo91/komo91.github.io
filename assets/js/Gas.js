@@ -32,7 +32,7 @@ var CheckData =
   };
 
 //加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -309,6 +309,7 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
+/*
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -329,3 +330,4 @@ function onDeviceMotion(e) {
 }
 
 //歩行状態ではないかつ歩行停止1秒後
+*/
