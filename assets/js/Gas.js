@@ -31,9 +31,6 @@ var CheckData =
     lng: lng
   };
 
-//加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
-
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -117,6 +114,9 @@ if(navigator.geolocation) {
   document.getElementById('result').innerHTML = errorMessage;
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
+
+//加速度処理
+window.addEventListener('devicemotion',onDeviceMotion);
 
 /* ----- Map設定 ----- */
 
@@ -322,7 +322,7 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
-    //document.getElementById('sub').style.visibility = "visible";
+    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
       isStep = false;
@@ -331,7 +331,7 @@ function onDeviceMotion(e) {
     if(acc > GRAVITY_MAX) {
       isStep = true;
     }
-    //document.getElementById('sub').style.visibility = "hidden";
+    document.getElementById('sub').style.visibility = "hidden";
   }
   document.getElementById('hoge').innerHTML = step + "歩";
 }
