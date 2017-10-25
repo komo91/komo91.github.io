@@ -314,7 +314,7 @@ function sleep(wait_time) {
   while(new Date() - start < wait_time);
 }
 
-/*
+
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -325,7 +325,6 @@ function onDeviceMotion(e) {
   if(isStep) {
     if(acc < GRAVITY_MIN) {
       step++;
-      document.getElementById('hoge').innerHTML = step + "歩";
       view_hoge();
       isStep = false;
     }
@@ -334,9 +333,9 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  //console.log(step + "歩");
-  //document.getElementById('hoge').innerHTML = step + "歩";
+  document.getElementById('hoge').innerHTML = step + "歩";
 }
+/*
   //歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
