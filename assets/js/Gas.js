@@ -31,9 +31,6 @@ var CheckData =
     lng: lng
   };
 
-  //加速度処理
-  window.addEventListener('devicemotion',onDeviceMotion);
-
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -118,7 +115,8 @@ if(navigator.geolocation) {
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
-
+//加速度処理
+window.addEventListener('devicemotion',onDeviceMotion);
 
 /* ----- Map設定 ----- */
 
@@ -331,6 +329,7 @@ function onDeviceMotion(e) {
     if(acc < GRAVITY_MIN) {
       step++;
       isStep = false;
+      view_hoge();
     }
   } else {
     if(acc > GRAVITY_MAX) {
