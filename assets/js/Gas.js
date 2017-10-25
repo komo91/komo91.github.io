@@ -309,12 +309,6 @@ function warning_view() {
   tar.style.width = max_width + 'px';
 }
 
-function sleep(wait_time) {
-  var start = new Date();
-  while(new Date() - start < wait_time);
-}
-
-
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -322,7 +316,6 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
       isStep = false;
@@ -331,7 +324,6 @@ function onDeviceMotion(e) {
     if(acc > GRAVITY_MAX) {
       isStep = true;
     }
-    document.getElementById('sub').style.visibility = "hidden";
   }
   document.getElementById('hoge').innerHTML = step + "歩";
 }
