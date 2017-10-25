@@ -322,7 +322,7 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
+    //document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
       isStep = false;
@@ -331,7 +331,7 @@ function onDeviceMotion(e) {
     if(acc > GRAVITY_MAX) {
       isStep = true;
     }
-    document.getElementById('sub').style.visibility = "hidden";
+    //document.getElementById('sub').style.visibility = "hidden";
   }
   document.getElementById('hoge').innerHTML = step + "歩";
 }
