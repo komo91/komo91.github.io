@@ -303,29 +303,19 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
+    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      view_hoge();
-      isStep = false;
+      //timerId = setTimeout(1000);
     }
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
+    } else {
+      isStep = false;
     }
   }
-  console.log(step + "歩");
   document.getElementById('hoge').innerHTML = step + "歩";
 }
 
 //歩行状態ではないかつ歩行停止1秒後
-function view_hoge() {
-  document.getElementById('sub').style.visibility = "visible";
-  timerId = setTimeout(exhoge,1000);
-}
-function exhoge() {
-  if(!isStep) {
-    document.getElementById('sub').style.visibility = "hidden";
-    clearTimeout(timerId);
-    break;
-  }
-}
