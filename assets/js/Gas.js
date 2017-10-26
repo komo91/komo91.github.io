@@ -31,7 +31,7 @@ var CheckData =
   };
 
 //加速度処理
-//window.addEventListener('devicemotion',onDeviceMotion);
+window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
