@@ -29,8 +29,6 @@ var CheckData =
     lat: lat,
     lng: lng
   };
-var count = 0;
-var count2 = 0;
 
 //加速度処理
 //window.addEventListener('devicemotion',onDeviceMotion);
