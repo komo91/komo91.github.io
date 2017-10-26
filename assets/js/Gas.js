@@ -323,7 +323,9 @@ function view_hoge() {
   timerId = setTimeout(exhoge,1000);
 }
 function exhoge() {
-  document.getElementById('sub').style.visibility = "hidden";
-  clearTimeout(timerId);
-  break;
+  if(!isStep) {
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+    break;
+  }
 }
