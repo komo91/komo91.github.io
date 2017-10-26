@@ -2,7 +2,7 @@ var lat, //緯度,
     lng, //経度
     accLatlng, //緯度・経度の精度
     myPosition,  //現在地地点
-    watchId,
+    watchId,  //
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
     CheckPoint = [];  //到達判定
@@ -10,9 +10,10 @@ var lat, //緯度,
 //加速度判定
 var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
-var isStep = false;
-var step = 0;
-var Time_last = 0;
+var isStep = false,
+    step = 0,
+    Time_last = 0;
+var timeId;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -28,7 +29,11 @@ var CheckData =
     lat: lat,
     lng: lng
   };
-var spotData;
+var count = 0;
+var count2 = 0;
+
+//加速度処理
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -48,6 +53,8 @@ if(navigator.geolocation) {
       return false;
     }
     syncerWatchPosition.lastTime = nowTime;
+    document.getElementById('count').innerHTML = count;
+    count++;
 
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
@@ -108,8 +115,7 @@ if(navigator.geolocation) {
 }
 watchId = navigator.geolocation.watchPosition( successFunc, errorFunc, optionObj );
 
-//加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+
 
 /* ----- Map設定 ----- */
 
