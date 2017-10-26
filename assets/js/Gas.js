@@ -308,11 +308,10 @@ function onDeviceMotion(e) {
       step++;
       //timerId = setTimeout(1000);
     }
+    isStep = false;
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
-    } else {
-      isStep = false;
     }
   }
   document.getElementById('hoge').innerHTML = step + "歩";
