@@ -31,7 +31,7 @@ var CheckData =
   };
 
 //加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -173,6 +173,7 @@ function Speech(text) {
 //通知機能
 function PushTest(num,url) {
   Push.Permission.request();	//通知許可
+  document.getElementById('push').innerHTML = "Push!";
   Push.create(spotData[num][4],{	//通知情報
     body: "詳しくはコチラ!",
     icon: 'assets/img/mountain_icon.png',
