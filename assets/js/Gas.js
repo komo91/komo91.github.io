@@ -220,6 +220,7 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       //$(document).ready(PushTest(i,json.response[1]));
+    }
   }
   if(!json.response){
     document.getElementById('gas_result').innerHTML = json.error;
