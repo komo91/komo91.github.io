@@ -221,7 +221,7 @@ function receiveJson(json) {
       Speech(json.response[0]);
       $(document).ready(function() {
         PushTest(i,json.response[1]);
-      })
+      });
       //$(document).ready(PushTest(i,json.response[1]));
     }
   }
