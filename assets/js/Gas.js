@@ -295,3 +295,39 @@ function warning_view() {
   var max_width = Math.max(a_width,b_width);
   tar.style.width = max_width + 'px';
 }
+
+//歩数測定・歩きスマホ判定
+function onDeviceMotion(e) {
+  e.preventDefault();
+  var ag = e.accelerationIncludingGravity;
+  var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
+
+  if(isStep) {
+    if(acc < GRAVITY_MIN) {
+      step++;
+      view_hoge();
+      isStep = false;
+    }
+  } else {
+    if(acc > GRAVITY_MAX) {
+      isStep = true;
+    }
+  }
+  console.log(step + "歩");
+  document.getElementById('hoge').innerHTML = step + "歩";
+}
+
+//歩行状態ではないかつ歩行停止1秒後
+function view_hoge() {
+  document.getElementById('sub').style.visibility = "visible";
+  timerId = setTimeout(exhoge,1000);
+}
+function exhoge() {
+  if(isStep) {
+    view_hoge();
+  }else{
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+    break;
+  }
+}
