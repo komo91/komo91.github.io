@@ -310,6 +310,7 @@ function onDeviceMotion(e) {
     }
     isStep = false;
   } else {
+    document.getElementById('sub').style.visibility = "hidden";
     if(acc > GRAVITY_MAX) {
       isStep = true;
     }
