@@ -51,8 +51,6 @@ if(navigator.geolocation) {
       return false;
     }
     syncerWatchPosition.lastTime = nowTime;
-    document.getElementById('count').innerHTML = count;
-    count++;
 
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
