@@ -33,8 +33,8 @@ var CheckData =
 var count = 0;
 var count2 = 0;
 
-  //加速度処理
-  window.addEventListener('devicemotion',onDeviceMotion);
+//加速度処理
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
