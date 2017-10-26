@@ -30,6 +30,7 @@ var CheckData =
     lat: lat,
     lng: lng
   };
+var count = 0;
 
   //加速度処理
   window.addEventListener('devicemotion',onDeviceMotion);
@@ -52,6 +53,8 @@ if(navigator.geolocation) {
       return false;
     }
     syncerWatchPosition.lastTime = nowTime;
+    document.getElementById('count').innerHTML = count;
+    count++;
 
     //divにて結果表示
     document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd></dl>';
