@@ -31,6 +31,7 @@ var CheckData =
     lng: lng
   };
 var count = 0;
+var count2 = 0;
 
   //加速度処理
   window.addEventListener('devicemotion',onDeviceMotion);
@@ -326,6 +327,8 @@ function onDeviceMotion(e) {
   var ag = e.accelerationIncludingGravity;
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
   var hoge = step;
+  document.getElementById("count2").innerHTML = count2;
+  count2++;
 
   var isTime = ~~(new Date() / 1000);
 
