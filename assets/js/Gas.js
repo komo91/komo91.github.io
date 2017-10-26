@@ -5,8 +5,9 @@ var lat, //緯度,
     watchId,
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
-    CheckPoint = false;
+    CheckPoint = [];  //到達判定
 
+//加速度判定
 var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
 var isStep = false;
@@ -49,7 +50,7 @@ if(navigator.geolocation) {
     syncerWatchPosition.lastTime = nowTime;
 
     //divにて結果表示
-    document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd></dl>';
+    document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
 
     //現在地宣言
     myPosition = new google.maps.LatLng(
@@ -70,14 +71,8 @@ if(navigator.geolocation) {
         map: syncerWatchPosition.map,
         position: myPosition
       });
-
       GasRequest('CheckData');  //spot情報要求
-
-      if(view==true) {
-        warning_view();
-        view = false;
-      }
-
+      warning_view();  //警告表示描画
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       LogPost(myPosition);
@@ -137,6 +132,7 @@ function inputMarker() {
       radius: spotData[i][3]
     };
 
+    CheckPoint[i] = false;  //未到達判定
     var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
@@ -147,11 +143,11 @@ function decision() {
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius > distance && CheckPoint==false) {  //範囲円に現在地点に入った場合
-      GasRequest(spotData[j][0]);
-      LogPost(spotData[j][0]);
-      alert(spotData[j][4]);
-      CheckPoint = true;
+    if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
+      GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
+      LogPost(spotData[j][0]);  //スポット到達ログ送信
+      alert(spotData[j][4]);  //現在地のアラート
+      CheckPoint[j] = true; //一度到達した判定
       navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -168,10 +164,7 @@ function Speech(text) {
     ssu.pitch = 1.1;
     ssu.text = text;
     ssu.lang = 'ja-JP';
-    speechSynthesis.speak(ssu); //
-    //https://www.mitsue.co.jp/knowledge/blog/frontend/201611/04_1421.html
-    //http://blog.e-riverstyle.com/2015/01/web-speech-apitts.html
-
+    speechSynthesis.speak(ssu);
   };
 }
 
@@ -205,7 +198,6 @@ function GasRequest(num) {
 
 //GASから返った値を表示させる
 function receiveJson(json) {
-  var text;
   if(json.key=='spot') {
     spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
@@ -223,11 +215,6 @@ function receiveJson(json) {
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
-      /*
-      var b = document.createElement('img');
-      b.src = json.response[2];
-      document.getElementById('gas_img').appendChild(b);
-      */
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
     }
@@ -236,18 +223,6 @@ function receiveJson(json) {
     document.getElementById('gas_result').innerHTML = json.error;
   }
 }
-/*
-//位置情報取得・設定
-function spot_input(json) {
-  spotData = new Array();
-  for(var i = 0; i < json.response.length; i++) {
-    spotData.push(json.response[i]);
-  }
-  inputMarker();
-  decision();
-  return spotData;
-}
-*/
 
 /* ----- Log記録 ----- */
 
@@ -259,7 +234,6 @@ function LogPost(text) {
   var browser = browserCheck();
   script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
   document.body.appendChild(script);
-  //console.log(script.src);
 }
 
 //端末情報
@@ -318,37 +292,4 @@ function warning_view() {
   var b_width = Math.max(document.documentElement.scrollWidth,document.documentElement.clientWidth);
   var max_width = Math.max(a_width,b_width);
   tar.style.width = max_width + 'px';
-}
-
-function sleep(wait_time) {
-  var start = new Date();
-  while(new Date() - start < wait_time);
-}
-
-//歩数測定・歩きスマホ判定
-function onDeviceMotion(e) {
-  e.preventDefault();
-  var ag = e.accelerationIncludingGravity;
-  var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
-  var hoge = step;
-
-  var isTime = ~~(new Date() / 1000);
-
-
-  if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
-    if(acc < GRAVITY_MIN) {
-      step++;
-      isStep = false;
-    }
-  } else {
-    if(acc > GRAVITY_MAX) {
-      isStep = true;
-    }
-  }
-  console.log(step + "歩");
-  //document.getElementById('hoge').innerHTML = step + "歩";
-
-  //歩行状態ではないかつ歩行停止1秒後
-  if(!isStep)  document.getElementById('sub').style.visibility = "hidden";
 }
