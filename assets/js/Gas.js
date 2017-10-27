@@ -170,6 +170,22 @@ function Speech(text) {
   };
 }
 
+function PushTest(num,url) {
+  Push.Permission.get();	//通知許可
+  document.getElementById('push').innerHTML = "Push!";
+  Push.create(spotData[num][4],{	//通知情報
+    body: "詳しくはコチラ!",
+    icon: 'assets/img/mountain_icon.png',
+    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+    onClick: function (){	//クリック時
+      console.log("Fired!");
+      window.open(url);
+      window.focus();	//windowsを最前列移動
+      this.close();	//通知を閉じる
+    },
+  });
+}
+
 /* ----- GAS設定 ----- */
 
 //GASに指定の値をJSONにて送信
@@ -201,11 +217,7 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
-      $(document).ready(function() {
-        //PushTest(i,json.response[1]);
-        demo();
-      });
-      //$(document).ready(PushTest(i,json.response[1]));
+      PushTest(i,json.response[1]);
     }
   }
   if(!json.response){
