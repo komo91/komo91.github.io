@@ -34,11 +34,23 @@
     </div>
     <div id="hoge"></div>
     <div id="push"></div>
+    <div class="pushnate-register-button" data-site-id="43ed748aaaef234d8413226853258ea2"></div>
+
 
     <div id="sub">
       <p id="caution">歩きスマホダメゼッタイ!</p>
       <span id='btn'><input type="button" value="閉じる" onclick=document.getElementById('sub').style.visibility="hidden"></span>
     </div>
+
+    <script>
+    (function(w, d, s, path) {
+      tag = d.createElement(s);
+      firstTag = d.getElementsByTagName(s)[0];
+      tag.async = 1;
+      tag.src = path;
+      firstTag.parentNode.insertBefore(tag, firstTag);
+    })(window, document, 'script', 'https://s.pushnate.com/pushnateButton.js');
+    </script>
 
     <!-- javascript一覧 -->
     <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fUYnLo6ZTfObzAMBOBmaZRKZCriR-a4&amp;libraries=geometry"></script>
