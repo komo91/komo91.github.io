@@ -29,13 +29,11 @@ var CheckData ={
   lng: lng
 };
 
-p7.init(
-  YOUR_APP_NO,
-  {
-      mode: 'native',
-      root: '/assets/js'
-  }
-);
+p7.init("b379d337caa942be9c7c64f4f5557241",{
+  mode: 'native',
+  subscribe: 'auto',
+  root: '/assets/js/'
+});
 
 //加速度処理
 //window.addEventListener('devicemotion',onDeviceMotion);
