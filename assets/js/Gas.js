@@ -220,7 +220,8 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       $(document).ready(function() {
-        PushTest(i,json.response[1]);
+        //PushTest(i,json.response[1]);
+        demo();
       });
       //$(document).ready(PushTest(i,json.response[1]));
     }
@@ -328,3 +329,18 @@ function exhoge() {
   }
 }
 //歩行状態ではないかつ歩行停止1秒後
+
+function demo() {
+    Push.create('Hello world!', {
+        body: 'How\'s it hangin\'?',
+        icon: '/images/icon.png',
+        link: '/#',
+        timeout: 4000,
+        onClick: function () {
+            console.log("Fired!");
+            window.focus();
+            this.close();
+        },
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+    });
+}
