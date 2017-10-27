@@ -216,9 +216,11 @@ function LogPost(text) {
   var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
   var user = navicheck();
   var browser = browserCheck();
-  script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
+  script.src = base + '?callback=return_hoge&log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
   document.body.appendChild(script);
 }
+
+function return_hoge(json) {}
 
 //端末情報
 function navicheck() {
