@@ -23,12 +23,19 @@ var syncerWatchPosition = {
   marker: null,
 };
 
-var CheckData =
+var CheckData ={
+  name: '現在地',
+  lat: lat,
+  lng: lng
+};
+
+p7.init(
+  YOUR_APP_NO,
   {
-    name: '現在地',
-    lat: lat,
-    lng: lng
-  };
+      mode: 'native',
+      root: '/assets/js'
+  }
+);
 
 //加速度処理
 //window.addEventListener('devicemotion',onDeviceMotion);
@@ -201,7 +208,7 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
-      PushTest(i,json.response[1]);
+      //PushTest(i,json.response[1]);
     }
   }
   if(!json.response){
