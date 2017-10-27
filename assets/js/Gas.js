@@ -170,25 +170,6 @@ function Speech(text) {
   };
 }
 
-function PushTest(num,url) {
-  Push.Permission.get();	//通知許可
-  document.getElementById('push').innerHTML = "Push!";
-  document.getElementById('push2').innerHTML = Push.Permission.has();
-  if(Push.Permission.has()) {
-    Push.create(spotData[num][4],{	//通知情報
-      body: "詳しくはコチラ!",
-      icon: 'assets/img/mountain_icon.png',
-      vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-      onClick: function (){	//クリック時
-        console.log("Fired!");
-        window.open(url);
-        window.focus();	//windowsを最前列移動
-        this.close();	//通知を閉じる
-      },
-    });
-  }
-}
-
 /* ----- GAS設定 ----- */
 
 //GASに指定の値をJSONにて送信
