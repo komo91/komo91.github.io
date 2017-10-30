@@ -313,9 +313,10 @@ function Push7_API() {
   var script = document.createElement('script');
   var App_n = 'b379d337caa942be9c7c64f4f5557241';
   var API_Key = 'd106fa6f2baf4dfeaa2553645dee5e32';
+  var url = "https://komo91.github.io";
   var base = 'https://api.push7.jp/api/v1/' + App_n;
 
-  script.src = base + '/?callback=aaa&title=' + hoge + '&body=' + text + '&url=' +  + '&apikey=' + API_key + '&disappear=' + false;
+  script.src = base + '/?callback=aaa&title=hoge&body=text&url=' + url + '&apikey=' + API_key + '&disappear=' + false;
   document.body.appendChild(script);  //bodyにscript追加
   console.log(script.src);
 
