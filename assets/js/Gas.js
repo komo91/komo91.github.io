@@ -309,6 +309,7 @@ function exhoge() {
   }
 }
 
+/*
 function Push7_API() {
   var script = document.createElement('script');
   var App_n = 'b379d337caa942be9c7c64f4f5557241';
@@ -325,3 +326,4 @@ function Push7_API() {
 function aaa(json) {
   console.log(json);
 }
+*/
