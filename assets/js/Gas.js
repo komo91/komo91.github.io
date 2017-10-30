@@ -307,3 +307,11 @@ function exhoge() {
     clearTimeout(timerId);
   }
 }
+
+function Push7_API() {
+  var script = document.createElement('script');
+  var base = 'https://api.push7.jp/api/v1';
+  var App_n = 'b379d337caa942be9c7c64f4f5557241';
+  var API_Key = 'd106fa6f2baf4dfeaa2553645dee5e32';
+
+}
