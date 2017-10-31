@@ -334,6 +334,7 @@ function spot_alert(num) {
   $(document).ready(function() {
     window.navigator.vibrate([2000,1000,2000]);
   });
+  Speech("ピロリン");
 }
 
 function vib_start() {
