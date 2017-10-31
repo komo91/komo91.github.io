@@ -328,9 +328,9 @@ function exhoge() {
 }
 
 function spot_alert(num) {
+  alert(num + "です!");
   while(true) {
     navigator.vibrate([2000,1000,2000]);
-    alert(num + "です!");
   }
 }
 
