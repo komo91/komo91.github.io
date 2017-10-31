@@ -329,7 +329,7 @@ function exhoge() {
 
 function spot_alert(num) {
   alert(num + "です!");
-  while(!a) {
+  while(true) {
     navigator.vibtate([2000,1000,2000]);
   }
 }
