@@ -74,7 +74,7 @@ if(navigator.geolocation) {
         position: myPosition
       });
       GasRequest('CheckData');  //spot情報要求
-      warning_view();  //警告表示描画
+      warning_view('sub');  //警告表示描画
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       LogPost(myPosition);
@@ -285,8 +285,8 @@ function obj2NumberFix(obj,fix_deg) {
 }
 
 //レイヤー作成
-function warning_view() {
-  var tar = document.getElementById('sub');
+function warning_view(id) {
+  var tar = document.getElementById(id);
 
   var a_height = Math.max(document.body.clientHeight,document.body.scrollHeight);
   var b_height = Math.max(document.documentElement.scroollheight,document.documentElement.clientHeight);
@@ -328,7 +328,8 @@ function exhoge() {
 }
 
 function spot_alert(num) {
-  alert(num + "です!");
+  warning_view('alert');
+  //alert(num + "です!");
   navigator.vibrate([2000,1000,2000]);
 }
 
