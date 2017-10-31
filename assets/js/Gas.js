@@ -169,6 +169,24 @@ function Speech(text) {
   };
 }
 
+//通知機能
+function PushTest(num,url) {
+  Push.Permission.request();	//通知許可
+  document.getElementById('push').innerHTML = "Push!";
+  Push.create(spotData[num][4],{	//通知情報
+    body: "詳しくはコチラ!",
+    icon: 'assets/img/mountain_icon.png',
+    timeout: 10000,
+    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
+    onClick: function (){	//クリック時
+      console.log("Fired!");
+      window.open(url);
+      window.focus();	//windowsを最前列移動
+      this.close();	//通知を閉じる
+    },
+  });
+}
+
 /* ----- GAS設定 ----- */
 
 //GASに指定の値をJSONにて送信
@@ -200,7 +218,7 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
-      //PushTest(i,json.response[1]);
+      PushTest(i,json.response[1]);
       //Push7_API();
     }
   }
@@ -308,22 +326,3 @@ function exhoge() {
     clearTimeout(timerId);
   }
 }
-
-/*
-function Push7_API() {
-  var script = document.createElement('script');
-  var App_n = 'b379d337caa942be9c7c64f4f5557241';
-  var API_Key = 'd106fa6f2baf4dfeaa2553645dee5e32';
-  var url = "https://komo91.github.io";
-  var base = 'https://api.push7.jp/api/v1/' + App_n;
-
-  script.src = base + '/send?callback=aaa&title=hoge&body=text&url=' + url + '&apikey=' + API_Key + '&disappear=' + false;
-  document.body.appendChild(script);  //bodyにscript追加
-  console.log(script.src);
-
-}
-
-function aaa(json) {
-  console.log(json);
-}
-*/
