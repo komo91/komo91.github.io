@@ -328,8 +328,8 @@ function exhoge() {
 }
 
 function spot_alert(num) {
-  warning_view('alert');
-  document.getElementById('alert').style.visibility = "visible";
+  //warning_view('alert');
+  //document.getElementById('alert').style.visibility = "visible";
   //alert(num + "です!");
   navigator.vibrate([2000,1000,2000]);
 }
