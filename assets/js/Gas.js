@@ -171,7 +171,6 @@ function Speech(text) {
 
 //通知機能
 function PushTest(num,url) {
-  navigator.vibrate(5000);
   Push.Permission.request();	//通知許可
   document.getElementById('push').innerHTML = "Push!";
   Push.create(spotData[num][4],{	//通知情報
@@ -220,6 +219,7 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
+      navigator.vibrate(5000);
       //Push7_API();
     }
   }
