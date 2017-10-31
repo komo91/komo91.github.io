@@ -326,3 +326,8 @@ function exhoge() {
     clearTimeout(timerId);
   }
 }
+
+var isVibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+if(isVibrate){
+    alert("対応している!");
+}
