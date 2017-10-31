@@ -329,7 +329,7 @@ function exhoge() {
 
 function spot_alert(num) {
   warning_view('alert');
-  document.getElmenentById('alert').style.visibility = "visible";
+  document.getElementById('alert').style.visibility = "visible";
   //alert(num + "です!");
   navigator.vibrate([2000,1000,2000]);
 }
