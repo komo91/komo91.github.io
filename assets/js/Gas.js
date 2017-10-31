@@ -328,7 +328,10 @@ function exhoge() {
   }
 }
 
-var isVibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-if(isVibrate){
-    alert("対応している!");
+function vib_start() {
+  navigator.vibrate(1000);
+}
+
+function vib_stop() {
+  navigator.vibrate(0);
 }
