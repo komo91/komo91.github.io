@@ -331,7 +331,9 @@ function spot_alert(num) {
   //warning_view('alert');
   //document.getElementById('alert').style.visibility = "visible";
   //alert(num + "です!");
-  window.navigator.vibrate([2000,1000,2000]);
+  $(document).ready(function() {
+    window.navigator.vibrate([2000,1000,2000]);
+  });
 }
 
 function vib_start() {
