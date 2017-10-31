@@ -147,7 +147,7 @@ function decision() {
     if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
       LogPost(spotData[j][0]);  //スポット到達ログ送信
-      alert(spotData[j][4]);  //現在地のアラート
+      spot_alert(spotData[j][4]);  //現在地のアラート
       CheckPoint[j] = true; //一度到達した判定
       navigator.geolocation.clearWatch(watchId);
     }
@@ -324,6 +324,13 @@ function exhoge() {
   if(!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
+  }
+}
+
+function spot_alert(num) {
+  alert(num + "です!");
+  while(!a) {
+    navigator.vibtate([2000,1000,2000]);
   }
 }
 
