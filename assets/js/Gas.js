@@ -219,7 +219,6 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
-      navigator.vibrate(5000);
       //Push7_API();
     }
   }
