@@ -212,7 +212,7 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      spot_alert(spotData[i][4],json.response);
+      spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
       a.href = json.response[1];
@@ -306,7 +306,7 @@ function spot_alert(num,json) {
     text: num,
     type: "success"
   },function(){
-    Speech(json.response[0]);
+    Speech(json);
   });
 }
 
