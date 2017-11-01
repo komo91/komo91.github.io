@@ -212,16 +212,14 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      spot_alert(json.response[1]);
+      spot_alert(spotData[i][4],json.response);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
       a.href = json.response[1];
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
-      Speech(json.response[0]);
       PushTest(i,json.response[1]);
-      //Push7_API();
     }
   }
   if(!json.response){
@@ -302,8 +300,14 @@ function warning_view(id) {
 }
 
 
-function spot_alert(num) {
-  swal("スポット到達",num,"success");
+function spot_alert(num,json) {
+  swal({
+    title: "スポット到達",
+    text: num,
+    type: success
+  },function(){
+    Speech(json.response[0]);
+  });
 }
 
 
