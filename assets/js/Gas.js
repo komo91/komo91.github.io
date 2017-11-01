@@ -211,6 +211,7 @@ function receiveJson(json) {
   //取得情報反映
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
+      Audio();
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
       a.href = json.response[1];
@@ -219,7 +220,6 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
-      Audio();
       //Push7_API();
     }
   }
