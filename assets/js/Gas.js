@@ -219,6 +219,7 @@ function receiveJson(json) {
       document.getElementById('gas_url').appendChild(a);
       Speech(json.response[0]);
       PushTest(i,json.response[1]);
+      Audio();
       //Push7_API();
     }
   }
@@ -299,39 +300,55 @@ function warning_view(id) {
   tar.style.width = max_width + 'px';
 }
 
-//歩数測定・歩きスマホ判定
-function onDeviceMotion(e) {
-  e.preventDefault();
-  var ag = e.accelerationIncludingGravity;
-  var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
-
-  if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
-    if(acc < GRAVITY_MIN) {
-      step++;
-      timerId = setTimeout(exhoge,1000);
-    }
-    isStep = false;
-  } else {
-    if(acc > GRAVITY_MAX) {
-      isStep = true;
-    }
-  }
-  document.getElementById('hoge').innerHTML = step + "歩";
-}
-
-function exhoge() {
-  if(!isStep) {
-    document.getElementById('sub').style.visibility = "hidden";
-    clearTimeout(timerId);
-  }
-}
-
 function spot_alert(num) {
   //warning_view('alert');
   //document.getElementById('alert').style.visibility = "visible";
   alert("test");
   new Audio('assets/mp/1.mp3').play();
+}
+
+function Audio() {
+  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  var Loader = function(url) {
+    this.url = url;
+  };
+
+  Loader.prototype.loadBuffer = function() {
+    var loader,request;
+    loader = this;
+    request = new XMLHttpRequest();
+    request.open('GET',this.url,true);
+    request.responseType = 'arraybuffer';
+
+    request.onload = function() {
+      audioCtx.decodeAudioData(this.response,function(buffer) {
+        if(!buffer) {
+          console.log('error');
+          return;
+        }
+        loader.playSound(buffer);
+      },function(error) {
+        console.log('decodeAudioData error');
+      });
+    };
+
+    request.onerror = function() {
+      console.log('Loader: XHR error');
+    };
+
+    request.send();
+  };
+
+  Loader.prototype.playSound = function(buffer) {
+    var sourceNode = audioCtx.createBufferSource();
+    sourceNode.buffer = buffer;
+    sourceNode.connect(audioCtx.destination);
+    sourceNode.start(0);
+  };
+
+  var loader = new Loader('assets/mp/1.mp3');
+  loader.loadBuffer();
 }
 
 function vib_start() {
