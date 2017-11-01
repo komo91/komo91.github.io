@@ -330,6 +330,7 @@ function exhoge() {
 function spot_alert(num) {
   //warning_view('alert');
   //document.getElementById('alert').style.visibility = "visible";
+  alert("test");
   new Audio('assets/mp/1.mp3').play();
 }
 
