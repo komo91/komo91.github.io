@@ -300,12 +300,14 @@ function warning_view(id) {
   tar.style.width = max_width + 'px';
 }
 
+/*
 function spot_alert(num) {
   //warning_view('alert');
   //document.getElementById('alert').style.visibility = "visible";
   alert("test");
   new Audio('assets/mp/1.mp3').play();
 }
+*/
 
 function Audio() {
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
