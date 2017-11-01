@@ -330,10 +330,6 @@ function exhoge() {
 function spot_alert(num) {
   //warning_view('alert');
   //document.getElementById('alert').style.visibility = "visible";
-  //alert(num + "です!");
-  $(document).ready(function() {
-    window.navigator.vibrate([2000,1000,2000]);
-  });
   new Audio('assets/mp/1.mp3').play();
 }
 
