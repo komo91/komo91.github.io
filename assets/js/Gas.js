@@ -304,7 +304,7 @@ function spot_alert(num,json) {
   swal({
     title: "スポット到達",
     text: num,
-    type: success
+    type: "success"
   },function(){
     Speech(json.response[0]);
   });
