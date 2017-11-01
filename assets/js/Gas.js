@@ -212,7 +212,7 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      spot_alert(json.response[0]);
+      spot_alert(json.response[1]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
       a.href = json.response[1];
@@ -303,10 +303,7 @@ function warning_view(id) {
 
 
 function spot_alert(num) {
-  //warning_view('alert');
-  //document.getElementById('alert').style.visibility = "visible";
-  alert(num);
-  //new Audio('assets/mp/1.mp3').play();
+  swal("スポット到達",num,"success");
 }
 
 
