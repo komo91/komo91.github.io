@@ -211,7 +211,8 @@ function receiveJson(json) {
   //取得情報反映
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
-      Audio();
+      //Audio();
+      AUdio2();
       spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
@@ -312,15 +313,19 @@ function spot_alert(num,json) {
 
 
 function Audio() {
+  //AudioNode管理
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+  //
   var Loader = function(url) {
     this.url = url;
   };
 
+  //XMLHttpRequestにて音声データ読み込み
   Loader.prototype.loadBuffer = function() {
     var loader,request;
     loader = this;
+    console.log("loader:" + loader);
     request = new XMLHttpRequest();
     request.open('GET',this.url,true);
     request.responseType = 'arraybuffer';
@@ -331,7 +336,7 @@ function Audio() {
           console.log('error');
           return;
         }
-        loader.playSound(buffer);
+        loader.playSound(buffer); //音声再生
       },function(error) {
         console.log('decodeAudioData error');
       });
@@ -355,10 +360,12 @@ function Audio() {
   loader.loadBuffer();
 }
 
-function vib_start() {
-  navigator.vibrate(1000);
-}
-
-function vib_stop() {
-  navigator.vibrate(0);
+function Audio2() {
+  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  var oscillatorNode = audioCtx.createOscillator();
+  var gainNode = audioCtx.createGain();
+  gainNode.gain.value = 0.5;
+  oscillatorNode.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+  oscillatorNode.start(0);
 }
