@@ -245,7 +245,7 @@ function return_hoge(json) {}
 //端末情報
 function navicheck() {
   var ua = window.navigator.userAgent.toLowerCase();
-  console.log(ua);
+  //console.log(ua);
   if(ua.indexOf('iphone') != -1) {
     return 'iPhone';
   } else if(ua.indexOf('ipad') != -1) {
@@ -313,10 +313,10 @@ function spot_alert(num,json) {
 
 
 function Audio() {
-  //AudioNode管理
+  //AudioNodeの           管理
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-  //
+  //音声URL設定
   var Loader = function(url) {
     this.url = url;
   };
@@ -324,48 +324,36 @@ function Audio() {
   //XMLHttpRequestにて音声データ読み込み
   Loader.prototype.loadBuffer = function() {
     var loader,request;
-    loader = this;
-    console.log("loader:" + loader);
-    request = new XMLHttpRequest();
-    request.open('GET',this.url,true);
-    request.responseType = 'arraybuffer';
+    loader = this;  //音声URL
+    request = new XMLHttpRequest(); //XMLHttpRequest
+    request.open('GET',this.url,true);  //リクエスト内容
+    request.responseType = 'arraybuffer'; //必要データ値
 
-    request.onload = function() {
+    request.onload = function() { //リクエストロード時
       audioCtx.decodeAudioData(this.response,function(buffer) {
         if(!buffer) {
           console.log('error');
           return;
         }
         loader.playSound(buffer); //音声再生
-      },function(error) {
-        console.log('decodeAudioData error');
       });
     };
 
-    request.onerror = function() {
+    request.onerror = function() {  //リクエストエラー時
       console.log('Loader: XHR error');
     };
 
-    request.send();
+    request.send(); //リクエスト送信
   };
 
+  //音声データの再生
   Loader.prototype.playSound = function(buffer) {
-    var sourceNode = audioCtx.createBufferSource();
-    sourceNode.buffer = buffer;
-    sourceNode.connect(audioCtx.destination);
-    sourceNode.start(0);
+    var sourceNode = audioCtx.createBufferSource(); //サウンドSource
+    sourceNode.buffer = buffer;                     //再生サウンド設定
+    sourceNode.connect(audioCtx.destination);       //connectにAudioNodeの値
+    sourceNode.start(0);                            //0秒後に再生
   };
 
-  var loader = new Loader('assets/mp/1.mp3');
+  var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
-}
-
-function Audio2() {
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  var oscillatorNode = audioCtx.createOscillator();
-  var gainNode = audioCtx.createGain();
-  gainNode.gain.value = 0.5;
-  oscillatorNode.connect(gainNode);
-  gainNode.connect(audioCtx.destination);
-  oscillatorNode.start(0);
 }
