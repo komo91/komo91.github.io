@@ -352,7 +352,8 @@ function Audio() {
     var gainNode = audioCtx.createGain();
     gainNode.gain.value = 0.5;
     sourceNode.buffer = buffer;                     //再生サウンド設定
-    gainNode.connect(audioCtx.destination);       //connectにAudioNodeの値
+    sourceNode.connect(gainNode);       //connectにAudioNodeの値
+    gainNode.connect(audioCtx.destination);
     sourceNode.start(0);                            //0秒後に再生
   };
 
