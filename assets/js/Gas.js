@@ -322,7 +322,7 @@ function Audio() {
   };
 
   //XMLHttpRequestにて音声データ読み込み
-  Loader.prototype.loadBuffer = function() {
+  Loader.loadBuffer = function() {
     var loader,request;
     loader = this;  //音声URL
     request = new XMLHttpRequest(); //XMLHttpRequest
@@ -347,7 +347,7 @@ function Audio() {
   };
 
   //音声データの再生
-  Loader.prototype.playSound = function(buffer) {
+  Loader.playSound = function(buffer) {
     var sourceNode = audioCtx.createBufferSource(); //サウンドSource
     sourceNode.buffer = buffer;                     //再生サウンド設定
     sourceNode.connect(audioCtx.destination);       //connectにAudioNodeの値
