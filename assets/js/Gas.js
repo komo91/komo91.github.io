@@ -350,9 +350,9 @@ function Audio() {
   Loader.prototype.playSound = function(buffer) {
     var sourceNode = audioCtx.createBufferSource(); //サウンドSource
     var gainNode = audioCtx.createGain();
+    gainNode.gain.value = 0.5;
     sourceNode.buffer = buffer;                     //再生サウンド設定
-    sourceNode.connect(audioCtx.destination);       //connectにAudioNodeの値
-    gainNode.gain.value = 0.1;
+    gainNode.connect(audioCtx.destination);       //connectにAudioNodeの値
     sourceNode.start(0);                            //0秒後に再生
   };
 
