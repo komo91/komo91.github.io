@@ -360,3 +360,5 @@ function Audio() {
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
 }
+
+//git push test
