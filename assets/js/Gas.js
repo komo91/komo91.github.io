@@ -361,6 +361,9 @@ function Audio() {
   loader.loadBuffer();
 }
 
+var db = firebase.database();
+var myChatAll = db.ref("/my/chat/all");
+
 function changeData() {
   var text = document.getElementById("my_text").value;
   myChatAll.set({title:"example",text:text});
