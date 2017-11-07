@@ -360,15 +360,3 @@ function Audio() {
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
 }
-
-var db = firebase.database();
-var myChatAll = db.ref("/my/chat/all");
-
-function changeData() {
-  var text = document.getElementById("my_text").value;
-  myChatAll.set({title:"example",text:text});
-}
-
-myChatAll.on("value",function(snapshot) {
-  document.getElementById("chatText").innerText = snapshot.val().text;
-});
