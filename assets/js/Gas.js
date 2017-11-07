@@ -212,7 +212,7 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      //Audio2();
+      navigator.vibrate([2000,1000,2000]);
       spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
@@ -300,7 +300,7 @@ function warning_view(id) {
   tar.style.width = max_width + 'px';
 }
 
-
+//アラート表示
 function spot_alert(num,json) {
   swal({
     title: "スポット到達",
@@ -311,7 +311,7 @@ function spot_alert(num,json) {
   });
 }
 
-
+//通知音取得
 function Audio() {
   //AudioNodeの管理
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
