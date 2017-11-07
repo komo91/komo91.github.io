@@ -313,7 +313,7 @@ function spot_alert(num,json) {
 
 
 function Audio() {
-  //AudioNodeの           管理
+  //AudioNodeの管理
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
   //音声URL設定
@@ -350,7 +350,7 @@ function Audio() {
   Loader.prototype.playSound = function(buffer) {
     var sourceNode = audioCtx.createBufferSource(); //サウンドSource
     var gainNode = audioCtx.createGain();
-    gainNode.gain.value = 2.0;
+    gainNode.gain.value = 1.0;
     sourceNode.buffer = buffer;                     //再生サウンド設定
     sourceNode.connect(gainNode);       //connectにAudioNodeの値
     gainNode.connect(audioCtx.destination);
@@ -360,3 +360,12 @@ function Audio() {
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
 }
+
+function changeData() {
+  var text = document.getElementById("my_text").value;
+  myChatAll.set({title:"example",text:text});
+}
+
+myChatAll.on("value",function(snapshot) {
+  document.getElementById("chatText").innerText = snapshot.val().text;
+});
