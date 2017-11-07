@@ -212,7 +212,6 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      vib();
       spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
@@ -307,6 +306,7 @@ function spot_alert(num,json) {
     text: num,
     type: "success"
   },function(){
+    vib();
     Speech(json);
   });
 }
