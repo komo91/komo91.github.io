@@ -362,5 +362,8 @@ function Audio() {
 }
 
 function vib() {
-  window.navigator.vibrate([2000,1000,2000]);
+  window.addEventListener("load",function() {
+    navigator.vibrate([2000,1000,2000]);
+  });
+
 }
