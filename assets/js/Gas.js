@@ -309,7 +309,6 @@ function spot_alert(num,json) {
     text: num,
     type: "success"
   },function(){
-    vib();
     Speech(json);
   });
 }
