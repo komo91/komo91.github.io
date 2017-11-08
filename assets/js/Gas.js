@@ -212,6 +212,9 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
+      window.addEventListener("load",function() {
+        navigator.vibrate([2000,1000,2000]);
+      });
       spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
@@ -359,11 +362,4 @@ function Audio() {
 
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
-}
-
-function vib() {
-  window.addEventListener("load",function() {
-    navigator.vibrate([2000,1000,2000]);
-  });
-
 }
