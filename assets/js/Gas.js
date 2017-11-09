@@ -29,7 +29,7 @@ var CheckData ={
   lng: lng
 };
 
-加速度処理
+//加速度処理
 window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
