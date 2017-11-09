@@ -29,8 +29,8 @@ var CheckData ={
   lng: lng
 };
 
-//加速度処理
-//window.addEventListener('devicemotion',onDeviceMotion);
+加速度処理
+window.addEventListener('devicemotion',onDeviceMotion);
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -149,9 +149,9 @@ function decision() {
       LogPost(spotData[j][0]);  //スポット到達ログ送信
 
       CheckPoint[j] = true; //一度到達した判定
-      //if(CirclePoint[])
-      //navigator.geolocation.clearWatch(watchId);
-    }
+      if(SpotData[j][0]=="Takao_peak") {
+        navigator.geolocation.clearWatch(watchId);
+      }
   }
 }
 
@@ -168,24 +168,6 @@ function Speech(text) {
     ssu.lang = 'ja-JP';
     speechSynthesis.speak(ssu);
   };
-}
-
-//通知機能
-function PushTest(num,url) {
-  Push.Permission.request();	//通知許可
-  document.getElementById('push').innerHTML = "Push!";
-  Push.create(spotData[num][4],{	//通知情報
-    body: "詳しくはコチラ!",
-    icon: 'assets/img/mountain_icon.png',
-    timeout: 10000,
-    vibrate: [200,100,200,100,200,100,200],	//バイブレーションのパターン
-    onClick: function (){	//クリック時
-      console.log("Fired!");
-      window.open(url);
-      window.focus();	//windowsを最前列移動
-      this.close();	//通知を閉じる
-    },
-  });
 }
 
 /* ----- GAS設定 ----- */
@@ -229,7 +211,6 @@ function receiveJson(json) {
         b.src = json.response[2];
         document.getElementById('gas_img').appendChild(b);
       }
-      //PushTest(i,json.response[1]);
     }
   }
   if(!json.response){
@@ -351,7 +332,6 @@ function Audio() {
     request.onerror = function() {  //リクエストエラー時
       console.log('Loader: XHR error');
     };
-
     request.send(); //リクエスト送信
   };
 
@@ -368,4 +348,32 @@ function Audio() {
 
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
+}
+
+//歩数測定・歩きスマホ判定
+function onDeviceMotion(e) {
+  e.preventDefault();
+  var ag = e.accelerationIncludingGravity;
+  var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
+
+  if(isStep) {
+    document.getElementById('sub').style.visibility = "visible";
+    if(acc < GRAVITY_MIN) {
+      step++;
+      timerId = setTimeout(exhoge,1000);
+    }
+    isStep = false;
+  } else {
+    if(acc > GRAVITY_MAX) {
+      isStep = true;
+    }
+  }
+  document.getElementById('hoge').innerHTML = step + "歩";
+}
+
+function exhoge() {
+  if(!isStep) {
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+  }
 }
