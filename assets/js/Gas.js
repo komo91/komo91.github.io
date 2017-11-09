@@ -152,6 +152,7 @@ function decision() {
       if(SpotData[j][0]=="Takao_peak") {
         navigator.geolocation.clearWatch(watchId);
       }
+    }
   }
 }
 
