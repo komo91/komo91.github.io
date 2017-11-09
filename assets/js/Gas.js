@@ -147,8 +147,9 @@ function decision() {
     if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
       LogPost(spotData[j][0]);  //スポット到達ログ送信
-    
+
       CheckPoint[j] = true; //一度到達した判定
+      if(CirclePoint[])
       //navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -205,6 +206,7 @@ function receiveJson(json) {
     spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
       spotData.push(json.response[i]);
+      console.log(spotData);
     }
     inputMarker();
     decision();
