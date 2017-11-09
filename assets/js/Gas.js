@@ -149,7 +149,7 @@ function decision() {
       LogPost(spotData[j][0]);  //スポット到達ログ送信
 
       CheckPoint[j] = true; //一度到達した判定
-      if(CirclePoint[])
+      //if(CirclePoint[])
       //navigator.geolocation.clearWatch(watchId);
     }
   }
@@ -206,7 +206,7 @@ function receiveJson(json) {
     spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
       spotData.push(json.response[i]);
-      console.log(spotData[]);
+      console.log(spotData);
     }
     inputMarker();
     decision();
