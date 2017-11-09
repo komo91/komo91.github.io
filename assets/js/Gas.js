@@ -147,9 +147,9 @@ function decision() {
     if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
       LogPost(spotData[j][0]);  //スポット到達ログ送信
-      //spot_alert(spotData[j][4]);  //現在地のアラート
+    
       CheckPoint[j] = true; //一度到達した判定
-      navigator.geolocation.clearWatch(watchId);
+      //navigator.geolocation.clearWatch(watchId);
     }
   }
 }
@@ -200,6 +200,7 @@ function GasRequest(num) {
 
 //GASから返った値を表示させる
 function receiveJson(json) {
+  //スポットデータ取得
   if(json.key=='spot') {
     spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
@@ -211,20 +212,22 @@ function receiveJson(json) {
   //取得情報反映
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
-      Audio();
-      spot_alert(spotData[i][4],json.response[0]);
-      document.getElementById('gas_result').innerHTML = json.response[0];
+      Audio();  //通知音
+      spot_alert(spotData[i][4],json.response[0]);  //アラート表示
+      document.getElementById('gas_result').innerHTML = json.response[0]; //取得内容書き出し
+      //URL反映
       var a = document.createElement('a');
       a.href = json.response[1];
       var str = document.createTextNode('URL');
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
-      PushTest(i,json.response[1]);
+      //画像反映
       if(json.response[2]) {
         var b = document.createElement('img');
         b.src = json.response[2];
         document.getElementById('gas_img').appendChild(b);
       }
+      //PushTest(i,json.response[1]);
     }
   }
   if(!json.response){
