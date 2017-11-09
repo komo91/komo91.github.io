@@ -149,9 +149,7 @@ function decision() {
       LogPost(spotData[j][0]);  //スポット到達ログ送信
 
       CheckPoint[j] = true; //一度到達した判定
-      if(SpotData[j][0]=="Takao_peak") {
-        navigator.geolocation.clearWatch(watchId);
-      }
+      
     }
   }
 }
