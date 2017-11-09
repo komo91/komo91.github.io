@@ -206,7 +206,7 @@ function receiveJson(json) {
     spotData = new Array();
     for(var i = 0; i < json.response.length; i++) {
       spotData.push(json.response[i]);
-      console.log(spotData);
+      console.log(spotData[]);
     }
     inputMarker();
     decision();
