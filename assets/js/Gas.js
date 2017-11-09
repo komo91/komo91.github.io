@@ -358,12 +358,13 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      timerId = setTimeout(exhoge,1000);
+      timerId = setTimeout(1000);
     }
     isStep = false;
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
+      document.getElementById('sub').style.visibility = "hidden";
     }
   }
   document.getElementById('hoge').innerHTML = step + "歩";
