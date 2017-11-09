@@ -212,10 +212,6 @@ function receiveJson(json) {
   for(var i = 0; i < spotData.length; i++) {
     if(json.key==spotData[i][0]) {
       Audio();
-      window.addEventListener("load",function() {
-        navigator.vibrate([2000,1000,2000]);
-        console.log("vibrate hoge");
-      });
       spot_alert(spotData[i][4],json.response[0]);
       document.getElementById('gas_result').innerHTML = json.response[0];
       var a = document.createElement('a');
@@ -224,6 +220,11 @@ function receiveJson(json) {
       a.appendChild(str);
       document.getElementById('gas_url').appendChild(a);
       PushTest(i,json.response[1]);
+      if(json.response[2]) {
+        var b = document.createElement('img');
+        b.src = json.response[2];
+        document.getElementById('gas_img').appendChild(b);
+      }
     }
   }
   if(!json.response){
