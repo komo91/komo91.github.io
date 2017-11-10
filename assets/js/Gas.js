@@ -362,17 +362,10 @@ function onDeviceMotion(e) {
     }
     isStep = false;
   } else {
+    document.getElementById('sub').style.visibility = "hidden";
     if(acc > GRAVITY_MAX) {
       isStep = true;
-      document.getElementById('sub').style.visibility = "hidden";
     }
   }
   document.getElementById('hoge').innerHTML = step + "歩";
-}
-
-function exhoge() {
-  if(!isStep) {
-    document.getElementById('sub').style.visibility = "hidden";
-    clearTimeout(timerId);
-  }
 }
