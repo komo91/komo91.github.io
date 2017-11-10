@@ -358,14 +358,20 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      timerId = setTimeout(1000);
+      timerId = setTimeout(exhoge,1000);
     }
     isStep = false;
   } else {
-    document.getElementById('sub').style.visibility = "hidden";
     if(acc > GRAVITY_MAX) {
       isStep = true;
     }
   }
   document.getElementById('hoge').innerHTML = step + "歩";
+}
+
+function exhoge() {
+  (!isStep) {
+    document.getElementById('sub').style.visibility = "hidden";
+    clearTimeout(timerId);
+  }
 }
