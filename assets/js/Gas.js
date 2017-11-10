@@ -370,8 +370,6 @@ function onDeviceMotion(e) {
 }
 
 function exhoge() {
-  if(!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
-  }
 }
