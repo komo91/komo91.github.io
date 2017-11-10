@@ -372,7 +372,7 @@ function onDeviceMotion(e) {
   //歩行状態ではないかつ歩行停止1秒後
 function view_hoge() {
   document.getElementById('sub').style.visibility = "visible";
-  timerId = setTimeout(exhoge , 1000);
+  timerId = setTimeout(1000);
 }
 
 function exhoge() {
