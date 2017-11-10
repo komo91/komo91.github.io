@@ -355,7 +355,7 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
-    document.getElementById('sub').style.visibility = "visible";
+    //document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
       view_hoge();
@@ -381,6 +381,5 @@ function exhoge() {
   } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
-    break;
   }
 }
