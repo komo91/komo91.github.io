@@ -358,7 +358,7 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      timerId = setTimeout(exhoge,1000);
+      view_hoge();
     }
     isStep = false;
   } else {
@@ -369,7 +369,18 @@ function onDeviceMotion(e) {
   document.getElementById('hoge').innerHTML = step + "歩";
 }
 
+  //歩行状態ではないかつ歩行停止1秒後
+function view_hoge() {
+  document.getElementById('sub').style.visibility = "visible";
+  timerId = setTimeout(exhoge , 1000);
+}
+
 function exhoge() {
+  if(isStep) {
+    view_hoge();
+  } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
-}
+    break;
+
+  }
