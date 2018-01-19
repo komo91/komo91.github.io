@@ -240,8 +240,8 @@ function inputMarker() {  //マーカー・目的地範囲設定・作成
       radius: CheckData[i]['radius']
     };
     
-    var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
-    syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
+    //var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
+    //syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
     //console.log(CheckData[i]['lat'],CheckData[i]['lng']);
     
   }
